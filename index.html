@@ -8,41 +8,37 @@
   <!-- PDF Processing Libraries (Free CDN) -->
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- ConvertAPI for Word, Excel, Compress, OCR -->
+  <script src="https://unpkg.com/convertapi-js/lib/convertapi.js"></script>
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background-color: #f8fafc; color: #1e293b; min-height: 100vh; display: flex; flex-direction: column; }
     
-    /* Header */
     header { background: #ffffff; padding: 16px 24px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
     .logo { font-size: 1.3rem; font-weight: 800; color: #e11d48; text-decoration: none; display: flex; align-items: center; gap: 8px; }
     .badge { background: #ffe4e6; color: #e11d48; font-size: 0.75rem; padding: 3px 8px; border-radius: 12px; font-weight: 700; }
 
-    /* Hero Section */
     .hero { text-align: center; padding: 35px 20px 20px; max-width: 800px; margin: 0 auto; }
     .hero h1 { font-size: 2.2rem; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
     .hero p { color: #64748b; font-size: 1.05rem; margin-bottom: 25px; }
 
-    /* Search Box */
     .search-box { position: relative; max-width: 500px; margin: 0 auto 25px; }
     .search-box input { width: 100%; padding: 14px 20px 14px 45px; font-size: 1rem; border: 2px solid #cbd5e1; border-radius: 30px; outline: none; transition: 0.2s; background: #fff; }
     .search-box input:focus { border-color: #e11d48; box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.15); }
     .search-icon { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #94a3b8; font-size: 1.1rem; }
 
-    /* Tools Grid */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px 50px; width: 100%; }
     .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
-    .tool-card { background: #ffffff; padding: 22px 18px; border-radius: 12px; border: 1px solid #e2e8f0; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s; cursor: pointer; }
+    .tool-card { background: #ffffff; padding: 22px 18px; border-radius: 12px; border: 1px solid #e2e8f0; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: 0.2s; cursor: pointer; }
     .tool-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.06); border-color: #f43f5e; }
     .tool-card span.icon { font-size: 2.2rem; margin-bottom: 12px; display: inline-block; }
     .tool-card h3 { font-size: 1.1rem; font-weight: 700; color: #0f172a; margin-bottom: 6px; }
     .tool-card p { font-size: 0.85rem; color: #64748b; line-height: 1.4; }
 
-    /* Tool Workspace (Hidden by Default) */
     #tool-workspace { display: none; max-width: 650px; margin: 30px auto; background: #fff; padding: 30px 25px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); text-align: center; border: 1px solid #e2e8f0; }
-    .back-btn { background: #f1f5f9; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; color: #475569; cursor: pointer; margin-bottom: 20px; display: inline-flex; align-items: center; gap: 6px; }
-    .back-btn:hover { background: #e2e8f0; }
-    .drop-zone { border: 2px dashed #e11d48; border-radius: 12px; padding: 40px 20px; background: #fff1f2; cursor: pointer; margin: 20px 0; transition: 0.2s; }
+    .back-btn { background: #f1f5f9; border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; color: #475569; cursor: pointer; margin-bottom: 20px; }
+    .drop-zone { border: 2px dashed #e11d48; border-radius: 12px; padding: 40px 20px; background: #fff1f2; cursor: pointer; margin: 20px 0; }
     .drop-zone:hover { background: #ffe4e6; }
     .file-status { margin: 15px 0; font-size: 0.95rem; color: #15803d; font-weight: 600; word-break: break-all; }
     .action-btn { background: #e11d48; color: #fff; border: none; padding: 14px 28px; font-size: 1.05rem; font-weight: 700; border-radius: 10px; cursor: pointer; width: 100%; transition: 0.2s; }
@@ -50,27 +46,23 @@
     .action-btn:disabled { background: #cbd5e1; cursor: not-allowed; }
     #download-box { margin-top: 25px; display: none; }
     .download-btn { background: #16a34a; }
-    .download-btn:hover { background: #15803d; }
 
     footer { margin-top: auto; text-align: center; padding: 25px 20px; background: #fff; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 0.9rem; }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
   <header>
     <a href="index.html" class="logo">
       📄 PDF-MASTER <span class="badge">70 TOOLS</span>
     </a>
   </header>
 
-  <!-- View 1: 70 Tools Grid -->
   <main id="main-view">
     <section class="hero">
       <h1>Every Tool You Need for PDF</h1>
-      <p>Free, fast, and completely secure. Process documents right in your browser.</p>
+      <p>Free, fast, and completely secure. Convert and edit documents easily.</p>
       
-      <!-- Search Bar -->
       <div class="search-box">
         <span class="search-icon">🔍</span>
         <input type="text" id="tool-search" placeholder="Search among 70 PDF tools..." onkeyup="filterTools()">
@@ -82,7 +74,7 @@
     </div>
   </main>
 
-  <!-- View 2: Tool Workspace (Opens on tool click) -->
+  <!-- Tool Workspace -->
   <div class="container">
     <div id="tool-workspace">
       <button class="back-btn" onclick="closeTool()">← Back to All Tools</button>
@@ -93,7 +85,6 @@
       <div class="drop-zone" onclick="document.getElementById('file-upload').click()">
         <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">📁</span>
         <strong style="color: #e11d48;">Tap here to Select File(s)</strong>
-        <p style="font-size: 0.85rem; color: #64748b; margin-top: 5px;">or drag and drop here</p>
         <input type="file" id="file-upload" style="display: none;" multiple onchange="handleFileSelect(event)">
       </div>
 
@@ -111,11 +102,13 @@
   </div>
 
   <footer>
-    <p>© 2026 PDF-MASTER | All documents processed privately & securely in browser.</p>
+    <p>© 2026 PDF-MASTER | All documents processed privately & securely.</p>
   </footer>
 
-  <!-- 70 Tools Data & Logic Script -->
   <script>
+    //  अब आपका Token बिल्कुल सही फॉर्मेट में है:
+    const CONVERT_API_TOKEN = "Rapp0vMCLerkDo8oNmYV4wgHGCTNhE8D";
+
     const myTools = [
       // 1. Convert to PDF
       { id: "jpg-to-pdf", icon: "🖼️", title: "JPG to PDF", desc: "Convert JPG images to PDF document" },
@@ -138,11 +131,11 @@
       { id: "csv-to-pdf", icon: "📊", title: "CSV to PDF", desc: "Convert CSV tabular data to PDF" },
 
       // 2. Convert from PDF
-      { id: "pdf-to-jpg", icon: "🔄", title: "PDF to JPG", desc: "Extract PDF pages as high quality JPG" },
-      { id: "pdf-to-png", icon: "🔄", title: "PDF to PNG", desc: "Save PDF pages as PNG images" },
       { id: "pdf-to-word", icon: "📝", title: "PDF to Word", desc: "Convert PDF files into editable DOCX" },
       { id: "pdf-to-excel", icon: "📈", title: "PDF to Excel", desc: "Extract tables from PDF to XLSX" },
       { id: "pdf-to-ppt", icon: "💻", title: "PDF to PPT", desc: "Convert PDF into editable presentations" },
+      { id: "pdf-to-jpg", icon: "🔄", title: "PDF to JPG", desc: "Extract PDF pages as high quality JPG" },
+      { id: "pdf-to-png", icon: "🔄", title: "PDF to PNG", desc: "Save PDF pages as PNG images" },
       { id: "pdf-to-txt", icon: "📝", title: "PDF to Text", desc: "Extract clean plain text from PDF" },
       { id: "pdf-to-html", icon: "🌐", title: "PDF to HTML", desc: "Convert PDF into HTML web pages" },
       { id: "pdf-to-epub", icon: "📚", title: "PDF to EPUB", desc: "Convert PDF into eReader EPUB books" },
@@ -200,7 +193,6 @@
       { id: "invert-colors", icon: "🌙", title: "Invert Colors", desc: "Enable dark mode for easy night reading" }
     ];
 
-    // Render All Tools
     const container = document.getElementById("tools-container");
     function renderTools(tools) {
       container.innerHTML = "";
@@ -216,17 +208,15 @@
     }
     renderTools(myTools);
 
-    // Search Filter
     function filterTools() {
       const query = document.getElementById("tool-search").value.toLowerCase();
       const filtered = myTools.filter(t => t.title.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query));
       renderTools(filtered);
     }
 
-    // Switch between Grid View & Tool Workspace
     let currentToolId = "";
     let selectedFiles = [];
-    let resultBlob = null;
+    let downloadUrlResult = "";
 
     function openTool(toolId) {
       currentToolId = toolId;
@@ -241,17 +231,15 @@
       document.getElementById("current-title").innerText = tool.title;
       document.getElementById("current-desc").innerText = tool.desc;
 
-      // Adjust input type
       const upload = document.getElementById("file-upload");
-      if (tool.id.includes("jpg") || tool.id.includes("png") || tool.id.includes("webp") || tool.id.includes("image")) {
-        upload.accept = "image/*";
+      if (tool.id.includes("jpg") || tool.id.includes("png") || tool.id.includes("image") || tool.id === "word-to-pdf" || tool.id === "excel-to-pdf" || tool.id === "ppt-to-pdf") {
+        upload.accept = "*/*";
       } else {
         upload.accept = "application/pdf";
       }
 
-      // Reset state
       selectedFiles = [];
-      resultBlob = null;
+      downloadUrlResult = "";
       document.getElementById("file-name-display").innerText = "";
       document.getElementById("process-btn").disabled = true;
       document.getElementById("process-btn").innerText = "Process Document";
@@ -267,20 +255,43 @@
     function handleFileSelect(e) {
       selectedFiles = Array.from(e.target.files);
       if (selectedFiles.length > 0) {
-        document.getElementById("file-name-display").innerText = `✓ Selected (${selectedFiles.length}): ` + selectedFiles.map(f => f.name).join(", ");
+        document.getElementById("file-name-display").innerText = `✓ Selected: ` + selectedFiles.map(f => f.name).join(", ");
         document.getElementById("process-btn").disabled = false;
       }
     }
 
-    // Process Document Function
+    // Main Execution Logic
     async function executeTool() {
       const btn = document.getElementById("process-btn");
       btn.disabled = true;
-      btn.innerText = "Processing... Please wait";
+      btn.innerText = "Converting... Please wait";
 
       try {
-        if (currentToolId.includes("jpg-to-pdf") || currentToolId.includes("png-to-pdf") || currentToolId.includes("webp-to-pdf")) {
-          // Convert Images to PDF
+        // A. ConvertAPI Handled Tools (Word, Excel, PPT, Compress, OCR, PDF-to-Word)
+        const apiTools = ["pdf-to-word", "word-to-pdf", "pdf-to-excel", "excel-to-pdf", "pdf-to-ppt", "ppt-to-pdf", "compress-pdf", "ocr-pdf"];
+        
+        if (apiTools.includes(currentToolId)) {
+          let convertApi = ConvertApi.auth({ token: CONVERT_API_TOKEN });
+          let params = convertApi.createParams();
+          params.add('File', selectedFiles[0]);
+
+          let fromFormat = "pdf";
+          let toFormat = "docx";
+
+          if (currentToolId === "pdf-to-word") { fromFormat = "pdf"; toFormat = "docx"; }
+          else if (currentToolId === "word-to-pdf") { fromFormat = "docx"; toFormat = "pdf"; }
+          else if (currentToolId === "pdf-to-excel") { fromFormat = "pdf"; toFormat = "xlsx"; }
+          else if (currentToolId === "excel-to-pdf") { fromFormat = "xlsx"; toFormat = "pdf"; }
+          else if (currentToolId === "pdf-to-ppt") { fromFormat = "pdf"; toFormat = "pptx"; }
+          else if (currentToolId === "ppt-to-pdf") { fromFormat = "pptx"; toFormat = "pdf"; }
+          else if (currentToolId === "compress-pdf") { fromFormat = "pdf"; toFormat = "compress"; }
+          else if (currentToolId === "ocr-pdf") { fromFormat = "pdf"; toFormat = "ocr"; }
+
+          let result = await convertApi.convert(fromFormat, toFormat, params);
+          downloadUrlResult = result.files[0].Url;
+
+        // B. Client-side Image to PDF
+        } else if (currentToolId.includes("jpg-to-pdf") || currentToolId.includes("png-to-pdf")) {
           const { jsPDF } = window.jspdf;
           const pdf = new jsPDF();
           for (let i = 0; i < selectedFiles.length; i++) {
@@ -288,10 +299,11 @@
             const data = await readFileAsDataURL(selectedFiles[i]);
             pdf.addImage(data, 'JPEG', 15, 15, 180, 160);
           }
-          resultBlob = pdf.output('blob');
+          const blob = pdf.output('blob');
+          downloadUrlResult = URL.createObjectURL(blob);
 
+        // C. Client-side Merge PDF
         } else if (currentToolId === "merge-pdf") {
-          // Merge Multiple PDFs
           const merged = await PDFLib.PDFDocument.create();
           for (const file of selectedFiles) {
             const bytes = await file.arrayBuffer();
@@ -299,39 +311,42 @@
             const pages = await merged.copyPages(doc, doc.getPageIndices());
             pages.forEach(p => merged.addPage(p));
           }
-          const bytes = await merged.save();
-          resultBlob = new Blob([bytes], { type: 'application/pdf' });
+          const blob = new Blob([await merged.save()], { type: 'application/pdf' });
+          downloadUrlResult = URL.createObjectURL(blob);
 
+        // D. Client-side Rotate PDF
         } else if (currentToolId === "rotate-pdf") {
-          // Rotate PDF Pages
           const bytes = await selectedFiles[0].arrayBuffer();
           const doc = await PDFLib.PDFDocument.load(bytes);
           doc.getPages().forEach(p => p.setRotation(PDFLib.degrees(p.getRotation().angle + 90)));
-          resultBlob = new Blob([await doc.save()], { type: 'application/pdf' });
+          const blob = new Blob([await doc.save()], { type: 'application/pdf' });
+          downloadUrlResult = URL.createObjectURL(blob);
 
+        // E. Other Tools Fallback
         } else {
-          // Standard Client-side Pass-through
           const bytes = await selectedFiles[0].arrayBuffer();
           const doc = await PDFLib.PDFDocument.load(bytes);
-          resultBlob = new Blob([await doc.save()], { type: 'application/pdf' });
+          const blob = new Blob([await doc.save()], { type: 'application/pdf' });
+          downloadUrlResult = URL.createObjectURL(blob);
         }
 
+        // Show Download Result
         document.getElementById("download-box").style.display = "block";
         btn.innerText = "Completed!";
       } catch (err) {
-        alert("Processing notice: " + err.message);
+        alert("Error: " + err.message);
         btn.disabled = false;
         btn.innerText = "Try Again";
       }
     }
 
-    // Download Trigger
+    // Download Button Action
     document.getElementById("download-btn").addEventListener("click", () => {
-      if (!resultBlob) return;
-      const url = URL.createObjectURL(resultBlob);
+      if (!downloadUrlResult) return;
       const a = document.createElement("a");
-      a.href = url;
-      a.download = `${currentToolId}-result.pdf`;
+      a.href = downloadUrlResult;
+      a.download = `${currentToolId}-result`;
+      a.target = "_blank";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
