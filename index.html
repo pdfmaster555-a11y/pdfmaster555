@@ -5,9 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PDFMaster555 - 70 Free Online PDF & Image Tools</title>
 
-  <!-- FontAwesome, PDF-Lib, PDF.js & SortableJS -->
+  <!-- FontAwesome, PDF-Lib, PDF.js & SortableJS with Solid Fallbacks -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://unpkg.com/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
+  
+  <!-- Primary jsDelivr CDN for PDF-Lib -->
+  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
+  
+  <!-- Immediate Head Fallback if jsDelivr is blocked -->
+  <script>
+    if (typeof PDFLib === 'undefined') {
+      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"><\/script>');
+    }
+  </script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
@@ -371,6 +381,33 @@
     // Setup PDF.js Worker
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
+    // GUARANTEED PDF-LIB RETRIEVAL ENGINE (AUTO-RECOVERY CDNS)
+    async function getPdfLib() {
+      if (typeof window.PDFLib !== 'undefined' && window.PDFLib.PDFDocument) {
+        return window.PDFLib;
+      }
+      const cdnList = [
+        'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js',
+        'https://unpkg.com/pdf-lib@1.17.9/dist/pdf-lib.min.js'
+      ];
+      for (const url of cdnList) {
+        try {
+          await new Promise((resolve, reject) => {
+            const s = document.createElement('script');
+            s.src = url;
+            s.onload = () => (window.PDFLib ? resolve() : reject());
+            s.onerror = reject;
+            document.head.appendChild(s);
+          });
+          if (window.PDFLib) return window.PDFLib;
+        } catch (err) {
+          console.warn(`CDN ${url} unreachable, trying next...`);
+        }
+      }
+      throw new Error("PDF processing engine load nahi ho paya. Kripya apna internet ya ad-blocker check karein.");
+    }
+
     // 70 TOOLS DEFINITIONS
     const ALL_70_TOOLS = [
       { id: 'merge', name: 'Merge PDF & JPG', cat: 'organize', icon: 'fa-object-group', desc: 'Combine multiple PDF documents and images into a single sorted file.' },
@@ -452,7 +489,7 @@
     let currentMode = 'merge';
     let loadedPages = [];
 
-    // SYNCHRONOUS BASE64 TO UINT8ARRAY (NO FETCH() FAILURES)
+    // SYNCHRONOUS BASE64 TO UINT8ARRAY
     function dataUrlToBytes(dataUrl) {
       const parts = dataUrl.split(',');
       const binaryStr = atob(parts[1]);
@@ -605,12 +642,11 @@
       updateActionState();
     }
 
-    // RENDER PDF PAGES (SAFE AGAINST DETACHED BUFFERS)
+    // RENDER PDF PAGES
     async function renderPdfPages(file) {
       const arrayBuffer = await file.arrayBuffer();
       const fileBytes = new Uint8Array(arrayBuffer);
 
-      // Pass sliced copy to PDF.js worker
       const pdf = await pdfjsLib.getDocument({ data: fileBytes.slice() }).promise;
       
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
@@ -817,12 +853,12 @@
         } else if (currentMode === 'pdf2img' || currentMode === 'pdf2png' || currentMode === 'pdf2webp') {
           await executeDownloadImages();
         } else {
-          // Pehle standard direct copy try karein
+          // Normal Direct Build
           try {
             await executePdfDocumentBuild(targetPages);
           } catch (directErr) {
-            console.warn('Standard copy failed (AES Protected). Running High-Res Fallback...', directErr);
-            // Agar file encrypted/protected hai (jaise Sharjah Insurance), to High-Res Fallback chalega
+            console.warn('Standard copy failed. Running High-Res Fallback...', directErr);
+            // Protected/AES files ke liye Canvas Fallback
             await executeCanvasFallbackBuild(targetPages);
           }
         }
@@ -837,6 +873,7 @@
 
     // PRIMARY PDF BUILDER
     async function executePdfDocumentBuild(targetPages) {
+      const PDFLib = await getPdfLib();
       const { PDFDocument, degrees } = PDFLib;
       const mergedPdf = await PDFDocument.create();
       const docCache = new Map();
@@ -864,7 +901,7 @@
           copiedPage.setRotation(degrees(totalAngle));
           mergedPdf.addPage(copiedPage);
         } else if (item.type === 'image') {
-          const isPng = item.file.type === 'image/png';
+          const isPng = item.file && (item.file.type === 'image/png' || item.file.name.toLowerCase().endsWith('.png'));
           const imgBytes = typeof item.fileBytes === 'string' ? dataUrlToBytes(item.fileBytes) : item.fileBytes;
           const imgObj = isPng ? await mergedPdf.embedPng(imgBytes) : await mergedPdf.embedJpg(imgBytes);
           const page = mergedPdf.addPage([imgObj.width, imgObj.height]);
@@ -878,8 +915,9 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}_output.pdf`);
     }
 
-    // HIGH-RES 300-DPI BULLETPROOF FALLBACK (PROTECTED/INSURANCE FILES)
+    // HIGH-RES 300-DPI BULLETPROOF FALLBACK
     async function executeCanvasFallbackBuild(targetPages) {
+      const PDFLib = await getPdfLib();
       const { PDFDocument, degrees } = PDFLib;
       const fallbackPdf = await PDFDocument.create();
 
@@ -889,7 +927,6 @@
 
       for (const item of targetPages) {
         if (item.type === 'pdf') {
-          // PDF.js se page ko High Resolution (2.0 scale) me render karein
           const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
           const page = await pdf.getPage(item.docPageNum);
           const viewport = page.getViewport({ scale: 2.0 });
@@ -899,12 +936,10 @@
           const ctx = canvas.getContext('2d');
           await page.render({ canvasContext: ctx, viewport }).promise;
 
-          // Direct byte conversion (No fetch)
           const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.92);
           const jpgBytes = dataUrlToBytes(jpgDataUrl);
           const embeddedImg = await fallbackPdf.embedJpg(jpgBytes);
 
-          // Original page size set karein
           const origViewport = page.getViewport({ scale: 1.0 });
           const newPage = fallbackPdf.addPage([origViewport.width, origViewport.height]);
           newPage.drawImage(embeddedImg, {
@@ -918,7 +953,7 @@
           if (totalAngle) newPage.setRotation(degrees(totalAngle));
         } else if (item.type === 'image') {
           const imgBytes = typeof item.fileBytes === 'string' ? dataUrlToBytes(item.fileBytes) : item.fileBytes;
-          const isPng = item.file && item.file.type === 'image/png';
+          const isPng = item.file && (item.file.type === 'image/png' || item.file.name.toLowerCase().endsWith('.png'));
           const embeddedImg = isPng ? await fallbackPdf.embedPng(imgBytes) : await fallbackPdf.embedJpg(imgBytes);
           const newPage = fallbackPdf.addPage([embeddedImg.width, embeddedImg.height]);
           newPage.drawImage(embeddedImg, { x: 0, y: 0, width: embeddedImg.width, height: embeddedImg.height });
@@ -931,9 +966,10 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}_output.pdf`);
     }
 
-    // WATERMARK / NUMBERING / METADATA OVERLAYS
+    // OVERLAYS (WATERMARK, NUMBERING, METADATA)
     function applyOverlays(pdfDoc) {
-      const { rgb, degrees } = PDFLib;
+      if (typeof window.PDFLib === 'undefined') return;
+      const { rgb, degrees } = window.PDFLib;
 
       if (currentMode === 'watermark' || currentMode === 'confidential') {
         const textInput = document.getElementById('watermarkTextInput');
