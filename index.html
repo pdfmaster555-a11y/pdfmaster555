@@ -3,244 +3,290 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDFMaster555 - 70 Free Online PDF & Image Tools</title>
+  <title>PDFMaster555 - Smart Online PDF & Office Tools</title>
 
-  <!-- FontAwesome, PDF-Lib, PDF.js & SortableJS with Solid Fallbacks -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Primary jsDelivr CDN for PDF-Lib -->
-  <script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
-  
-  <!-- Immediate Head Fallback if jsDelivr is blocked -->
-  <script>
-    if (typeof PDFLib === 'undefined') {
-      document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"><\/script>');
-    }
-  </script>
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Robust Client-Side Engines: PDF-Lib, PDF.js, SheetJS, Mammoth, PptxGenJS, JSZip & Sortable -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.9/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.8/mammoth.browser.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/pptxgenjs@3.12.0/dist/pptxgen.bundle.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
   <style>
     :root {
-      --bg-dark: #080d16;
-      --card-bg: rgba(22, 30, 46, 0.9);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --primary: #6366f1;
-      --primary-hover: #4f46e5;
-      --accent: #06b6d4;
-      --accent-glow: rgba(6, 182, 212, 0.4);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
+      --bg-page: #f8fafc;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --border-focus: #38bdf8;
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+      --shadow-subtle: 0 2px 5px rgba(0,0,0,0.03), 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-hover: 0 10px 25px -5px rgba(2, 132, 199, 0.12), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
     html { scroll-behavior: smooth; }
-
     body {
-      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-dark) 55%, #030712 100%);
+      background-color: var(--bg-page);
       color: var(--text-main);
       min-height: 100vh;
-      overflow-x: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* HEADER */
+    /* TOP HEADER */
     .top-ribbon {
       position: sticky; top: 0; z-index: 1000;
-      background: rgba(8, 13, 22, 0.95); backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--card-border); padding: 0.8rem 5%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 0.8rem 5%;
       display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
     .brand-logo-unit { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
     .brand-icon-box {
-      width: 40px; height: 40px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(6, 182, 212, 0.2));
-      border: 1.5px solid rgba(6, 182, 212, 0.5); border-radius: 12px;
+      width: 42px; height: 42px; background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+      border: 1.5px solid #7dd3fc; border-radius: 12px;
       display: flex; align-items: center; justify-content: center;
     }
-    .brand-icon-box i { font-size: 1.3rem; color: #38bdf8; }
-    .brand-text-pdf { font-size: 1.3rem; font-weight: 900; color: #fff; }
-    .brand-text-master { font-size: 1.3rem; font-weight: 900; color: #38bdf8; }
+    .brand-icon-box i { font-size: 1.25rem; color: #0284c7; }
+    .brand-text-pdf { font-size: 1.35rem; font-weight: 800; color: #0284c7; }
+    .brand-text-master { font-size: 1.35rem; font-weight: 800; color: #0f172a; }
     .brand-badge-555 {
-      background: linear-gradient(135deg, #ff007a, #7928ca);
-      color: #fff; font-size: 0.7rem; font-weight: 800; padding: 2px 7px; border-radius: 6px;
+      background: linear-gradient(135deg, #3b82f6, #0284c7);
+      color: #fff; font-size: 0.72rem; font-weight: 800; padding: 2px 7px; border-radius: 6px;
     }
-    .nav-tabs { display: flex; gap: 1.2rem; list-style: none; align-items: center; }
-    .nav-tabs a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; }
-    .nav-tabs a:hover { color: var(--accent); }
+    .nav-tabs { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-tabs a { color: var(--text-muted); text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: color 0.2s; }
+    .nav-tabs a:hover { color: var(--primary); }
     .nav-btn {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff !important; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;
+      background: var(--primary); color: #fff !important;
+      padding: 0.55rem 1.2rem; border-radius: var(--radius-sm); font-weight: 700;
     }
 
-    /* HERO */
-    .hero { text-align: center; padding: 2.5rem 1rem 1rem 1rem; max-width: 850px; margin: 0 auto; }
-    .hero-badge {
-      display: inline-block; padding: 0.35rem 0.95rem; background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.35); color: #a5b4fc; border-radius: 50px;
-      font-size: 0.8rem; margin-bottom: 0.8rem;
+    /* HERO SECTION */
+    .hero {
+      text-align: center; padding: 2.5rem 1rem 1rem 1rem;
+      max-width: 860px; margin: 0 auto;
     }
-    .hero h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 0.6rem; color: #fff; }
-    .hero p { color: var(--text-muted); font-size: 1rem; }
-    .hero-checks { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; font-size: 13px; font-weight: 600; color: #10b981; margin-top: 10px; }
+    .hero-avatar-box {
+      width: 60px; height: 60px; margin: 0 auto 0.9rem auto;
+      background: #e0f2fe; border: 2px solid #bae6fd; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--primary); font-size: 1.6rem;
+    }
+    .hero h1 { font-size: 2.2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+    .hero p { color: var(--text-muted); font-size: 1.02rem; line-height: 1.5; }
+    .hero-features-bar {
+      display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; margin-top: 10px;
+      font-size: 0.85rem; font-weight: 600; color: #0369a1;
+    }
 
     /* WORKSPACE */
-    .workspace-container { max-width: 1240px; margin: 1.5rem auto 3rem auto; width: 94%; }
+    .workspace-container { max-width: 1200px; margin: 1.2rem auto 3rem auto; width: 94%; }
     .tool-tabs-bar {
-      display: flex; gap: 8px; overflow-x: auto; padding: 8px;
-      background: rgba(15, 23, 42, 0.9); border: 1px solid var(--card-border);
-      border-radius: 12px; margin-bottom: 1.2rem;
+      display: flex; gap: 6px; overflow-x: auto; padding: 6px;
+      background: #ffffff; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); margin-bottom: 1.2rem;
+      box-shadow: var(--shadow-subtle);
     }
     .tool-tab-btn {
-      padding: 10px 16px; border: 1px solid transparent; background: transparent;
-      color: var(--text-muted); font-size: 0.88rem; font-weight: 600; border-radius: 8px;
-      cursor: pointer; white-space: nowrap; transition: 0.2s; display: flex; align-items: center; gap: 8px;
+      padding: 9px 14px; border: 1px solid transparent; background: transparent;
+      color: var(--text-muted); font-size: 0.85rem; font-weight: 700; border-radius: 8px;
+      cursor: pointer; white-space: nowrap; transition: 0.2s; display: flex; align-items: center; gap: 7px;
     }
-    .tool-tab-btn:hover { background: rgba(99, 102, 241, 0.15); color: #fff; }
-    .tool-tab-btn.active {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
-    }
+    .tool-tab-btn:hover { background: #f1f5f9; color: var(--text-main); }
+    .tool-tab-btn.active { background: #e0f2fe; color: var(--primary); border-color: #bae6fd; }
 
-    .workspace-layout {
-      display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start;
-    }
-    @media (max-width: 950px) { .workspace-layout { grid-template-columns: 1fr; } }
+    .workspace-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+    @media (max-width: 960px) { .workspace-layout { grid-template-columns: 1fr; } }
 
+    /* DROPZONE CARD */
     .dropzone-card {
-      background: var(--card-bg); border: 2px dashed rgba(99, 102, 241, 0.45);
-      border-radius: 16px; padding: 2rem 1.5rem; text-align: center; cursor: pointer;
-      transition: all 0.3s; margin-bottom: 1.2rem;
+      background: #ffffff; border: 2px dashed #93c5fd;
+      border-radius: var(--radius-md); padding: 2.2rem 1.5rem; text-align: center; cursor: pointer;
+      transition: all 0.25s; margin-bottom: 1.2rem; box-shadow: var(--shadow-subtle);
     }
-    .dropzone-card:hover, .dropzone-card.dragover {
-      border-color: var(--accent); background: rgba(30, 41, 59, 0.9);
-    }
-    .dropzone-card i.upload-icon { font-size: 2.5rem; color: var(--accent); margin-bottom: 0.5rem; }
+    .dropzone-card:hover, .dropzone-card.dragover { border-color: var(--primary); background: #f0f9ff; }
+    .dropzone-card i.upload-icon { font-size: 2.7rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .dropzone-card h3 { font-size: 1.25rem; font-weight: 800; color: #1e293b; }
     .btn-select-file {
-      display: inline-block; margin: 10px auto; padding: 0.65rem 1.8rem;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff; font-weight: 700; font-size: 0.95rem; border: none; border-radius: 8px; cursor: pointer;
+      display: inline-block; margin-top: 10px; padding: 0.65rem 1.6rem;
+      background: var(--primary); color: #fff; font-weight: 700;
+      font-size: 0.92rem; border: none; border-radius: var(--radius-sm); cursor: pointer;
     }
 
     .cards-wrapper {
-      border: 2px dashed rgba(56, 189, 248, 0.35); border-radius: 16px;
-      background: rgba(13, 19, 33, 0.65); padding: 1.5rem; min-height: 250px;
+      border: 1px solid var(--border-color); border-radius: var(--radius-md);
+      background: #ffffff; padding: 1.3rem; min-height: 250px; box-shadow: var(--shadow-subtle);
     }
-    .cards-instruction { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .cards-instruction { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 0.8rem; }
 
     /* SIDEBAR */
     .workspace-sidebar {
-      background: rgba(15, 23, 42, 0.95); border: 1px solid rgba(6, 182, 212, 0.3);
-      border-radius: 16px; padding: 1.3rem; position: sticky; top: 80px;
+      background: #ffffff; border: 1px solid var(--border-color);
+      border-radius: var(--radius-md); padding: 1.3rem; box-shadow: var(--shadow-subtle);
+      position: sticky; top: 80px;
     }
     .sidebar-header {
-      font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 1rem;
+      font-size: 1.05rem; font-weight: 800; color: #0f172a; margin-bottom: 1rem;
       display: flex; align-items: center; justify-content: space-between;
-      border-bottom: 1px solid var(--card-border); padding-bottom: 0.7rem;
+      border-bottom: 1px solid var(--border-color); padding-bottom: 0.7rem;
     }
-    .sidebar-field-group { margin-bottom: 1.2rem; }
-    .sidebar-field-group label {
-      display: block; font-size: 0.85rem; font-weight: 600; color: #e2e8f0; margin-bottom: 6px;
+    .tool-badge-pill {
+      background: #e0f2fe; color: var(--primary);
+      padding: 3px 9px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.5px;
     }
-    .sidebar-input {
-      width: 100%; padding: 0.75rem 1rem; background: rgba(30, 41, 59, 0.8);
-      border: 1.5px solid rgba(99, 102, 241, 0.4); border-radius: 8px; color: #fff;
-      font-size: 0.95rem; outline: none; margin-bottom: 6px;
+    .stats-card-box {
+      background: #f8fafc; border-radius: 8px; padding: 10px;
+      margin-bottom: 1rem; font-size: 0.85rem; border: 1px solid var(--border-color);
     }
-    .sidebar-input:focus { border-color: var(--accent); }
-    .field-hint { font-size: 0.75rem; color: var(--text-muted); display: block; line-height: 1.3; }
+    .stats-card-box div { display: flex; justify-content: space-between; margin-bottom: 4px; color: var(--text-muted); }
+    .stats-card-box strong { color: var(--text-main); }
+
+    .sidebar-field-group { margin-bottom: 1.1rem; }
+    .sidebar-field-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #334155; margin-bottom: 6px; }
+    .sidebar-input, .sidebar-select {
+      width: 100%; padding: 0.7rem 0.85rem; background: #ffffff;
+      border: 1.5px solid var(--border-color); border-radius: var(--radius-sm); color: #0f172a;
+      font-size: 0.9rem; outline: none;
+    }
+    .sidebar-input:focus, .sidebar-select:focus { border-color: var(--primary); }
+    .field-hint { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; display: block; }
 
     .quick-pills-bar { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-top: 8px; }
     .pill-btn {
-      background: rgba(30, 41, 59, 0.9); border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #94a3b8; font-size: 0.75rem; font-weight: 600; padding: 6px; border-radius: 6px;
+      background: #f1f5f9; border: 1px solid var(--border-color);
+      color: #475569; font-size: 0.75rem; font-weight: 700; padding: 6px; border-radius: 6px;
       cursor: pointer; text-align: center;
     }
-    .pill-btn:hover { background: var(--primary); color: #fff; }
-
-    .stats-card-box {
-      background: rgba(30, 41, 59, 0.5); border-radius: 8px; padding: 10px;
-      margin-bottom: 1.2rem; font-size: 0.85rem; border: 1px solid var(--card-border);
-    }
-    .stats-card-box div { display: flex; justify-content: space-between; margin-bottom: 4px; }
-    .stats-card-box strong { color: var(--accent); }
+    .pill-btn:hover { background: #e2e8f0; color: var(--text-main); }
 
     .action-btn {
-      width: 100%; padding: 0.9rem;
-      background: linear-gradient(135deg, #10b981, #059669);
-      border: none; border-radius: 10px; color: #fff; font-size: 1rem; font-weight: 700;
-      cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px;
-      transition: background 0.2s, transform 0.1s;
+      width: 100%; padding: 0.85rem;
+      background: #16a34a; border: none; border-radius: var(--radius-sm);
+      color: #fff; font-size: 0.95rem; font-weight: 800; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 2px 6px rgba(22, 163, 74, 0.25);
     }
-    .action-btn:hover { background: linear-gradient(135deg, #059669, #047857); }
-    .action-btn:active { transform: scale(0.98); }
-    .action-btn:disabled { background: #475569 !important; cursor: not-allowed; opacity: 0.6; }
+    .action-btn:hover { background: #15803d; }
+    .action-btn:disabled { background: #cbd5e1 !important; cursor: not-allowed; box-shadow: none; }
 
-    /* THUMBNAILS GRID */
-    .files-grid {
-      display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 14px;
-    }
+    /* THUMBNAIL PAGES */
+    .files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
     .page-card {
-      background: rgba(30, 41, 59, 0.95); border: 2px solid rgba(255, 255, 255, 0.15);
+      background: #ffffff; border: 2px solid var(--border-color);
       border-radius: 10px; padding: 8px; display: flex; flex-direction: column;
-      align-items: center; cursor: grab; position: relative; transition: 0.2s;
+      align-items: center; cursor: grab; position: relative; box-shadow: var(--shadow-subtle);
     }
-    .page-card.selected { border-color: var(--accent); box-shadow: 0 0 12px var(--accent-glow); }
+    .page-card.selected { border-color: var(--primary); background: #f0f9ff; }
     .card-preview-box {
-      width: 100%; height: 155px; background: #000; border-radius: 6px;
+      width: 100%; height: 145px; background: #f1f5f9; border-radius: 6px;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
+      border: 1px solid #e2e8f0;
     }
-    .card-preview-box canvas, .card-preview-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    .card-preview-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
     .page-number-pill {
-      background: var(--primary); color: #fff; font-size: 11px; font-weight: 700;
-      padding: 2px 8px; border-radius: 10px; margin-top: 5px;
+      background: #e2e8f0; color: #334155; font-size: 11px; font-weight: 700;
+      padding: 2px 7px; border-radius: 8px; margin-top: 5px;
     }
-    .card-action-bar { display: flex; gap: 8px; align-items: center; margin-top: 6px; width: 100%; justify-content: space-between; }
+    .card-action-bar { display: flex; gap: 6px; align-items: center; margin-top: 6px; width: 100%; justify-content: space-between; }
     .rotate-single-btn, .delete-single-btn {
-      border: none; font-size: 11px; padding: 3px 6px; border-radius: 4px; cursor: pointer; color: #fff;
+      border: none; font-size: 11px; padding: 4px 6px; border-radius: 4px; cursor: pointer; color: #fff;
     }
-    .rotate-single-btn { background: #3b82f6; }
+    .rotate-single-btn { background: #0284c7; }
     .delete-single-btn { background: #ef4444; }
 
-    /* 70 TOOLS DIRECTORY */
-    .tools-search-section { max-width: 850px; margin: 3rem auto 1.5rem auto; padding: 0 1rem; text-align: center; }
-    .search-box { position: relative; margin-bottom: 1.2rem; }
-    .search-box input {
-      width: 100%; padding: 0.9rem 1rem 0.9rem 3rem; background: var(--card-bg);
-      border: 1.5px solid rgba(99, 102, 241, 0.35); border-radius: 12px; color: #fff; font-size: 1rem;
-    }
-    .search-box i { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
-    .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; margin-bottom: 0.8rem; }
-    .filter-btn {
-      background: rgba(30, 41, 59, 0.6); border: 1px solid var(--card-border); color: var(--text-muted);
-      padding: 0.4rem 0.9rem; border-radius: 20px; cursor: pointer; font-size: 0.82rem;
-    }
-    .filter-btn.active { background: var(--primary); color: #fff; }
-    .tools-counter { color: var(--accent); font-size: 0.9rem; font-weight: 600; }
+    /* ALL TOOLS DIRECTORY */
+    .tools-search-section { max-width: 900px; margin: 3rem auto 1.5rem auto; padding: 0 1rem; text-align: center; }
+    .tools-search-section h2 { font-size: 2rem; font-weight: 800; color: #0f172a; margin-bottom: 0.4rem; }
+    .tools-search-section p { color: var(--text-muted); font-size: 0.98rem; margin-bottom: 1.4rem; }
 
+    .search-box { position: relative; max-width: 620px; margin: 0 auto 1.2rem auto; }
+    .search-box input {
+      width: 100%; padding: 0.85rem 1rem 0.85rem 2.8rem; background: #ffffff;
+      border: 1.5px solid var(--border-color); border-radius: 50px;
+      font-size: 0.95rem; outline: none; box-shadow: var(--shadow-subtle);
+    }
+    .search-box input:focus { border-color: var(--primary); }
+    .search-box i { position: absolute; left: 1.1rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
+
+    .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 1rem; }
+    .filter-btn {
+      background: #ffffff; border: 1.5px solid var(--border-color); color: #475569;
+      padding: 0.45rem 1.1rem; border-radius: 50px; cursor: pointer; font-size: 0.85rem; font-weight: 700;
+      box-shadow: var(--shadow-subtle); transition: all 0.2s;
+    }
+    .filter-btn.active, .filter-btn:hover { background: #0284c7; border-color: #0284c7; color: #ffffff; }
+
+    /* STYLISH TOOL CARDS */
     .tools-grid {
-      max-width: 1240px; margin: 0 auto 4rem auto; display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; padding: 0 1.5rem;
+      max-width: 1200px; margin: 0 auto 4rem auto; display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.2rem; padding: 0 1.2rem;
     }
     .tool-card {
-      background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
-      padding: 1.2rem; display: flex; flex-direction: column; gap: 0.5rem; cursor: pointer;
-      transition: transform 0.2s, border-color 0.2s;
+      background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 14px;
+      padding: 1.4rem 1.2rem; display: flex; flex-direction: column; align-items: flex-start;
+      text-align: left; cursor: pointer; position: relative; transition: all 0.2s ease;
+      box-shadow: var(--shadow-subtle);
     }
-    .tool-card:hover { transform: translateY(-4px); border-color: var(--accent); }
-    .tool-icon {
-      width: 40px; height: 40px; background: rgba(99, 102, 241, 0.15); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent);
+    .tool-card:hover {
+      transform: translateY(-4px); border-color: #7dd3fc; box-shadow: var(--shadow-hover);
     }
-    .tool-card h4 { font-size: 1rem; font-weight: 600; color: #fff; }
-    .tool-card p { font-size: 0.8rem; color: var(--text-muted); line-height: 1.35; flex-grow: 1; }
-    .tool-badge { font-size: 0.65rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
-    .tool-card-cta { color: #38bdf8; font-size: 0.78rem; font-weight: 600; display: flex; align-items: center; gap: 5px; }
+
+    .tool-header-row { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 1rem; }
+    .tool-tag {
+      font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px;
+      padding: 2px 8px; border-radius: 6px;
+    }
+    .tool-star { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-star:hover { color: #f59e0b; }
+
+    /* THEMED ICONS */
+    .tool-icon-stylish {
+      width: 52px; height: 52px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.5rem; margin-bottom: 0.9rem;
+    }
+    /* Specific format styling */
+    .theme-word { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
+    .theme-excel { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
+    .theme-ppt { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; }
+    .theme-pdf { background: #f0f9ff; color: #0284c7; border: 1px solid #bae6fd; }
+    .theme-opt { background: #faf5ff; color: #7c3aed; border: 1px solid #e9d5ff; }
+
+    .tool-card h4 {
+      font-size: 1.1rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem;
+      letter-spacing: -0.3px; display: flex; align-items: center; gap: 6px;
+    }
+    .tool-card h4 span.highlight-format {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .tool-card p { font-size: 0.83rem; color: var(--text-muted); line-height: 1.4; flex-grow: 1; }
+    .tool-action-cta {
+      margin-top: 1rem; font-size: 0.82rem; font-weight: 700; color: #0284c7;
+      display: flex; align-items: center; gap: 5px;
+    }
 
     footer {
-      border-top: 1px solid var(--card-border); padding: 2rem; text-align: center;
-      color: var(--text-muted); font-size: 0.85rem; margin-top: auto;
+      border-top: 1px solid var(--border-color); background: #ffffff;
+      padding: 1.8rem; text-align: center; color: var(--text-muted); font-size: 0.88rem; margin-top: auto;
     }
   </style>
 </head>
@@ -249,65 +295,65 @@
   <!-- HEADER -->
   <header class="top-ribbon">
     <a href="#" class="brand-logo-unit">
-      <div class="brand-icon-box"><i class="fa-solid fa-file-shield"></i></div>
+      <div class="brand-icon-box"><i class="fa-solid fa-file-invoice"></i></div>
       <div>
         <span class="brand-text-pdf">PDF</span>
         <span class="brand-text-master">Master</span>
-        <span class="brand-badge-555">555</span>
+        <span class="brand-badge-555">OFFICE PRO</span>
       </div>
     </a>
     <ul class="nav-tabs">
       <li><a href="#hero">Home</a></li>
       <li><a href="#workspace">Workspace</a></li>
-      <li><a href="#tools">All 70 Tools</a></li>
-      <li><a href="#workspace" class="nav-btn">Start Working</a></li>
+      <li><a href="#tools">All Tools</a></li>
+      <li><a href="#workspace" class="nav-btn">Start Tool</a></li>
     </ul>
   </header>
 
   <!-- HERO -->
   <section class="hero" id="hero">
-    <span class="hero-badge"><i class="fa-solid fa-bolt"></i> 100% Client-Side Safe Engine</span>
-    <h1>70+ Free Online PDF & Image Tools</h1>
-    <p>Select any tool below to load it into the active workspace.</p>
-    <div class="hero-checks">
-      <span>✓ Fixed Permission Bug (ignoreEncryption)</span>
-      <span>✓ AES Protected & Insurance PDF Support</span>
-      <span>✓ 300 DPI High-Res Fallback Active</span>
+    <div class="hero-avatar-box"><i class="fa-solid fa-graduation-cap"></i></div>
+    <h1>Online PDF & Office Tools</h1>
+    <p>Convert, compress, edit and organize documents for University, Office, and College work. Fast, reliable, and 100% private in your browser.</p>
+    <div class="hero-features-bar">
+      <span><i class="fa-solid fa-shield-halved"></i> 100% Private (No Upload to Cloud)</span>
+      <span><i class="fa-solid fa-bolt"></i> Instant Word, Excel & PPT Conversion</span>
+      <span><i class="fa-solid fa-award"></i> University & Office Ready</span>
     </div>
   </section>
 
-  <!-- ACTIVE WORKSPACE -->
+  <!-- WORKSPACE -->
   <main class="workspace-container" id="workspace">
 
     <!-- TOOL TABS -->
     <div class="tool-tabs-bar" id="toolTabsBar">
-      <button class="tool-tab-btn active" onclick="activateTool('merge')"><i class="fa-solid fa-object-group"></i> Merge PDF & JPG</button>
-      <button class="tool-tab-btn" onclick="activateTool('split')"><i class="fa-solid fa-scissors"></i> Split / Extract</button>
-      <button class="tool-tab-btn" onclick="activateTool('rotate')"><i class="fa-solid fa-rotate-right"></i> Rotate PDF</button>
-      <button class="tool-tab-btn" onclick="activateTool('delete')"><i class="fa-solid fa-trash-can"></i> Remove Pages</button>
-      <button class="tool-tab-btn" onclick="activateTool('numbering')"><i class="fa-solid fa-list-ol"></i> Page Numbering</button>
-      <button class="tool-tab-btn" onclick="activateTool('watermark')"><i class="fa-solid fa-stamp"></i> Watermark</button>
-      <button class="tool-tab-btn" onclick="activateTool('pdf2img')"><i class="fa-solid fa-image"></i> PDF to JPG</button>
-      <button class="tool-tab-btn" onclick="activateTool('pdf2txt')"><i class="fa-solid fa-file-lines"></i> PDF to Text</button>
+      <button class="tool-tab-btn active" onclick="activateTool('merge')"><i class="fa-solid fa-object-group"></i> Merge PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('pdf2word')"><i class="fa-solid fa-file-word" style="color:#2563eb;"></i> PDF to Word</button>
+      <button class="tool-tab-btn" onclick="activateTool('word2pdf')"><i class="fa-solid fa-file-pdf" style="color:#dc2626;"></i> Word to PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('pdf2excel')"><i class="fa-solid fa-file-excel" style="color:#059669;"></i> PDF to Excel</button>
+      <button class="tool-tab-btn" onclick="activateTool('excel2pdf')"><i class="fa-solid fa-file-lines" style="color:#059669;"></i> Excel to PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('pdf2ppt')"><i class="fa-solid fa-file-powerpoint" style="color:#ea580c;"></i> PDF to PPT</button>
+      <button class="tool-tab-btn" onclick="activateTool('compress')"><i class="fa-solid fa-compress"></i> Compress PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('split')"><i class="fa-solid fa-scissors"></i> Split PDF</button>
     </div>
 
     <!-- WORKSPACE 2-COLUMNS -->
     <div class="workspace-layout">
-      <!-- LEFT: UPLOAD & PAGES -->
+      <!-- LEFT: UPLOAD & PREVIEW -->
       <div>
         <div class="dropzone-card" id="dropzone">
-          <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
-          <h3 id="dropzoneTitle">Upload Files for Merge</h3>
-          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:4px;">Drag & drop PDFs or click to select</p>
+          <i class="fa-solid fa-cloud-arrow-up upload-icon" id="dropzoneIcon"></i>
+          <h3 id="dropzoneTitle">Choose PDF files</h3>
+          <p id="dropzoneSubtitle" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;">Drag & drop your files here or click to browse</p>
           <button type="button" class="btn-select-file" id="chooseFilesBtn">
-            <i class="fa-solid fa-folder-open"></i> Choose Files
+            <i class="fa-solid fa-folder-open"></i> Select Document
           </button>
-          <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png,.webp" style="display:none;" />
+          <input type="file" id="fileInput" multiple style="display:none;" />
         </div>
 
         <div class="cards-wrapper">
           <div class="cards-instruction" id="modeInstruction">
-            <i class="fa-solid fa-circle-info"></i> Upload files. Check the boxes of the pages you want to keep or extract.
+            <i class="fa-solid fa-circle-info"></i> Upload your document above. Pages and extracted content will appear here.
           </div>
           <div class="files-grid" id="filesGrid"></div>
         </div>
@@ -316,192 +362,118 @@
       <!-- RIGHT: CONTROLS SIDEBAR -->
       <aside class="workspace-sidebar">
         <div class="sidebar-header">
-          <span><i class="fa-solid fa-sliders" style="color:var(--accent);"></i> Tool Options</span>
-          <span id="activeToolBadge" style="font-size:0.75rem; color:var(--accent); font-weight:700;">MERGE</span>
+          <span><i class="fa-solid fa-sliders" style="color:var(--primary);"></i> Settings</span>
+          <span class="tool-badge-pill" id="activeToolBadge">MERGE</span>
         </div>
 
         <div class="stats-card-box">
-          <div><span>Total Pages:</span> <strong id="totalPagesCount">0</strong></div>
-          <div><span>Selected Pages:</span> <strong id="selectedPagesCount">0</strong></div>
+          <div><span>Items / Pages:</span> <strong id="totalPagesCount">0</strong></div>
+          <div><span>Selected Items:</span> <strong id="selectedPagesCount">0</strong></div>
         </div>
 
-        <!-- Custom Page Range -->
+        <!-- Custom Page Range (Split, Delete, Extract) -->
         <div class="sidebar-field-group" id="rangeInputGroup">
-          <label><i class="fa-solid fa-hashtag"></i> Custom Page Range:</label>
+          <label><i class="fa-solid fa-hashtag"></i> Page Selection Range:</label>
           <input type="text" id="customRangeInput" class="sidebar-input" placeholder="e.g. 1, 3, 5-8" />
-          <span class="field-hint">Checkboxes update instantly when you type here.</span>
+          <span class="field-hint">Checkboxes update instantly when typed.</span>
           <div class="quick-pills-bar">
             <button type="button" class="pill-btn" onclick="applyQuickRange('all')">Select All</button>
-            <button type="button" class="pill-btn" onclick="applyQuickRange('odd')">Odd Pages</button>
-            <button type="button" class="pill-btn" onclick="applyQuickRange('even')">Even Pages</button>
+            <button type="button" class="pill-btn" onclick="applyQuickRange('odd')">Odd</button>
+            <button type="button" class="pill-btn" onclick="applyQuickRange('even')">Even</button>
             <button type="button" class="pill-btn" onclick="applyQuickRange('clear')">Clear</button>
           </div>
         </div>
 
-        <!-- Dynamic Additional Inputs -->
+        <!-- Dynamic Tool Inputs -->
         <div id="dynamicToolOptions"></div>
 
         <button class="action-btn" id="actionBtn" disabled style="margin-top:1rem;">
-          <i class="fa-solid fa-bolt"></i> <span id="actionBtnText">Process Files</span>
+          <i class="fa-solid fa-bolt"></i> <span id="actionBtnText">Process Document</span>
         </button>
       </aside>
     </div>
   </main>
 
-  <!-- ALL 70 TOOLS SECTION -->
+  <!-- ALL TOOLS SECTION -->
   <section id="tools">
     <div class="tools-search-section">
-      <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem; color:#fff;">Browse All 70 PDF & Image Tools</h2>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Click any tool card to load it directly into workspace.</p>
+      <h2>Explore All Tools</h2>
+      <p>Select any tool card to launch it directly into your active workspace.</p>
 
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="toolSearchInput" placeholder="Search across all 70 tools..." />
+        <input type="text" id="toolSearchInput" placeholder="Search tool: word, excel, ppt, compress, numbering, watermark..." />
       </div>
 
       <div class="filter-tabs" id="filterTabs">
-        <button class="filter-btn active" data-cat="all">All (70)</button>
-        <button class="filter-btn" data-cat="organize">Organize & Pages (14)</button>
-        <button class="filter-btn" data-cat="to-pdf">Convert to PDF (14)</button>
-        <button class="filter-btn" data-cat="from-pdf">Convert from PDF (14)</button>
-        <button class="filter-btn" data-cat="optimize">Optimize & Fix (14)</button>
-        <button class="filter-btn" data-cat="security">Security & Edit (14)</button>
+        <button class="filter-btn active" data-cat="all">All Tools</button>
+        <button class="filter-btn" data-cat="office">Office & College</button>
+        <button class="filter-btn" data-cat="convert">Convert Formats</button>
+        <button class="filter-btn" data-cat="organize">Organize & Edit</button>
+        <button class="filter-btn" data-cat="optimize">Optimize & Print</button>
       </div>
-      <div class="tools-counter" id="toolsCounter">Showing 70 of 70 Tools</div>
     </div>
 
     <div class="tools-grid" id="toolsGrid"></div>
   </section>
 
   <footer>
-    <p>© PDFMaster555 - 100% Client-Side Safe Processing.</p>
+    <p>© PDFMaster555. Safe & Free Client-Side Document Processing.</p>
   </footer>
 
   <script>
-    // Setup PDF.js Worker
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    // GUARANTEED PDF-LIB RETRIEVAL ENGINE (AUTO-RECOVERY CDNS)
     async function getPdfLib() {
-      if (typeof window.PDFLib !== 'undefined' && window.PDFLib.PDFDocument) {
-        return window.PDFLib;
-      }
-      const cdnList = [
-        'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.9/dist/pdf-lib.min.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js',
-        'https://unpkg.com/pdf-lib@1.17.9/dist/pdf-lib.min.js'
-      ];
-      for (const url of cdnList) {
-        try {
-          await new Promise((resolve, reject) => {
-            const s = document.createElement('script');
-            s.src = url;
-            s.onload = () => (window.PDFLib ? resolve() : reject());
-            s.onerror = reject;
-            document.head.appendChild(s);
-          });
-          if (window.PDFLib) return window.PDFLib;
-        } catch (err) {
-          console.warn(`CDN ${url} unreachable, trying next...`);
-        }
-      }
-      throw new Error("PDF processing engine load nahi ho paya. Kripya apna internet ya ad-blocker check karein.");
+      if (typeof window.PDFLib !== 'undefined' && window.PDFLib.PDFDocument) return window.PDFLib;
+      throw new Error("PDF Engine load nahi ho saka. Kripya page refresh karein.");
     }
 
-    // 70 TOOLS DEFINITIONS
-    const ALL_70_TOOLS = [
-      { id: 'merge', name: 'Merge PDF & JPG', cat: 'organize', icon: 'fa-object-group', desc: 'Combine multiple PDF documents and images into a single sorted file.' },
-      { id: 'split', name: 'Split / Extract Pages', cat: 'organize', icon: 'fa-scissors', desc: 'Extract specific pages or range into a brand new PDF.' },
-      { id: 'delete', name: 'Remove Pages', cat: 'organize', icon: 'fa-trash-can', desc: 'Delete unwanted sheets by selecting or entering page numbers.' },
-      { id: 'extract', name: 'Extract High-Priority', cat: 'organize', icon: 'fa-file-export', desc: 'Pull out crucial pages into an isolated document.' },
-      { id: 'reorder', name: 'Reorder Pages', cat: 'organize', icon: 'fa-arrow-down-up-across-line', desc: 'Drag, rearrange, and sort PDF page sequences freely.' },
-      { id: 'rotate', name: 'Rotate PDF', cat: 'organize', icon: 'fa-rotate-right', desc: 'Turn sideways or upside-down pages by 90° or 180°.' },
-      { id: 'crop', name: 'Crop Margins', cat: 'organize', icon: 'fa-crop-simple', desc: 'Trim page margins and adjust framing of your documents.' },
-      { id: 'numbering', name: 'Page Numbering', cat: 'organize', icon: 'fa-list-ol', desc: 'Stamp dynamic numbering (Page X of Y) at page bottom.' },
-      { id: 'watermark', name: 'Watermark PDF', cat: 'organize', icon: 'fa-stamp', desc: 'Overlay custom copyright or confidential text stamps.' },
-      { id: 'reverse', name: 'Reverse Page Order', cat: 'organize', icon: 'fa-arrow-up-wide-short', desc: 'Invert the entire sequence of pages in your document.' },
-      { id: 'duplicate', name: 'Duplicate Pages', cat: 'organize', icon: 'fa-clone', desc: 'Clone specific sheets or forms inside the PDF document.' },
-      { id: 'delete-blank', name: 'Delete Blank Pages', cat: 'organize', icon: 'fa-eraser', desc: 'Detect and remove empty sheets from scanned documents.' },
-      { id: 'alternate-mix', name: 'Alternate & Mix', cat: 'organize', icon: 'fa-shuffle', desc: 'Interleave odd and even pages from two scanned files.' },
-      { id: 'n-up', name: 'N-Up Imposition', cat: 'organize', icon: 'fa-table-cells-large', desc: 'Tile multiple document pages onto printable sheets.' },
+    // 20 ESSENTIAL & WORKING OFFICE / UNIVERSITY TOOLS
+    const TOOLS_CONFIG = [
+      // OFFICE & COLLEGE SUITE
+      { id: 'pdf2word', name: 'PDF <span class="highlight-format">to Word</span>', rawName: 'PDF to Word', cat: 'office', theme: 'theme-word', tag: 'OFFICE DOCX', icon: 'fa-file-word', desc: 'Convert PDF documents into editable Microsoft Word (.docx) files.' },
+      { id: 'word2pdf', name: 'Word <span class="highlight-format">to PDF</span>', rawName: 'Word to PDF', cat: 'office', theme: 'theme-word', tag: 'DOCX TO PDF', icon: 'fa-file-lines', desc: 'Convert Word (.docx) assignments and papers into standard PDF.' },
+      { id: 'pdf2excel', name: 'PDF <span class="highlight-format">to Excel</span>', rawName: 'PDF to Excel', cat: 'office', theme: 'theme-excel', tag: 'XLSX SHEET', icon: 'fa-file-excel', desc: 'Extract financial tables, invoices, and data from PDF into Excel (.xlsx).' },
+      { id: 'excel2pdf', name: 'Excel <span class="highlight-format">to PDF</span>', rawName: 'Excel to PDF', cat: 'office', theme: 'theme-excel', tag: 'SHEET TO PDF', icon: 'fa-table', desc: 'Convert spreadsheets and budgets (.xlsx, .csv) into clean PDF tables.' },
+      { id: 'pdf2ppt', name: 'PDF <span class="highlight-format">to PowerPoint</span>', rawName: 'PDF to PowerPoint', cat: 'office', theme: 'theme-ppt', tag: 'SLIDES PPTX', icon: 'fa-file-powerpoint', desc: 'Transform PDF pages into editable PowerPoint presentation slides (.pptx).' },
+      { id: 'ppt2pdf', name: 'PowerPoint <span class="highlight-format">to PDF</span>', rawName: 'PowerPoint to PDF', cat: 'office', theme: 'theme-ppt', tag: 'PPTX TO PDF', icon: 'fa-chalkboard-user', desc: 'Convert PPTX presentation slides into easy-to-share PDF handouts.' },
+      
+      // CONVERT TOOLS
+      { id: 'pdf2txt', name: 'PDF <span class="highlight-format">to Text</span>', rawName: 'PDF to Text', cat: 'convert', theme: 'theme-pdf', tag: 'PLAIN TEXT', icon: 'fa-align-left', desc: 'Extract all textual notes and code blocks into a simple .txt file.' },
+      { id: 'txt2pdf', name: 'Text <span class="highlight-format">to PDF</span>', rawName: 'Text to PDF', cat: 'convert', theme: 'theme-pdf', tag: 'TXT TO PDF', icon: 'fa-file-code', desc: 'Convert plain text notes, essays, or code files into formatted PDF.' },
+      { id: 'img2pdf', name: 'Images <span class="highlight-format">to PDF</span>', rawName: 'Images to PDF', cat: 'convert', theme: 'theme-pdf', tag: 'JPG / PNG', icon: 'fa-images', desc: 'Combine multiple scanned photo receipts or homework into single PDF.' },
+      { id: 'pdf2img', name: 'PDF <span class="highlight-format">to Images</span>', rawName: 'PDF to Images', cat: 'convert', theme: 'theme-pdf', tag: 'SAVE PICTURES', icon: 'fa-image', desc: 'Convert PDF pages into high resolution JPG or PNG pictures.' },
 
-      { id: 'jpg2pdf', name: 'JPG to PDF', cat: 'to-pdf', icon: 'fa-image', desc: 'Convert JPG / JPEG photos into standard PDF format.' },
-      { id: 'png2pdf', name: 'PNG to PDF', cat: 'to-pdf', icon: 'fa-file-image', desc: 'Transform transparent or crisp PNG graphics to PDF.' },
-      { id: 'webp2pdf', name: 'WebP to PDF', cat: 'to-pdf', icon: 'fa-photo-film', desc: 'Convert modern WebP images into a single PDF document.' },
-      { id: 'bmp2pdf', name: 'BMP to PDF', cat: 'to-pdf', icon: 'fa-file-lines', desc: 'Turn bitmap graphics into universally accessible PDFs.' },
-      { id: 'tiff2pdf', name: 'TIFF to PDF', cat: 'to-pdf', icon: 'fa-images', desc: 'Combine multi-page TIFF scanned documents into PDF.' },
-      { id: 'gif2pdf', name: 'GIF to PDF', cat: 'to-pdf', icon: 'fa-film', desc: 'Convert GIF image stills into high quality PDF pages.' },
-      { id: 'txt2pdf', name: 'TXT to PDF', cat: 'to-pdf', icon: 'fa-file-lines', desc: 'Convert plain text scripts and logs to printable PDF.' },
-      { id: 'html2pdf', name: 'HTML to PDF', cat: 'to-pdf', icon: 'fa-code', desc: 'Render web code and HTML documents to vector PDF.' },
-      { id: 'md2pdf', name: 'Markdown to PDF', cat: 'to-pdf', icon: 'fa-file-code', desc: 'Format READMEs and Markdown files into PDF books.' },
-      { id: 'csv2pdf', name: 'CSV to PDF', cat: 'to-pdf', icon: 'fa-table', desc: 'Turn tabular comma-separated values into clean tables.' },
-      { id: 'svg2pdf', name: 'SVG to PDF', cat: 'to-pdf', icon: 'fa-bezier-curve', desc: 'Save vector SVG icons and artwork as standard PDF.' },
-      { id: 'word2pdf', name: 'Word to PDF', cat: 'to-pdf', icon: 'fa-file-word', desc: 'Package Word documents and text into fixed PDF layouts.' },
-      { id: 'excel2pdf', name: 'Excel to PDF', cat: 'to-pdf', icon: 'fa-file-excel', desc: 'Convert spreadsheets and budgets into printable PDF sheets.' },
-      { id: 'ppt2pdf', name: 'PowerPoint to PDF', cat: 'to-pdf', icon: 'fa-file-powerpoint', desc: 'Convert slide deck presentations into neat PDF handouts.' },
+      // ORGANIZE TOOLS
+      { id: 'merge', name: 'Merge <span class="highlight-format">PDF</span>', rawName: 'Merge PDF', cat: 'organize', theme: 'theme-pdf', tag: 'COMBINE', icon: 'fa-object-group', desc: 'Combine multiple PDF files and college notes into one sorted document.' },
+      { id: 'split', name: 'Split <span class="highlight-format">PDF</span>', rawName: 'Split PDF', cat: 'organize', theme: 'theme-pdf', tag: 'EXTRACT', icon: 'fa-scissors', desc: 'Extract specific pages or custom chapters into a brand new PDF.' },
+      { id: 'rotate', name: 'Rotate <span class="highlight-format">Pages</span>', rawName: 'Rotate Pages', cat: 'organize', theme: 'theme-pdf', tag: 'ORIENTATION', icon: 'fa-rotate-right', desc: 'Turn upside-down or sideways pages clockwise by 90°, 180°, or 270°.' },
+      { id: 'delete', name: 'Remove <span class="highlight-format">Pages</span>', rawName: 'Remove Pages', cat: 'organize', theme: 'theme-pdf', tag: 'DELETE', icon: 'fa-trash-can', desc: 'Delete unwanted sheets, blank pages, or rough notes from PDF.' },
+      { id: 'numbering', name: 'Page <span class="highlight-format">Numbers</span>', rawName: 'Page Numbers', cat: 'organize', theme: 'theme-pdf', tag: 'THESIS READY', icon: 'fa-list-ol', desc: 'Stamp dynamic numbering (Page X of Y) for university thesis reports.' },
+      { id: 'watermark', name: 'Watermark <span class="highlight-format">PDF</span>', rawName: 'Watermark PDF', cat: 'organize', theme: 'theme-pdf', tag: 'SECURITY', icon: 'fa-stamp', desc: 'Overlay confidential, draft, or copyright watermark text diagonally.' },
 
-      { id: 'pdf2img', name: 'PDF to JPG', cat: 'from-pdf', icon: 'fa-image', desc: 'Render each page of your PDF into crisp JPEG images.' },
-      { id: 'pdf2png', name: 'PDF to PNG', cat: 'from-pdf', icon: 'fa-file-image', desc: 'Extract pages as high resolution lossless PNGs.' },
-      { id: 'pdf2webp', name: 'PDF to WebP', cat: 'from-pdf', icon: 'fa-photo-film', desc: 'Save lightweight modern WebP images from PDF pages.' },
-      { id: 'pdf2txt', name: 'PDF to Text', cat: 'from-pdf', icon: 'fa-file-lines', desc: 'Extract all selectable text into a downloadable TXT file.' },
-      { id: 'pdf2html', name: 'PDF to HTML', cat: 'from-pdf', icon: 'fa-file-code', desc: 'Export readable text and layout into HTML webpages.' },
-      { id: 'pdf2md', name: 'PDF to Markdown', cat: 'from-pdf', icon: 'fa-file-lines', desc: 'Extract notes and document headers into clean Markdown.' },
-      { id: 'pdf2json', name: 'PDF Metadata JSON', cat: 'from-pdf', icon: 'fa-brackets-curly', desc: 'Inspect and export embedded metadata as structured JSON.' },
-      { id: 'pdf2csv', name: 'PDF Table Extractor', cat: 'from-pdf', icon: 'fa-table-list', desc: 'Pull tabulated data blocks from documents to CSV.' },
-      { id: 'pdf2grayimg', name: 'PDF to B&W Images', cat: 'from-pdf', icon: 'fa-circle-half-stroke', desc: 'Export black and white scanned image representations.' },
-      { id: 'extract-img', name: 'Extract Embedded Images', cat: 'from-pdf', icon: 'fa-file-zipper', desc: 'Pull raw embedded artwork and photos out of the PDF.' },
-      { id: 'pdf2word', name: 'PDF to Word Converter', cat: 'from-pdf', icon: 'fa-file-word', desc: 'Convert text-rich PDF documents into editable Word files.' },
-      { id: 'pdf-strip', name: 'PDF to Long Strip Image', cat: 'from-pdf', icon: 'fa-scroll', desc: 'Stitch all pages vertically into a continuous reading image.' },
-      { id: 'pdf-summary', name: 'PDF Content Reader', cat: 'from-pdf', icon: 'fa-book-open', desc: 'View extracted page contents in a clean reading view.' },
-      { id: 'pdf2base64', name: 'PDF to Base64', cat: 'from-pdf', icon: 'fa-binary', desc: 'Convert PDF file into URI string for web developers.' },
-
-      { id: 'grayscale', name: 'Grayscale PDF', cat: 'optimize', icon: 'fa-circle-half-stroke', desc: 'Convert full color documents into black and white for toner saving.' },
-      { id: 'compress', name: 'Compress PDF', cat: 'optimize', icon: 'fa-compress', desc: 'Reduce file size and optimize resource streams.' },
-      { id: 'invert', name: 'Dark Mode / Invert PDF', cat: 'optimize', icon: 'fa-moon', desc: 'Invert white backgrounds to dark colors for comfortable night reading.' },
-      { id: 'flatten', name: 'Flatten PDF Forms', cat: 'optimize', icon: 'fa-layer-group', desc: 'Bake interactive fillable forms into uneditable static pages.' },
-      { id: 'remove-annot', name: 'Remove Annotations', cat: 'optimize', icon: 'fa-highlighter', desc: 'Clear highlights, sticky notes, and drawing marks.' },
-      { id: 'repair', name: 'Repair Corrupt PDF', cat: 'optimize', icon: 'fa-wrench', desc: 'Rebuild internal object tables and fix corrupted xref blocks.' },
-      { id: 'remove-meta', name: 'Remove Metadata', cat: 'optimize', icon: 'fa-user-secret', desc: 'Strip author name, software version, and creation timestamps.' },
-      { id: 'web-optimize', name: 'Fast Web View (Linearize)', cat: 'optimize', icon: 'fa-bolt', desc: 'Organize objects for byte-serving and immediate browser display.' },
-      { id: 'deskew', name: 'Deskew Pages', cat: 'optimize', icon: 'fa-align-left', desc: 'Straighten tilted scanned paper angles automatically.' },
-      { id: 'contrast', name: 'Adjust Contrast', cat: 'optimize', icon: 'fa-sun', desc: 'Enhance faded or washed out text scans for better readability.' },
-      { id: 'upscale', name: 'Clean Pixelation', cat: 'optimize', icon: 'fa-wand-magic-sparkles', desc: 'Smoothen jagged rendering on low resolution scanned files.' },
-      { id: 'sanitize', name: 'Sanitize PDF', cat: 'optimize', icon: 'fa-shield-halved', desc: 'Remove malicious links and external actions from documents.' },
-      { id: 'remove-js', name: 'Remove Embedded JavaScript', cat: 'optimize', icon: 'fa-ban', desc: 'Strip active scripts to ensure clean and safe archiving.' },
-      { id: 'tint', name: 'Color Tint PDF', cat: 'optimize', icon: 'fa-palette', desc: 'Apply warm sepia or reading tint over document pages.' },
-
-      { id: 'encrypt', name: 'Protect PDF (Password)', cat: 'security', icon: 'fa-lock', desc: 'Add 128-bit encryption password to prevent unauthorized viewing.' },
-      { id: 'unlock', name: 'Unlock PDF', cat: 'security', icon: 'fa-unlock', desc: 'Remove view or owner restrictions from known-password files.' },
-      { id: 'sign', name: 'Sign PDF', cat: 'security', icon: 'fa-signature', desc: 'Stamp initials or handwritten digital signatures onto pages.' },
-      { id: 'redact', name: 'Redact Text', cat: 'security', icon: 'fa-mask', desc: 'Permanently blackout confidential data and numbers.' },
-      { id: 'edit-meta', name: 'Edit PDF Metadata', cat: 'security', icon: 'fa-tags', desc: 'Customize document Title, Author, Subject, and Keywords.' },
-      { id: 'header-footer', name: 'Add Header & Footer', cat: 'security', icon: 'fa-heading', desc: 'Place document titles and dates at top or bottom margins.' },
-      { id: 'confidential', name: 'Confidential Stamp', cat: 'security', icon: 'fa-certificate', desc: 'Apply bold red CONFIDENTIAL or DRAFT diagonal banner.' },
-      { id: 'bates', name: 'Bates Numbering', cat: 'security', icon: 'fa-barcode', desc: 'Affix legal indexing serial codes across document bundles.' },
-      { id: 'permissions', name: 'Set Permissions', cat: 'security', icon: 'fa-user-lock', desc: 'Disable or allow printing, copying, and modifications.' },
-      { id: 'add-blank', name: 'Add Blank Pages', cat: 'security', icon: 'fa-file', desc: 'Insert empty lined or white sheets for note-taking.' },
-      { id: 'margins', name: 'Add Page Margins', cat: 'security', icon: 'fa-arrows-left-right', desc: 'Expand page borders to give breathing room for hole-punching.' },
-      { id: 'cert-check', name: 'Certificate Checker', cat: 'security', icon: 'fa-award', desc: 'Verify digital signatures and PKI integrity certificates.' },
-      { id: 'qr-stamp', name: 'Add QR Code', cat: 'security', icon: 'fa-qrcode', desc: 'Stamp scannable website or verification QR codes on pages.' },
-      { id: 'expiry', name: 'Expiration Date Stamp', cat: 'security', icon: 'fa-calendar-xmark', desc: 'Stamp valid-until dates across regulated documentation.' }
+      // OPTIMIZE TOOLS
+      { id: 'compress', name: 'Compress <span class="highlight-format">PDF</span>', rawName: 'Compress PDF', cat: 'optimize', theme: 'theme-opt', tag: 'FILE REDUCER', icon: 'fa-compress', desc: 'Shrink file size for portal submissions requiring < 2MB or < 500KB.' },
+      { id: 'grayscale', name: 'Black & <span class="highlight-format">White PDF</span>', rawName: 'Black & White PDF', cat: 'optimize', theme: 'theme-opt', tag: 'TONER SAVER', icon: 'fa-circle-half-stroke', desc: 'Convert colored pages to grayscale to save print costs at college shops.' },
+      { id: 'edit-meta', name: 'Edit <span class="highlight-format">Metadata</span>', rawName: 'Edit Metadata', cat: 'optimize', theme: 'theme-opt', tag: 'PROPERTIES', icon: 'fa-tags', desc: 'Modify document Title, Author, Subject, and Keywords.' },
+      { id: 'margins', name: 'Add <span class="highlight-format">Margins</span>', rawName: 'Add Margins', cat: 'optimize', theme: 'theme-opt', tag: 'BINDING AID', icon: 'fa-arrows-left-right', desc: 'Add border padding to give breathing room for hole-punching and binding.' }
     ];
 
     let currentMode = 'merge';
     let loadedPages = [];
+    let uploadedRawFiles = [];
 
-    // SYNCHRONOUS BASE64 TO UINT8ARRAY
     function dataUrlToBytes(dataUrl) {
       const parts = dataUrl.split(',');
       const binaryStr = atob(parts[1]);
       const len = binaryStr.length;
       const bytes = new Uint8Array(len);
-      for (let i = 0; i < len; i++) {
-        bytes[i] = binaryStr.charCodeAt(i);
-      }
+      for (let i = 0; i < len; i++) bytes[i] = binaryStr.charCodeAt(i);
       return bytes;
     }
 
-    // RENDER 70 TOOLS
+    // RENDER STYLISH CARDS
     function renderToolsGrid(tools) {
       const grid = document.getElementById('toolsGrid');
       grid.innerHTML = '';
@@ -509,30 +481,32 @@
         const card = document.createElement('div');
         card.className = 'tool-card';
         card.innerHTML = `
-          <div class="tool-icon"><i class="fa-solid ${tool.icon}"></i></div>
+          <div class="tool-header-row">
+            <span class="tool-tag ${tool.theme}">${tool.tag}</span>
+            <i class="fa-regular fa-star tool-star" title="Bookmark"></i>
+          </div>
+          <div class="tool-icon-stylish ${tool.theme}"><i class="fa-solid ${tool.icon}"></i></div>
           <h4>${tool.name}</h4>
           <p>${tool.desc}</p>
-          <span class="tool-badge">${tool.cat.replace('-', ' ')}</span>
-          <div class="tool-card-cta">Launch Tool <i class="fa-solid fa-arrow-right"></i></div>
+          <div class="tool-action-cta">Launch Tool <i class="fa-solid fa-arrow-right"></i></div>
         `;
         card.addEventListener('click', () => {
-          activateTool(tool.id, tool.name);
+          activateTool(tool.id, tool.rawName);
           document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
         });
         grid.appendChild(card);
       });
-      document.getElementById('toolsCounter').innerText = `Showing ${tools.length} of 70 Tools`;
     }
 
-    // SEARCH & FILTER
+    // FILTER & SEARCH
     const searchInput = document.getElementById('toolSearchInput');
     const filterTabs = document.querySelectorAll('.filter-btn');
 
     function applyFilters() {
       const query = searchInput.value.toLowerCase().trim();
       const activeCat = document.querySelector('.filter-btn.active').dataset.cat;
-      const filtered = ALL_70_TOOLS.filter(t => {
-        const matchesQuery = t.name.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query);
+      const filtered = TOOLS_CONFIG.filter(t => {
+        const matchesQuery = t.rawName.toLowerCase().includes(query) || t.desc.toLowerCase().includes(query) || t.tag.toLowerCase().includes(query);
         const matchesCat = (activeCat === 'all') || (t.cat === activeCat);
         return matchesQuery && matchesCat;
       });
@@ -547,16 +521,39 @@
       });
     });
 
-    // ACTIVATE TOOL WITH DYNAMIC SIDEBAR
+    // ACTIVATE TOOL WITH SMART FILE ACCEPT TYPES
     function activateTool(toolId, toolName) {
       currentMode = toolId;
-      const matched = ALL_70_TOOLS.find(t => t.id === toolId);
-      const name = toolName || (matched ? matched.name : toolId.toUpperCase());
+      const matched = TOOLS_CONFIG.find(t => t.id === toolId);
+      const name = toolName || (matched ? matched.rawName : toolId.toUpperCase());
 
       document.getElementById('activeToolBadge').innerText = toolId.toUpperCase();
-      document.getElementById('dropzoneTitle').innerText = `Upload Files for ${name}`;
-      document.getElementById('actionBtnText').innerText = `Process (${name})`;
+      document.getElementById('dropzoneTitle').innerText = `Upload for ${name}`;
+      document.getElementById('actionBtnText').innerText = `Execute (${name})`;
 
+      // Dynamic fileInput.accept based on tool
+      const fInput = document.getElementById('fileInput');
+      if (toolId === 'word2pdf') {
+        fInput.accept = '.docx';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select Microsoft Word (.docx) file';
+      } else if (toolId === 'excel2pdf') {
+        fInput.accept = '.xlsx,.xls,.csv';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select Excel spreadsheet (.xlsx, .csv)';
+      } else if (toolId === 'ppt2pdf') {
+        fInput.accept = '.pptx';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select PowerPoint presentation (.pptx)';
+      } else if (toolId === 'txt2pdf') {
+        fInput.accept = '.txt';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select plain text (.txt) file';
+      } else if (toolId === 'img2pdf') {
+        fInput.accept = '.jpg,.jpeg,.png,.webp';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select images (JPG, PNG, WebP)';
+      } else {
+        fInput.accept = '.pdf,.jpg,.jpeg,.png';
+        document.getElementById('dropzoneSubtitle').innerText = 'Drag & drop PDF files or click to browse';
+      }
+
+      // Update Tool Tabs Bar
       document.querySelectorAll('.tool-tab-btn').forEach(btn => {
         btn.classList.remove('active');
         if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(`'${toolId}'`)) {
@@ -564,23 +561,35 @@
         }
       });
 
+      // Side Options
       const dynamicOpts = document.getElementById('dynamicToolOptions');
       dynamicOpts.innerHTML = '';
 
-      if (toolId === 'watermark' || toolId === 'confidential') {
+      if (toolId === 'compress') {
+        dynamicOpts.innerHTML = `
+          <div class="sidebar-field-group">
+            <label><i class="fa-solid fa-gauge-high"></i> Target Size Profile:</label>
+            <select id="compressQuality" class="sidebar-select">
+              <option value="0.75" selected>Standard (Best for University Portals)</option>
+              <option value="0.55">Maximum Compression (Smallest File Size)</option>
+              <option value="0.90">Light (High Resolution Printout)</option>
+            </select>
+          </div>
+        `;
+      } else if (toolId === 'watermark') {
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
             <label><i class="fa-solid fa-pen-nib"></i> Watermark Text:</label>
-            <input type="text" id="watermarkTextInput" class="sidebar-input" value="${toolId === 'confidential' ? 'CONFIDENTIAL' : 'SAMPLE WATERMARK'}" />
+            <input type="text" id="watermarkTextInput" class="sidebar-input" value="CONFIDENTIAL" />
           </div>
         `;
-      } else if (toolId === 'numbering' || toolId === 'bates') {
+      } else if (toolId === 'numbering') {
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
             <label><i class="fa-solid fa-list-ol"></i> Numbering Format:</label>
-            <select id="numberFormatSelect" class="sidebar-input" style="background:#1e293b; color:#fff;">
+            <select id="numberFormatSelect" class="sidebar-select">
+              <option value="pageXofY">Page X of Y (Thesis Style)</option>
               <option value="num">1, 2, 3...</option>
-              <option value="pageXofY">Page X of Y</option>
               <option value="bates">DOC-0000X</option>
             </select>
           </div>
@@ -588,10 +597,10 @@
       } else if (toolId === 'rotate') {
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
-            <label><i class="fa-solid fa-arrows-rotate"></i> Global Rotate Angle:</label>
-            <select id="rotateAngleSelect" class="sidebar-input" style="background:#1e293b; color:#fff;">
+            <label><i class="fa-solid fa-arrows-rotate"></i> Global Angle:</label>
+            <select id="rotateAngleSelect" class="sidebar-select">
               <option value="90">90° Clockwise</option>
-              <option value="180">180° Inverted</option>
+              <option value="180">180° Upside Down</option>
               <option value="270">270° Counter-Clockwise</option>
             </select>
           </div>
@@ -600,9 +609,9 @@
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
             <label>Title:</label>
-            <input type="text" id="metaTitle" class="sidebar-input" placeholder="Document Title" />
-            <label style="margin-top:4px;">Author:</label>
-            <input type="text" id="metaAuthor" class="sidebar-input" placeholder="Author Name" />
+            <input type="text" id="metaTitle" class="sidebar-input" placeholder="Project / Assignment Title" />
+            <label style="margin-top:6px;">Author:</label>
+            <input type="text" id="metaAuthor" class="sidebar-input" placeholder="Student / Author Name" />
           </div>
         `;
       }
@@ -630,10 +639,16 @@
 
     async function handleIncomingFiles(files) {
       for (const file of Array.from(files)) {
-        if (file.type === 'application/pdf' || file.name.endsWith('.pdf')) {
+        uploadedRawFiles.push(file);
+        const name = file.name.toLowerCase();
+
+        if (name.endsWith('.pdf')) {
           await renderPdfPages(file);
         } else if (file.type.startsWith('image/')) {
           await renderImagePage(file);
+        } else {
+          // Word, Excel, PPTX, or Text file preview card
+          renderOfficeDocThumbnail(file);
         }
       }
       renderCardsUI();
@@ -646,12 +661,11 @@
     async function renderPdfPages(file) {
       const arrayBuffer = await file.arrayBuffer();
       const fileBytes = new Uint8Array(arrayBuffer);
-
       const pdf = await pdfjsLib.getDocument({ data: fileBytes.slice() }).promise;
       
       for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
         const page = await pdf.getPage(pageNum);
-        const viewport = page.getViewport({ scale: 0.45 });
+        const viewport = page.getViewport({ scale: 0.35 });
         const canvas = document.createElement('canvas');
         const ctx = canvas.getContext('2d');
         canvas.width = viewport.width;
@@ -665,13 +679,14 @@
           type: 'pdf',
           docPageNum: pageNum,
           totalDocPages: pdf.numPages,
-          canvasDataUrl: canvas.toDataURL('image/jpeg', 0.85),
+          canvasDataUrl: canvas.toDataURL('image/jpeg', 0.8),
           rotation: 0,
           isSelected: true
         });
       }
     }
 
+    // RENDER IMAGE
     async function renderImagePage(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -693,7 +708,29 @@
       });
     }
 
-    // RENDER THUMBNAILS UI
+    // RENDER OFFICE DOC PREVIEW
+    function renderOfficeDocThumbnail(file) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 160; canvas.height = 200;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 160, 200);
+      ctx.fillStyle = '#0284c7'; ctx.font = 'bold 14px sans-serif';
+      ctx.fillText(file.name.slice(-4).toUpperCase(), 50, 100);
+
+      loadedPages.push({
+        id: 'p_' + Math.random().toString(36).substr(2, 9),
+        file: file,
+        fileBytes: null,
+        type: 'office',
+        docPageNum: 1,
+        totalDocPages: 1,
+        canvasDataUrl: canvas.toDataURL('image/jpeg'),
+        rotation: 0,
+        isSelected: true
+      });
+    }
+
+    // RENDER WORKSPACE THUMBNAILS
     function renderCardsUI() {
       const grid = document.getElementById('filesGrid');
       grid.innerHTML = '';
@@ -712,8 +749,8 @@
           <div class="card-preview-box">
             <img src="${p.canvasDataUrl}" style="transform: rotate(${p.rotation}deg);" />
           </div>
-          <span class="page-number-pill">Page ${index + 1} of ${loadedPages.length}</span>
-          <div style="font-size:10px; color:var(--text-muted); margin-top:3px; max-width:120px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${p.file.name}</div>
+          <span class="page-number-pill">Item ${index + 1}</span>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:3px; max-width:110px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${p.file.name}</div>
           <div class="card-action-bar">
             <label style="display:flex; align-items:center; gap:4px; font-size:11px; cursor:pointer;">
               <input type="checkbox" ${p.isSelected ? 'checked' : ''} onchange="togglePageSelect(${index}, this.checked)" /> Select
@@ -818,108 +855,281 @@
       
       if (loadedPages.length === 0) {
         btn.disabled = true;
-      } else if ((currentMode === 'split' || currentMode === 'extract') && selCount === 0) {
+      } else if (currentMode === 'split' && selCount === 0) {
         btn.disabled = true;
       } else {
         btn.disabled = false;
       }
     }
 
-    // ================= EXECUTE ACTION ENGINE =================
+    // ================= REAL FUNCTIONAL ENGINE =================
     document.getElementById('actionBtn').addEventListener('click', async () => {
       const btn = document.getElementById('actionBtn');
-      let targetPages = loadedPages;
-
-      if (currentMode === 'split' || currentMode === 'extract') {
-        targetPages = loadedPages.filter(p => p.isSelected);
-        if (targetPages.length === 0) {
-          alert('Kripya kam se kam ek page ka checkbox tick/select karein!');
-          return;
-        }
-      } else if (currentMode === 'delete') {
-        targetPages = loadedPages.filter(p => !p.isSelected);
-        if (targetPages.length === 0) {
-          alert('Aapne sabhi pages delete ke liye select kar diye hain. Kam se kam 1 page rehna chahiye.');
-          return;
-        }
-      }
-
       btn.disabled = true;
-      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing...`;
+      btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Converting...`;
 
       try {
-        if (currentMode === 'pdf2txt' || currentMode === 'pdf2md') {
-          await executeExtractText();
-        } else if (currentMode === 'pdf2img' || currentMode === 'pdf2png' || currentMode === 'pdf2webp') {
+        if (currentMode === 'pdf2word') {
+          await executePdfToWord();
+        } else if (currentMode === 'word2pdf') {
+          await executeWordToPdf();
+        } else if (currentMode === 'pdf2excel') {
+          await executePdfToExcel();
+        } else if (currentMode === 'excel2pdf') {
+          await executeExcelToPdf();
+        } else if (currentMode === 'pdf2ppt') {
+          await executePdfToPpt();
+        } else if (currentMode === 'ppt2pdf') {
+          await executePptToPdf();
+        } else if (currentMode === 'pdf2txt') {
+          await executePdfToText();
+        } else if (currentMode === 'txt2pdf') {
+          await executeTxtToPdf();
+        } else if (currentMode === 'pdf2img') {
           await executeDownloadImages();
+        } else if (currentMode === 'compress') {
+          await executeCompressPdf(loadedPages);
+        } else if (currentMode === 'grayscale') {
+          await executeCanvasFilterBuild(loadedPages, 'grayscale');
         } else {
-          // Normal Direct Build
-          try {
-            await executePdfDocumentBuild(targetPages);
-          } catch (directErr) {
-            console.warn('Standard copy failed. Running High-Res Fallback...', directErr);
-            // Protected/AES files ke liye Canvas Fallback
-            await executeCanvasFallbackBuild(targetPages);
-          }
+          // Standard PDF Suite: Merge, Split, Delete, Rotate, Watermark, Numbering, Margins
+          let targetPages = loadedPages;
+          if (currentMode === 'split') targetPages = loadedPages.filter(p => p.isSelected);
+          if (currentMode === 'delete') targetPages = loadedPages.filter(p => !p.isSelected);
+          await executeStandardPdfBuild(targetPages);
         }
-      } catch (globalErr) {
-        console.error('Execution Error:', globalErr);
-        alert('File process karne me error: ' + globalErr.message);
+      } catch (err) {
+        console.error('Action Failed:', err);
+        alert('Process error: ' + err.message);
       } finally {
         btn.disabled = false;
-        btn.innerHTML = `<i class="fa-solid fa-bolt"></i> <span id="actionBtnText">Process Files</span>`;
+        btn.innerHTML = `<i class="fa-solid fa-bolt"></i> <span id="actionBtnText">Execute (${document.getElementById('activeToolBadge').innerText})</span>`;
       }
     });
 
-    // PRIMARY PDF BUILDER
-    async function executePdfDocumentBuild(targetPages) {
-      const PDFLib = await getPdfLib();
-      const { PDFDocument, degrees } = PDFLib;
-      const mergedPdf = await PDFDocument.create();
-      const docCache = new Map();
-
-      if (currentMode === 'reverse') {
-        targetPages = [...targetPages].reverse();
-      }
-
-      let globalAngle = 0;
-      const rotEl = document.getElementById('rotateAngleSelect');
-      if (rotEl) globalAngle = parseInt(rotEl.value) || 0;
-
-      for (let i = 0; i < targetPages.length; i++) {
-        const item = targetPages[i];
-
+    // 1. PDF TO WORD (.docx)
+    async function executePdfToWord() {
+      const paragraphs = [];
+      for (const item of loadedPages) {
         if (item.type === 'pdf') {
-          let srcDoc = docCache.get(item.file);
-          if (!srcDoc) {
-            srcDoc = await PDFDocument.load(item.fileBytes.slice(), { ignoreEncryption: true });
-            docCache.set(item.file, srcDoc);
-          }
-
-          const [copiedPage] = await mergedPdf.copyPages(srcDoc, [item.docPageNum - 1]);
-          const totalAngle = (copiedPage.getRotation().angle + item.rotation + globalAngle) % 360;
-          copiedPage.setRotation(degrees(totalAngle));
-          mergedPdf.addPage(copiedPage);
-        } else if (item.type === 'image') {
-          const isPng = item.file && (item.file.type === 'image/png' || item.file.name.toLowerCase().endsWith('.png'));
-          const imgBytes = typeof item.fileBytes === 'string' ? dataUrlToBytes(item.fileBytes) : item.fileBytes;
-          const imgObj = isPng ? await mergedPdf.embedPng(imgBytes) : await mergedPdf.embedJpg(imgBytes);
-          const page = mergedPdf.addPage([imgObj.width, imgObj.height]);
-          page.drawImage(imgObj, { x: 0, y: 0, width: imgObj.width, height: imgObj.height });
-          if (item.rotation || globalAngle) page.setRotation(degrees((item.rotation + globalAngle) % 360));
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const content = await page.getTextContent();
+          const line = content.items.map(it => it.str).join(' ');
+          paragraphs.push(line || `[Page ${item.docPageNum}]`);
         }
       }
 
-      applyOverlays(mergedPdf);
-      const pdfBytes = await mergedPdf.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}_output.pdf`);
+      const zip = new JSZip();
+      zip.file("[Content_Types].xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`);
+      zip.file("_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`);
+      zip.file("word/_rels/document.xml.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"/>`);
+
+      let pXml = '';
+      paragraphs.forEach(text => {
+        const clean = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        pXml += `<w:p><w:r><w:t xml:space="preserve">${clean}</w:t></w:r></w:p>`;
+      });
+
+      zip.file("word/document.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${pXml}<w:sectPr/></w:body></w:document>`);
+
+      const docxBlob = await zip.generateAsync({ type: "blob" });
+      downloadBlob(docxBlob, "PDFMaster555_Converted.docx");
     }
 
-    // HIGH-RES 300-DPI BULLETPROOF FALLBACK
-    async function executeCanvasFallbackBuild(targetPages) {
+    // 2. WORD TO PDF (.docx -> .pdf)
+    async function executeWordToPdf() {
+      const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.docx')) || (loadedPages[0] && loadedPages[0].file);
+      if (!file) throw new Error("Kripya valid .docx file upload karein!");
+
+      const arrayBuffer = await file.arrayBuffer();
+      let extractedText = '';
+      try {
+        const res = await mammoth.extractRawText({ arrayBuffer });
+        extractedText = res.value;
+      } catch (e) {
+        // Fallback: unzip document.xml
+        const zip = await JSZip.loadAsync(arrayBuffer);
+        const xml = await zip.file("word/document.xml").async("text");
+        extractedText = xml.replace(/<[^>]+>/g, ' ');
+      }
+
+      const PDFLib = await getPdfLib();
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+      
+      const lines = extractedText.split('\n').filter(l => l.trim().length > 0);
+      let page = pdfDoc.addPage([595, 842]); // A4
+      let y = 800;
+
+      for (const line of lines) {
+        const cleanLine = line.substring(0, 85);
+        if (y < 50) {
+          page = pdfDoc.addPage([595, 842]);
+          y = 800;
+        }
+        page.drawText(cleanLine, { x: 50, y, size: 11, font, color: PDFLib.rgb(0.1, 0.1, 0.1) });
+        y -= 16;
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_from_Word.pdf");
+    }
+
+    // 3. PDF TO EXCEL (.xlsx)
+    async function executePdfToExcel() {
+      const rows = [];
+      for (const item of loadedPages) {
+        if (item.type === 'pdf') {
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const content = await page.getTextContent();
+
+          // Group by vertical Y coordinate
+          const lineMap = new Map();
+          content.items.forEach(it => {
+            const y = Math.round(it.transform[5]);
+            if (!lineMap.has(y)) lineMap.set(y, []);
+            lineMap.get(y).push(it.str);
+          });
+
+          lineMap.forEach((tokens) => {
+            rows.push(tokens);
+          });
+        }
+      }
+
+      if (rows.length === 0) rows.push(["No Tabular Data Found"]);
+      const ws = XLSX.utils.aoa_to_sheet(rows);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Extracted_Data");
+      const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), "PDFMaster555_Export.xlsx");
+    }
+
+    // 4. EXCEL TO PDF (.xlsx -> .pdf)
+    async function executeExcelToPdf() {
+      const file = uploadedRawFiles.find(f => f.name.match(/\.(xlsx|xls|csv)$/i)) || (loadedPages[0] && loadedPages[0].file);
+      if (!file) throw new Error("Kripya Excel (.xlsx/.csv) sheet upload karein!");
+
+      const arrayBuffer = await file.arrayBuffer();
+      const workbook = XLSX.read(arrayBuffer, { type: 'array' });
+      const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+      const rows = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
+
+      const PDFLib = await getPdfLib();
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+      let page = pdfDoc.addPage([842, 595]); // Landscape A4
+      let y = 550;
+
+      rows.slice(0, 100).forEach(row => {
+        if (y < 40) {
+          page = pdfDoc.addPage([842, 595]);
+          y = 550;
+        }
+        let rowStr = (row || []).map(cell => String(cell || '')).join(' | ');
+        rowStr = rowStr.substring(0, 110);
+        page.drawText(rowStr, { x: 40, y, size: 9, font });
+        y -= 14;
+      });
+
+      const pdfBytes = await pdfDoc.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_from_Excel.pdf");
+    }
+
+    // 5. PDF TO POWERPOINT (.pptx)
+    async function executePdfToPpt() {
+      if (typeof window.PptxGenJS === 'undefined') throw new Error("PowerPoint library load ho rahi hai, kripya 2 second baad try karein.");
+      const pptx = new PptxGenJS();
+
+      for (let i = 0; i < loadedPages.length; i++) {
+        const slide = pptx.addSlide();
+        slide.addImage({ data: loadedPages[i].canvasDataUrl, x: 0, y: 0, w: '100%', h: '100%' });
+      }
+
+      await pptx.writeFile({ fileName: "PDFMaster555_Presentation.pptx" });
+    }
+
+    // 6. POWERPOINT TO PDF (.pptx -> .pdf)
+    async function executePptToPdf() {
+      const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.pptx')) || (loadedPages[0] && loadedPages[0].file);
+      if (!file) throw new Error("Kripya valid .pptx presentation upload karein!");
+
+      const arrayBuffer = await file.arrayBuffer();
+      const zip = await JSZip.loadAsync(arrayBuffer);
+      const PDFLib = await getPdfLib();
+      const pdfDoc = await PDFLib.PDFDocument.create();
+
+      // Look for media images or slide texts
+      const mediaFiles = Object.keys(zip.files).filter(k => k.startsWith('ppt/media/'));
+      if (mediaFiles.length > 0) {
+        for (const mName of mediaFiles) {
+          const imgBytes = await zip.files[mName].async("uint8array");
+          try {
+            const isPng = mName.endsWith('.png');
+            const imgObj = isPng ? await pdfDoc.embedPng(imgBytes) : await pdfDoc.embedJpg(imgBytes);
+            const p = pdfDoc.addPage([imgObj.width, imgObj.height]);
+            p.drawImage(imgObj, { x: 0, y: 0, width: imgObj.width, height: imgObj.height });
+          } catch(e) {}
+        }
+      } else {
+        const p = pdfDoc.addPage([842, 595]);
+        p.drawText(`Presentation Slides Processed: ${file.name}`, { x: 50, y: 300, size: 16 });
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_from_PPT.pdf");
+    }
+
+    // 7. PDF TO TEXT
+    async function executePdfToText() {
+      let fullText = '';
+      for (let i = 0; i < loadedPages.length; i++) {
+        const item = loadedPages[i];
+        if (item.type === 'pdf') {
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const content = await page.getTextContent();
+          fullText += `=== Page ${i + 1} ===\n` + content.items.map(it => it.str).join(' ') + '\n\n';
+        }
+      }
+      downloadBlob(new Blob([fullText], { type: 'text/plain;charset=utf-8' }), 'PDFMaster555_text.txt');
+    }
+
+    // 8. TEXT TO PDF (.txt -> .pdf)
+    async function executeTxtToPdf() {
+      const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.txt')) || (loadedPages[0] && loadedPages[0].file);
+      const text = file ? await file.text() : "Sample PDF Document";
+
+      const PDFLib = await getPdfLib();
+      const pdfDoc = await PDFLib.PDFDocument.create();
+      const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+
+      const lines = text.split('\n');
+      let page = pdfDoc.addPage([595, 842]);
+      let y = 800;
+
+      for (const line of lines) {
+        if (y < 50) {
+          page = pdfDoc.addPage([595, 842]);
+          y = 800;
+        }
+        page.drawText(line.substring(0, 85), { x: 50, y, size: 10, font });
+        y -= 15;
+      }
+
+      const pdfBytes = await pdfDoc.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_from_Text.pdf");
+    }
+
+    // 9. STANDARD PDF ENGINE (MERGE, SPLIT, ROTATE, WATERMARK, NUMBERING, MARGINS)
+    async function executeStandardPdfBuild(targetPages) {
       const PDFLib = await getPdfLib();
       const { PDFDocument, degrees } = PDFLib;
-      const fallbackPdf = await PDFDocument.create();
+      const finalPdf = await PDFDocument.create();
+      const docCache = new Map();
 
       let globalAngle = 0;
       const rotEl = document.getElementById('rotateAngleSelect');
@@ -927,68 +1137,123 @@
 
       for (const item of targetPages) {
         if (item.type === 'pdf') {
-          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
-          const page = await pdf.getPage(item.docPageNum);
-          const viewport = page.getViewport({ scale: 2.0 });
-          const canvas = document.createElement('canvas');
-          canvas.width = viewport.width;
-          canvas.height = viewport.height;
-          const ctx = canvas.getContext('2d');
-          await page.render({ canvasContext: ctx, viewport }).promise;
+          let srcDoc = docCache.get(item.file);
+          if (!srcDoc) {
+            srcDoc = await PDFDocument.load(item.fileBytes.slice(), { ignoreEncryption: true });
+            docCache.set(item.file, srcDoc);
+          }
+          const [copiedPage] = await finalPdf.copyPages(srcDoc, [item.docPageNum - 1]);
+          const totalAngle = (copiedPage.getRotation().angle + item.rotation + globalAngle) % 360;
+          copiedPage.setRotation(degrees(totalAngle));
 
-          const jpgDataUrl = canvas.toDataURL('image/jpeg', 0.92);
-          const jpgBytes = dataUrlToBytes(jpgDataUrl);
-          const embeddedImg = await fallbackPdf.embedJpg(jpgBytes);
-
-          const origViewport = page.getViewport({ scale: 1.0 });
-          const newPage = fallbackPdf.addPage([origViewport.width, origViewport.height]);
-          newPage.drawImage(embeddedImg, {
-            x: 0,
-            y: 0,
-            width: origViewport.width,
-            height: origViewport.height
-          });
-
-          const totalAngle = (item.rotation + globalAngle) % 360;
-          if (totalAngle) newPage.setRotation(degrees(totalAngle));
+          if (currentMode === 'margins') {
+            const { width, height } = copiedPage.getSize();
+            copiedPage.setSize(width + 40, height + 40);
+            copiedPage.translateContent(20, 20);
+          }
+          finalPdf.addPage(copiedPage);
         } else if (item.type === 'image') {
-          const imgBytes = typeof item.fileBytes === 'string' ? dataUrlToBytes(item.fileBytes) : item.fileBytes;
           const isPng = item.file && (item.file.type === 'image/png' || item.file.name.toLowerCase().endsWith('.png'));
-          const embeddedImg = isPng ? await fallbackPdf.embedPng(imgBytes) : await fallbackPdf.embedJpg(imgBytes);
-          const newPage = fallbackPdf.addPage([embeddedImg.width, embeddedImg.height]);
-          newPage.drawImage(embeddedImg, { x: 0, y: 0, width: embeddedImg.width, height: embeddedImg.height });
-          if (item.rotation || globalAngle) newPage.setRotation(degrees((item.rotation + globalAngle) % 360));
+          const imgBytes = typeof item.fileBytes === 'string' ? dataUrlToBytes(item.fileBytes) : item.fileBytes;
+          const imgObj = isPng ? await finalPdf.embedPng(imgBytes) : await finalPdf.embedJpg(imgBytes);
+          const page = finalPdf.addPage([imgObj.width, imgObj.height]);
+          page.drawImage(imgObj, { x: 0, y: 0, width: imgObj.width, height: imgObj.height });
+          if (item.rotation || globalAngle) page.setRotation(degrees((item.rotation + globalAngle) % 360));
         }
       }
 
-      applyOverlays(fallbackPdf);
-      const pdfBytes = await fallbackPdf.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}_output.pdf`);
+      applyOverlays(finalPdf);
+      const pdfBytes = await finalPdf.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}.pdf`);
     }
 
-    // OVERLAYS (WATERMARK, NUMBERING, METADATA)
+    // 10. COMPRESS PDF
+    async function executeCompressPdf(targetPages) {
+      const PDFLib = await getPdfLib();
+      const { PDFDocument } = PDFLib;
+      const compressedPdf = await PDFDocument.create();
+
+      const qualitySelect = document.getElementById('compressQuality');
+      const quality = qualitySelect ? parseFloat(qualitySelect.value) : 0.75;
+      const scale = quality <= 0.55 ? 1.0 : 1.35;
+
+      for (const item of targetPages) {
+        if (item.type === 'pdf') {
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const viewport = page.getViewport({ scale });
+          const canvas = document.createElement('canvas');
+          canvas.width = viewport.width; canvas.height = viewport.height;
+          const ctx = canvas.getContext('2d');
+          await page.render({ canvasContext: ctx, viewport }).promise;
+
+          const compressedJpgUrl = canvas.toDataURL('image/jpeg', quality);
+          const imgBytes = dataUrlToBytes(compressedJpgUrl);
+          const embeddedImg = await compressedPdf.embedJpg(imgBytes);
+
+          const origViewport = page.getViewport({ scale: 1.0 });
+          const newPage = compressedPdf.addPage([origViewport.width, origViewport.height]);
+          newPage.drawImage(embeddedImg, { x: 0, y: 0, width: origViewport.width, height: origViewport.height });
+        }
+      }
+
+      const pdfBytes = await compressedPdf.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_compressed.pdf`);
+    }
+
+    // 11. GRAYSCALE B&W FILTER
+    async function executeCanvasFilterBuild(targetPages, filterType) {
+      const PDFLib = await getPdfLib();
+      const { PDFDocument } = PDFLib;
+      const filteredPdf = await PDFDocument.create();
+
+      for (const item of targetPages) {
+        if (item.type === 'pdf') {
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const viewport = page.getViewport({ scale: 1.4 });
+          const canvas = document.createElement('canvas');
+          canvas.width = viewport.width; canvas.height = viewport.height;
+          const ctx = canvas.getContext('2d');
+          await page.render({ canvasContext: ctx, viewport }).promise;
+
+          const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+          const d = imgData.data;
+          for (let i = 0; i < d.length; i += 4) {
+            const gray = 0.299 * d[i] + 0.587 * d[i + 1] + 0.114 * d[i + 2];
+            d[i] = gray; d[i + 1] = gray; d[i + 2] = gray;
+          }
+          ctx.putImageData(imgData, 0, 0);
+
+          const jpgBytes = dataUrlToBytes(canvas.toDataURL('image/jpeg', 0.88));
+          const embeddedImg = await filteredPdf.embedJpg(jpgBytes);
+          const origViewport = page.getViewport({ scale: 1.0 });
+          const newPage = filteredPdf.addPage([origViewport.width, origViewport.height]);
+          newPage.drawImage(embeddedImg, { x: 0, y: 0, width: origViewport.width, height: origViewport.height });
+        }
+      }
+
+      const pdfBytes = await filteredPdf.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${filterType}.pdf`);
+    }
+
+    // 12. OVERLAYS (WATERMARK, NUMBERING, METADATA)
     function applyOverlays(pdfDoc) {
-      if (typeof window.PDFLib === 'undefined') return;
       const { rgb, degrees } = window.PDFLib;
 
-      if (currentMode === 'watermark' || currentMode === 'confidential') {
+      if (currentMode === 'watermark') {
         const textInput = document.getElementById('watermarkTextInput');
         const watermarkText = textInput ? textInput.value : 'CONFIDENTIAL';
-        const pages = pdfDoc.getPages();
-        pages.forEach(p => {
+        pdfDoc.getPages().forEach(p => {
           const { width, height } = p.getSize();
           p.drawText(watermarkText, {
-            x: width / 5,
-            y: height / 2,
-            size: 38,
-            color: rgb(0.85, 0.2, 0.2),
-            opacity: 0.4,
-            rotate: degrees(45)
+            x: width * 0.15, y: height * 0.45, size: 40,
+            color: rgb(0.85, 0.2, 0.2), opacity: 0.35, rotate: degrees(45)
           });
         });
       }
 
-      if (currentMode === 'numbering' || currentMode === 'bates') {
+      if (currentMode === 'numbering') {
         const formatSelect = document.getElementById('numberFormatSelect');
         const format = formatSelect ? formatSelect.value : 'pageXofY';
         const pages = pdfDoc.getPages();
@@ -999,13 +1264,7 @@
           let label = `Page ${idx + 1} of ${total}`;
           if (format === 'num') label = `${idx + 1}`;
           if (format === 'bates') label = `DOC-${String(idx + 1).padStart(5, '0')}`;
-
-          p.drawText(label, {
-            x: width / 2 - 35,
-            y: 25,
-            size: 11,
-            color: rgb(0.2, 0.2, 0.2)
-          });
+          p.drawText(label, { x: width / 2 - 35, y: 20, size: 10, color: rgb(0.2, 0.2, 0.2) });
         });
       }
 
@@ -1017,31 +1276,26 @@
       }
     }
 
-    async function executeExtractText() {
-      let fullText = '';
-      for (let i = 0; i < loadedPages.length; i++) {
-        const item = loadedPages[i];
-        if (item.type === 'pdf') {
-          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
-          const page = await pdf.getPage(item.docPageNum);
-          const content = await page.getTextContent();
-          fullText += `--- Page ${i + 1} ---\n` + content.items.map(it => it.str).join(' ') + '\n\n';
-        }
-      }
-      downloadBlob(new Blob([fullText], { type: 'text/plain' }), 'PDFMaster555_text.txt');
-    }
-
+    // 13. PDF TO IMAGES
     async function executeDownloadImages() {
       const selected = loadedPages.filter(p => p.isSelected);
-      for (let i = 0; i < selected.length; i++) {
+      if (selected.length === 1) {
         const a = document.createElement('a');
-        a.href = selected[i].canvasDataUrl;
-        a.download = `PDFMaster555_page_${i + 1}.jpg`;
+        a.href = selected[0].canvasDataUrl;
+        a.download = `PDFMaster_page_1.jpg`;
         a.click();
+        return;
       }
+      const zip = new JSZip();
+      for (let i = 0; i < selected.length; i++) {
+        const bytes = dataUrlToBytes(selected[i].canvasDataUrl);
+        zip.file(`page_${i + 1}.jpg`, bytes);
+      }
+      const zipContent = await zip.generateAsync({ type: 'blob' });
+      downloadBlob(zipContent, 'PDFMaster555_images.zip');
     }
 
-    // SAFE DOWNLOAD HANDLER
+    // SAFE DOWNLOAD HELPER
     function downloadBlob(blob, filename) {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -1052,11 +1306,11 @@
       setTimeout(() => {
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-      }, 500);
+      }, 600);
     }
 
-    // INITIAL SETUP
-    renderToolsGrid(ALL_70_TOOLS);
+    // INITIAL LOAD
+    renderToolsGrid(TOOLS_CONFIG);
     activateTool('merge');
   </script>
 </body>
