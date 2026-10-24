@@ -5,29 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- ================= SEO META TAGS ================= -->
-  <title>PDFMaster555 - 70+ Free Online PDF & Image Tools | Merge PDF & JPG</title>
+  <title>PDFMaster555 - 70+ Free Online PDF & Image Tools | Working Suite</title>
   <meta name="description" content="PDFMaster555 offers 70+ free, secure online PDF and image utilities. Merge PDF and JPG together, split, compress, convert, edit, and protect PDFs directly in your browser." />
-  <meta name="keywords" content="pdfmaster555, 70 pdf tools, merge pdf and jpg, pdf to word, compress pdf, split pdf, online pdf editor, free pdf utilities" />
+  <meta name="keywords" content="pdfmaster555, 70 pdf tools, merge pdf and jpg, split pdf, rotate pdf, remove pages, online pdf editor" />
   <meta name="author" content="PDFMaster555" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://pdfmaster555.com" />
 
-  <!-- Structured Schema Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "PDFMaster555",
-    "url": "https://pdfmaster555.com",
-    "description": "70+ Free browser-based tools for PDF and image conversion, editing, and organization.",
-    "applicationCategory": "ProductivityApplication",
-    "operatingSystem": "All"
-  }
-  </script>
-
   <!-- Icons, PDF Engines & Drag-Reorder Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://unpkg.com/pdf-lib@1.17.9/dist/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
@@ -44,16 +31,8 @@
       --text-muted: #94a3b8;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Roboto, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, sans-serif; }
+    html { scroll-behavior: smooth; }
 
     body {
       background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-dark) 55%, #030712 100%);
@@ -66,690 +45,283 @@
 
     /* ================= LOGO COMPONENT ================= */
     .brand-logo-unit {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      transition: transform 0.25s ease;
-      user-select: none;
+      display: inline-flex; align-items: center; gap: 10px;
+      text-decoration: none; transition: transform 0.25s ease; user-select: none;
     }
-
-    .brand-logo-unit:hover {
-      transform: translateY(-2px);
-    }
+    .brand-logo-unit:hover { transform: translateY(-2px); }
 
     .brand-icon-box {
-      width: 40px;
-      height: 40px;
+      width: 40px; height: 40px;
       background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(6, 182, 212, 0.15));
-      border: 1.5px solid rgba(6, 182, 212, 0.5);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      border: 1.5px solid rgba(6, 182, 212, 0.5); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
       box-shadow: 0 0 16px var(--accent-glow);
     }
-
     .brand-icon-box i {
       font-size: 1.3rem;
       background: linear-gradient(135deg, #ffffff 10%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
 
-    .brand-text-wrap {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .brand-text-pdf {
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: #ffffff;
-      text-transform: uppercase;
-    }
-
+    .brand-text-wrap { display: flex; align-items: center; gap: 6px; }
+    .brand-text-pdf { font-size: 1.3rem; font-weight: 900; color: #ffffff; text-transform: uppercase; }
     .brand-text-master {
-      font-size: 1.3rem;
-      font-weight: 900;
+      font-size: 1.3rem; font-weight: 900;
       background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase;
     }
-
     .brand-badge-555 {
       background: linear-gradient(135deg, #ff007a, #7928ca);
-      color: #ffffff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      padding: 3px 7px;
-      border-radius: 6px;
+      color: #ffffff; font-size: 0.7rem; font-weight: 800; padding: 3px 7px; border-radius: 6px;
       box-shadow: 0 0 10px rgba(255, 0, 122, 0.5);
     }
 
     .brand-logo-hero {
-      gap: 14px;
-      padding: 10px 22px;
-      background: rgba(30, 41, 59, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 50px;
-      margin-bottom: 1.5rem;
+      gap: 14px; padding: 10px 22px; background: rgba(30, 41, 59, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 50px; margin-bottom: 1.5rem;
     }
-
-    .brand-logo-hero .brand-icon-box {
-      width: 48px;
-      height: 48px;
-    }
-
-    .brand-logo-hero .brand-text-pdf,
-    .brand-logo-hero .brand-text-master {
-      font-size: 1.6rem;
-    }
-
-    .brand-logo-hero .brand-badge-555 {
-      font-size: 0.8rem;
-    }
-
-    .brand-logo-footer {
-      justify-content: center;
-      margin-bottom: 1rem;
-    }
+    .brand-logo-hero .brand-icon-box { width: 48px; height: 48px; }
+    .brand-logo-hero .brand-text-pdf, .brand-logo-hero .brand-text-master { font-size: 1.6rem; }
 
     /* ================= TOP NAVIGATION ================= */
     .top-ribbon {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(8, 13, 22, 0.92);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid var(--card-border);
-      padding: 0.8rem 5%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(8, 13, 22, 0.92); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--card-border); padding: 0.8rem 5%;
+      display: flex; justify-content: space-between; align-items: center;
     }
-
-    .menu-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-
-    .nav-tabs {
-      display: flex;
-      gap: 1.4rem;
-      list-style: none;
-      align-items: center;
-    }
-
-    .nav-tabs a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-weight: 500;
-      font-size: 0.95rem;
-      transition: color 0.3s;
-      cursor: pointer;
-    }
-
-    .nav-tabs a:hover, .nav-tabs a.active {
-      color: var(--accent);
-    }
-
+    .menu-toggle { display: none; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; }
+    .nav-tabs { display: flex; gap: 1.4rem; list-style: none; align-items: center; }
+    .nav-tabs a { color: var(--text-muted); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s; cursor: pointer; }
+    .nav-tabs a:hover, .nav-tabs a.active { color: var(--accent); }
     .nav-btn {
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff !important;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-weight: 600;
+      color: #fff !important; padding: 0.5rem 1rem; border-radius: 8px; font-weight: 600;
       box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     }
 
     @media (max-width: 768px) {
       .menu-toggle { display: block; }
       .nav-tabs {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: rgba(13, 19, 33, 0.98);
-        border-bottom: 1px solid var(--card-border);
-        flex-direction: column;
-        padding: 1.2rem;
-        gap: 1rem;
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: rgba(13, 19, 33, 0.98); border-bottom: 1px solid var(--card-border);
+        flex-direction: column; padding: 1.2rem; gap: 1rem;
       }
       .nav-tabs.open { display: flex; }
     }
 
     /* ================= HERO SECTION ================= */
     .hero {
-      text-align: center;
-      padding: 3rem 1rem 1.5rem 1rem;
-      max-width: 850px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      text-align: center; padding: 2.8rem 1rem 1.2rem 1rem; max-width: 850px; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: center;
     }
-
     .hero-badge {
-      display: inline-block;
-      padding: 0.35rem 0.95rem;
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.35);
-      color: #a5b4fc;
-      border-radius: 50px;
-      font-size: 0.8rem;
-      margin-bottom: 1rem;
+      display: inline-block; padding: 0.35rem 0.95rem; background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.35); color: #a5b4fc; border-radius: 50px;
+      font-size: 0.8rem; margin-bottom: 1rem;
     }
-
     .hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      line-height: 1.25;
-      margin-bottom: 0.8rem;
+      font-size: 2.4rem; font-weight: 800; line-height: 1.25; margin-bottom: 0.8rem;
       background: linear-gradient(to right, #ffffff, #cbd5e1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
+    .hero p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.6; }
+    .hero-checks { display: flex; justify-content: center; gap: 20px; font-size: 14px; font-weight: 600; color: #10b981; margin-top: 12px; }
 
-    .hero p {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      line-height: 1.6;
+    /* ================= DEDICATED TOOL TABS & WORKSPACE ================= */
+    .workspace-container { max-width: 1100px; margin: 1.5rem auto 3rem auto; width: 92%; }
+
+    /* Separate Tool Mode Tabs */
+    .tool-tabs-bar {
+      display: flex; gap: 8px; overflow-x: auto; padding: 8px;
+      background: rgba(15, 23, 42, 0.9); border: 1px solid var(--card-border);
+      border-radius: 12px; margin-bottom: 1.2rem;
     }
-
-    .hero-checks {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #10b981;
-      margin-top: 12px;
+    .tool-tab-btn {
+      padding: 10px 18px; border: 1px solid transparent; background: transparent;
+      color: var(--text-muted); font-size: 0.9rem; font-weight: 600; border-radius: 8px;
+      cursor: pointer; white-space: nowrap; transition: 0.2s; display: flex; align-items: center; gap: 8px;
     }
-
-    /* ================= WORKSPACE ================= */
-    .workspace-container {
-      max-width: 1100px;
-      margin: 1.5rem auto 3rem auto;
-      width: 92%;
+    .tool-tab-btn:hover { background: rgba(99, 102, 241, 0.15); color: #fff; }
+    .tool-tab-btn.active {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff; box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
     }
 
     .dropzone-card {
-      background: var(--card-bg);
-      border: 2px dashed rgba(99, 102, 241, 0.45);
-      border-radius: 18px;
-      padding: 2.2rem 1.5rem;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.3s;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      margin-bottom: 1.5rem;
+      background: var(--card-bg); border: 2px dashed rgba(99, 102, 241, 0.45);
+      border-radius: 18px; padding: 2.2rem 1.5rem; text-align: center; cursor: pointer;
+      transition: all 0.3s; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4); margin-bottom: 1.2rem;
     }
-
     .dropzone-card:hover, .dropzone-card.dragover {
-      border-color: var(--accent);
-      background: rgba(30, 41, 59, 0.9);
+      border-color: var(--accent); background: rgba(30, 41, 59, 0.9);
       box-shadow: 0 12px 30px rgba(6, 182, 212, 0.2);
     }
-
-    .dropzone-card i.upload-icon {
-      font-size: 2.8rem;
-      color: var(--accent);
-      margin-bottom: 0.6rem;
-    }
-
+    .dropzone-card i.upload-icon { font-size: 2.8rem; color: var(--accent); margin-bottom: 0.6rem; }
+    
     .btn-select-file {
-      display: inline-block;
-      margin: 10px auto;
-      padding: 0.6rem 1.6rem;
+      display: inline-block; margin: 10px auto; padding: 0.65rem 1.8rem;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff;
-      font-weight: 700;
-      font-size: 0.95rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
-      transition: transform 0.2s;
-    }
-
-    .btn-select-file:hover {
-      transform: scale(1.03);
+      color: #fff; font-weight: 700; font-size: 0.95rem; border: none; border-radius: 8px;
+      cursor: pointer; box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
     }
 
     .workspace-sticky-bar {
-      position: sticky;
-      top: 65px;
-      z-index: 900;
-      background: rgba(15, 23, 42, 0.95);
-      backdrop-filter: blur(12px);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      padding: 0.9rem 1.4rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      position: sticky; top: 65px; z-index: 900;
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(12px);
+      border: 1px solid var(--card-border); border-radius: 12px;
+      padding: 0.9rem 1.4rem; display: flex; justify-content: space-between;
+      align-items: center; margin-bottom: 1.2rem; box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
-    .merge-action-btn {
-      padding: 0.75rem 1.8rem;
-      background: linear-gradient(135deg, #ef4444, #dc2626);
-      border: none;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: all 0.2s;
+    .action-btn {
+      padding: 0.8rem 1.8rem;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border: none; border-radius: 8px; color: #fff; font-size: 0.95rem; font-weight: 700;
+      cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s;
     }
-
-    .merge-action-btn:hover {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-    }
-
-    .merge-action-btn:disabled {
-      background: #475569;
-      cursor: not-allowed;
-      box-shadow: none;
-    }
+    .action-btn:hover { background: linear-gradient(135deg, #059669, #047857); box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
+    .action-btn:disabled { background: #475569; cursor: not-allowed; box-shadow: none; }
 
     .cards-wrapper {
-      border: 2px dashed rgba(56, 189, 248, 0.35);
-      border-radius: 16px;
-      background: rgba(13, 19, 33, 0.65);
-      padding: 1.5rem;
-      min-height: 250px;
+      border: 2px dashed rgba(56, 189, 248, 0.35); border-radius: 16px;
+      background: rgba(13, 19, 33, 0.65); padding: 1.5rem; min-height: 250px;
     }
+    .cards-instruction { text-align: center; font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.2rem; }
 
-    .cards-instruction {
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin-bottom: 1.2rem;
-    }
-
+    /* ================= SCREEN VISIBLE PAGE THUMBNAILS ================= */
     .files-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
       gap: 16px;
     }
 
-    .file-card {
-      background: rgba(30, 41, 59, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 10px;
-      padding: 8px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-      cursor: grab;
-      user-select: none;
-      transition: transform 0.2s, border-color 0.2s;
+    .page-card {
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 10px; padding: 8px; display: flex; flex-direction: column;
+      align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      position: relative; user-select: none; transition: transform 0.2s, border-color 0.2s;
     }
-
-    .file-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-
-    .file-card:active {
-      cursor: grabbing;
-    }
-
-    .card-top-bar {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 6px;
-    }
-
-    .card-btn {
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 13px;
-      color: #38bdf8;
-      padding: 2px 4px;
-    }
-
-    .card-btn.delete {
-      color: #ef4444;
-    }
-
-    .card-btn:hover {
-      transform: scale(1.15);
-    }
+    .page-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
     .card-preview-box {
-      width: 100%;
-      height: 140px;
-      background: #0f172a;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      position: relative;
+      width: 100%; height: 160px; background: #0b1120;
+      border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; position: relative; margin-bottom: 6px;
     }
-
     .card-preview-box canvas, .card-preview-box img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
+      max-width: 100%; max-height: 100%; object-fit: contain;
+      transition: transform 0.2s ease-in-out;
     }
 
-    .card-pages-tag {
-      position: absolute;
-      bottom: 4px;
-      right: 4px;
-      background: rgba(15, 23, 42, 0.85);
-      color: #38bdf8;
-      font-size: 10px;
-      padding: 2px 5px;
-      border-radius: 4px;
-      font-weight: 700;
+    /* Clear Page Numbers */
+    .page-number-pill {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white; font-size: 11px; font-weight: 800;
+      padding: 3px 10px; border-radius: 12px; margin-top: 4px;
     }
-
-    .card-file-name {
-      font-size: 11px;
-      color: #e2e8f0;
-      margin-top: 6px;
-      text-align: center;
-      width: 100%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      font-weight: 500;
+    .page-doc-name {
+      font-size: 10px; color: var(--text-muted); margin-top: 4px;
+      max-width: 120px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
+    
+    .card-action-bar {
+      width: 100%; display: flex; justify-content: center; gap: 6px;
+      align-items: center; margin-top: 6px; padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .rotate-single-btn {
+      background: #3b82f6; color: white; border: none; font-size: 11px;
+      padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 600;
+    }
+    .delete-single-btn {
+      background: #ef4444; color: white; border: none; font-size: 11px;
+      padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 600;
+    }
+    .page-checkbox { transform: scale(1.3); cursor: pointer; }
 
+    /* Zoom Modal */
     .zoom-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.8);
-      z-index: 2000;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, 0.85);
+      z-index: 2000; align-items: center; justify-content: center; padding: 20px;
     }
-
     .zoom-modal-content {
-      background: #1e293b;
-      padding: 12px;
-      border-radius: 12px;
-      max-width: 90vw;
-      max-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      border: 1px solid var(--accent);
+      background: #1e293b; padding: 14px; border-radius: 12px; max-width: 90vw;
+      max-height: 90vh; position: relative; border: 1px solid var(--accent);
     }
-
     .zoom-close-btn {
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      background: #ef4444;
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
-      font-size: 16px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
+      position: absolute; top: -12px; right: -12px; background: #ef4444;
+      color: #fff; border: none; border-radius: 50%; width: 32px; height: 32px;
+      font-size: 16px; cursor: pointer; font-weight: bold;
     }
 
-    /* ================= 70 TOOLS SEARCH & FILTER ================= */
-    .tools-search-section {
-      max-width: 850px;
-      margin: 0 auto 2rem auto;
-      padding: 0 1rem;
-      text-align: center;
-    }
-
-    .search-box {
-      position: relative;
-      margin-bottom: 1.5rem;
-    }
-
+    /* ================= 70 TOOLS DIRECTORY ================= */
+    .tools-search-section { max-width: 850px; margin: 0 auto 2rem auto; padding: 0 1rem; text-align: center; }
+    .search-box { position: relative; margin-bottom: 1.5rem; }
     .search-box input {
-      width: 100%;
-      padding: 1rem 1rem 1rem 3rem;
-      background: rgba(22, 30, 46, 0.85);
-      border: 1.5px solid rgba(99, 102, 241, 0.35);
-      border-radius: 12px;
-      color: #fff;
-      font-size: 1rem;
-      outline: none;
-      transition: border-color 0.3s;
+      width: 100%; padding: 1rem 1rem 1rem 3rem; background: rgba(22, 30, 46, 0.85);
+      border: 1.5px solid rgba(99, 102, 241, 0.35); border-radius: 12px; color: #fff;
+      font-size: 1rem; outline: none; transition: border-color 0.3s;
     }
+    .search-box input:focus { border-color: var(--accent); box-shadow: 0 0 15px rgba(6, 182, 212, 0.3); }
+    .search-box i { position: absolute; left: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--text-muted); }
 
-    .search-box input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 15px rgba(6, 182, 212, 0.3);
-    }
-
-    .search-box i {
-      position: absolute;
-      left: 1.2rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-    }
-
-    .filter-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.5rem;
-    }
-
+    .filter-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; }
     .filter-btn {
-      background: rgba(30, 41, 59, 0.6);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      padding: 0.45rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.25s;
+      background: rgba(30, 41, 59, 0.6); border: 1px solid var(--card-border); color: var(--text-muted);
+      padding: 0.45rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.85rem;
     }
-
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--primary);
-      color: #fff;
-      border-color: var(--primary);
-    }
-
-    .tools-counter {
-      color: var(--accent);
-      font-size: 0.9rem;
-      margin-top: 0.8rem;
-      font-weight: 600;
-    }
+    .filter-btn.active, .filter-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .tools-counter { color: var(--accent); font-size: 0.9rem; margin-top: 0.8rem; font-weight: 600; }
 
     .tools-grid {
-      max-width: 1200px;
-      margin: 0 auto 4rem auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.2rem;
-      padding: 0 1.5rem;
+      max-width: 1200px; margin: 0 auto 4rem auto; display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.2rem; padding: 0 1.5rem;
     }
-
-    /* Clickable tool card enhancements */
     .tool-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      padding: 1.4rem;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      cursor: pointer;
-      position: relative;
-      text-align: left;
+      background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 14px;
+      padding: 1.4rem; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex; flex-direction: column; gap: 0.7rem; cursor: pointer;
     }
-
-    .tool-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 25px rgba(6, 182, 212, 0.2);
-    }
-
-    .tool-card:active {
-      transform: scale(0.98);
-    }
-
+    .tool-card:hover { transform: translateY(-5px); border-color: var(--accent); box-shadow: 0 12px 25px rgba(6, 182, 212, 0.2); }
     .tool-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(99, 102, 241, 0.15);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.25rem;
-      color: var(--accent);
+      width: 44px; height: 44px; background: rgba(99, 102, 241, 0.15); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.25rem; color: var(--accent);
     }
+    .tool-card h4 { font-size: 1.1rem; font-weight: 600; }
+    .tool-card p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; flex-grow: 1; }
+    .tool-badge { font-size: 0.7rem; color: var(--accent); font-weight: 700; text-transform: uppercase; }
+    .tool-card-cta { display: flex; align-items: center; gap: 6px; color: #38bdf8; font-size: 0.8rem; font-weight: 600; }
 
-    .tool-card h4 {
-      font-size: 1.1rem;
-      font-weight: 600;
-    }
-
-    .tool-card p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-      flex-grow: 1;
-    }
-
-    .tool-badge {
-      font-size: 0.7rem;
-      color: var(--accent);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    .tool-card-cta {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      color: #38bdf8;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-top: 4px;
-    }
-
-    /* ================= ABOUT & CONTACT SECTION ================= */
+    /* About & Contact */
     .about-section {
-      max-width: 850px;
-      margin: 0 auto 3rem auto;
-      padding: 2.2rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      line-height: 1.65;
+      max-width: 850px; margin: 0 auto 3rem auto; padding: 2.2rem; background: var(--card-bg);
+      border: 1px solid var(--card-border); border-radius: 16px; line-height: 1.65;
     }
-
-    .about-section h3 {
-      font-size: 1.4rem;
-      margin-bottom: 0.8rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .about-section p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 0.8rem;
-    }
-
-    /* Contact Card Style */
     .contact-card-box {
-      margin-top: 1.5rem;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.3);
-      padding: 1.2rem;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
+      margin-top: 1.5rem; background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(99, 102, 241, 0.3); padding: 1.2rem; border-radius: 12px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
-
     .contact-link-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #ffffff;
-      padding: 0.6rem 1.2rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .contact-link-pill:hover {
-      opacity: 0.92;
-      transform: translateY(-2px);
+      color: #ffffff; padding: 0.6rem 1.2rem; border-radius: 8px; text-decoration: none; font-weight: 600;
     }
 
     footer {
-      margin-top: auto;
-      border-top: 1px solid var(--card-border);
-      padding: 2.5rem 1.5rem;
-      text-align: center;
-      color: var(--text-muted);
-      background: rgba(8, 13, 22, 0.85);
-    }
-
-    .footer-contact-link {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.2s;
-    }
-
-    .footer-contact-link:hover {
-      text-decoration: underline;
+      border-top: 1px solid var(--card-border); padding: 2.5rem 1.5rem; text-align: center;
+      color: var(--text-muted); background: rgba(8, 13, 22, 0.85); margin-top: auto;
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= 1. TOP RIBBON / NAVBAR ================= -->
+  <!-- ================= 1. HEADER ================= -->
   <header class="top-ribbon">
     <a href="#" class="brand-logo-unit">
-      <div class="brand-icon-box">
-        <i class="fa-solid fa-file-shield"></i>
-      </div>
+      <div class="brand-icon-box"><i class="fa-solid fa-file-shield"></i></div>
       <div class="brand-text-wrap">
         <span class="brand-text-pdf">PDF</span>
         <span class="brand-text-master">Master</span>
@@ -757,18 +329,15 @@
       </div>
     </a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
-      <i class="fa-solid fa-bars"></i>
-    </button>
+    <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
 
     <nav>
       <ul class="nav-tabs" id="navTabs">
         <li><a href="#hero" class="active">Home</a></li>
-        <li><a href="#workspace">Merge PDF & JPG</a></li>
+        <li><a href="#workspace">Tools Workspace</a></li>
         <li><a href="#tools">70+ Tools</a></li>
         <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#workspace" class="nav-btn">Start Merging</a></li>
+        <li><a href="#workspace" class="nav-btn">Start Working</a></li>
       </ul>
     </nav>
   </header>
@@ -776,64 +345,71 @@
   <!-- ================= 2. HERO SECTION ================= -->
   <section class="hero" id="hero">
     <div class="brand-logo-unit brand-logo-hero">
-      <div class="brand-icon-box">
-        <i class="fa-solid fa-file-shield"></i>
-      </div>
+      <div class="brand-icon-box"><i class="fa-solid fa-file-shield"></i></div>
       <div class="brand-text-wrap">
         <span class="brand-text-pdf">PDF</span>
         <span class="brand-text-master">Master</span>
         <span class="brand-badge-555">555</span>
       </div>
     </div>
-
-    <span class="hero-badge"><i class="fa-solid fa-bolt"></i> 70+ Private Client-Side Tools & Utilities</span>
+    <span class="hero-badge"><i class="fa-solid fa-bolt"></i> 100% Client-Side Private PDF Tools</span>
     <h1>Ultimate All-in-One PDF Suite</h1>
-    <p>Merge multiple PDF files, JPG and PNG images together without losing quality. Explore all 70 document tools with instant search.</p>
+    <p>Har tool ke liye alag tab. Upload hone par har ek page screen par page number ke saath dikhega.</p>
     <div class="hero-checks">
-      <span>✓ Free</span>
-      <span>✓ Online</span>
-      <span>✓ No limits</span>
-      <span>✓ 100% Private</span>
+      <span>✓ Separate Tabs</span>
+      <span>✓ All Pages Visible</span>
+      <span>✓ Page Numbers</span>
+      <span>✓ 100% Working</span>
     </div>
   </section>
 
-  <!-- ================= 3. ACTIVE WORKSPACE ================= -->
+  <!-- ================= 3. SEPARATE WORKSPACE TABS ================= -->
   <main class="workspace-container" id="workspace">
 
-    <!-- DROPZONE + CHOOSE FILES -->
+    <!-- TOOL TABS BAR -->
+    <div class="tool-tabs-bar" id="toolTabsBar">
+      <button class="tool-tab-btn active" onclick="switchToolTab('merge')"><i class="fa-solid fa-object-group"></i> Merge PDF & JPG</button>
+      <button class="tool-tab-btn" onclick="switchToolTab('split')"><i class="fa-solid fa-scissors"></i> Split / Extract</button>
+      <button class="tool-tab-btn" onclick="switchToolTab('rotate')"><i class="fa-solid fa-rotate-right"></i> Rotate PDF</button>
+      <button class="tool-tab-btn" onclick="switchToolTab('delete')"><i class="fa-solid fa-trash-can"></i> Remove Pages</button>
+      <button class="tool-tab-btn" onclick="switchToolTab('reorder')"><i class="fa-solid fa-arrow-down-up-across-line"></i> Reorder Pages</button>
+      <button class="tool-tab-btn" onclick="switchToolTab('pdf2img')"><i class="fa-solid fa-image"></i> PDF to JPG</button>
+    </div>
+
+    <!-- DROPZONE -->
     <div class="dropzone-card" id="dropzone">
       <i class="fa-solid fa-cloud-arrow-up upload-icon" id="dropzoneIcon"></i>
-      <h3 id="dropzoneTitle">Drag & Drop PDF or JPG Files Here</h3>
+      <h3 id="dropzoneTitle">Upload Files to Merge</h3>
       <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">or</p>
       <button type="button" class="btn-select-file" id="chooseFilesBtn">
         <i class="fa-solid fa-folder-open"></i> Choose Files
       </button>
-      <p style="color: var(--text-muted); font-size: 0.85rem;" id="dropzoneSubtitle">Supports .pdf, .jpg, .jpeg, and .png simultaneously</p>
+      <p style="color: var(--text-muted); font-size: 0.85rem;" id="dropzoneSubtitle">Supports multiple PDFs, JPG and PNG files</p>
       <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
     </div>
 
-    <!-- PERSISTENT STICKY ACTION DISPLAY BAR -->
+    <!-- STICKY ACTION BAR -->
     <div class="workspace-sticky-bar">
       <div>
-        <strong style="color: #fff;">Selected Files:</strong>
-        <span id="fileCountBadge" style="color: var(--accent); font-weight: 700; margin-left: 6px;">0</span>
+        <strong style="color: #fff;">Selected Tool: </strong>
+        <span id="activeToolLabel" style="color: var(--accent); font-weight: 700; text-transform: uppercase;">MERGE PDF & JPG</span>
+        <span style="color: var(--text-muted); margin-left: 12px;">| Pages Visible: <b id="pagesCountBadge" style="color:#fff;">0</b></span>
       </div>
-      <button class="merge-action-btn" id="mergeBtn" disabled>
-        <i class="fa-solid fa-layer-group"></i> Merge Files to Single PDF
+      <button class="action-btn" id="actionBtn" disabled>
+        <i class="fa-solid fa-bolt"></i> Execute Action
       </button>
     </div>
 
-    <!-- CARDS DISPLAY (Drag to Reorder) -->
+    <!-- VISIBLE PAGES GRID -->
     <div class="cards-wrapper">
-      <div class="cards-instruction">
-        <i class="fa-solid fa-arrow-down-up-across-line"></i> Order of files can be changed by drag and drop
+      <div class="cards-instruction" id="modeInstruction">
+        <i class="fa-solid fa-circle-info"></i> Upload files. All pages will show up here labeled with their page numbers.
       </div>
       <div class="files-grid" id="filesGrid"></div>
     </div>
-
   </main>
 
-  <!-- ZOOM PREVIEW MODAL -->
+  <!-- ZOOM MODAL -->
   <div class="zoom-modal" id="zoomModal">
     <div class="zoom-modal-content">
       <button class="zoom-close-btn" id="zoomCloseBtn">&times;</button>
@@ -841,15 +417,15 @@
     </div>
   </div>
 
-  <!-- ================= 4. ALL 70 TOOLS DIRECTORY WITH SEARCH & FILTERS ================= -->
+  <!-- ================= 4. 70 TOOLS DIRECTORY ================= -->
   <section id="tools">
     <div class="tools-search-section">
       <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Browse All 70 PDF & Image Tools</h2>
-      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Use instant search or click any category to filter, then click a tool to open it.</p>
+      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;">Click any tool to automatically activate its workspace tab above.</p>
 
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="toolSearchInput" placeholder="Search by tool name (e.g. merge, word, compress, protect)..." />
+        <input type="text" id="toolSearchInput" placeholder="Search by tool name (e.g. merge, split, rotate, delete)..." />
       </div>
 
       <div class="filter-tabs">
@@ -863,865 +439,555 @@
       <div class="tools-counter" id="toolsCounter">Showing 70 Tools</div>
     </div>
 
-    <!-- 70 TOOLS GRID -->
     <div class="tools-grid" id="toolsGrid">
-      
-      <!-- CATEGORY 1: ORGANIZE & PAGES (1-14) -->
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <!-- ORGANIZE & PAGES -->
+      <div class="tool-card" data-mode="merge" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-object-group"></i></div>
         <h4>Merge PDF & JPG</h4>
-        <p>Combine multiple PDF files and JPG/PNG photos into a single ordered PDF file.</p>
+        <p>Combine multiple PDF documents and images into a single sorted file.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <div class="tool-card" data-mode="split" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-scissors"></i></div>
         <h4>Split PDF</h4>
-        <p>Separate one large document into separate single-page or custom range PDFs.</p>
+        <p>Separate one document into chosen pages or custom individual sections.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <div class="tool-card" data-mode="delete" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-trash-can"></i></div>
         <h4>Remove Pages</h4>
-        <p>Delete unwanted or accidental pages from any PDF document effortlessly.</p>
+        <p>Delete unwanted or accidental pages from any PDF document with 1 click.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <div class="tool-card" data-mode="split" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-file-export"></i></div>
         <h4>Extract Pages</h4>
-        <p>Pick and save only specific high-priority pages into a fresh new PDF.</p>
+        <p>Pick and save only specific high-priority pages into a fresh PDF.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <div class="tool-card" data-mode="reorder" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-arrow-down-up-across-line"></i></div>
         <h4>Reorder Pages</h4>
         <p>Drag, rearrange, and sort PDF page sequences into your desired order.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
+      <div class="tool-card" data-mode="rotate" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-rotate-right"></i></div>
         <h4>Rotate PDF</h4>
-        <p>Turn upside-down or sideways pages clockwise or counter-clockwise by 90° or 180°.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-crop-simple"></i></div>
-        <h4>Crop PDF</h4>
-        <p>Trim page margins and adjust framing boundaries of your documents.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-list-ol"></i></div>
-        <h4>Page Numbering</h4>
-        <p>Stamp dynamic numbering (Page X of Y) on the top or bottom of every page.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-stamp"></i></div>
-        <h4>Watermark PDF</h4>
-        <p>Overlay custom copyright text or transparent logos across all pages.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-code-compare"></i></div>
-        <h4>Compare PDF</h4>
-        <p>Analyze two versions of a document side-by-side to detect text changes.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-table-cells-large"></i></div>
-        <h4>N-Up Imposition</h4>
-        <p>Print 2, 4, or 8 document pages tiled neatly onto a single PDF sheet.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-eraser"></i></div>
-        <h4>Delete Blank Pages</h4>
-        <p>Automatically detect and purge completely blank scanned pages.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-book-bookmark"></i></div>
-        <h4>Add Bookmarks</h4>
-        <p>Create clickable navigation outline trees inside long PDF books.</p>
-        <span class="tool-badge">Organize</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="organize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-clone"></i></div>
-        <h4>Duplicate Pages</h4>
-        <p>Clone specific forms or worksheets repeatedly inside the same file.</p>
+        <p>Turn upside-down or sideways pages clockwise or counter-clockwise by 90°.</p>
         <span class="tool-badge">Organize</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
 
-      <!-- CATEGORY 2: CONVERT TO PDF (15-28) -->
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
+      <!-- CONVERT FROM PDF -->
+      <div class="tool-card" data-mode="pdf2img" data-cat="from-pdf">
         <div class="tool-icon"><i class="fa-solid fa-image"></i></div>
-        <h4>JPG to PDF</h4>
-        <p>Convert digital photos, receipts, and scans into a single printable PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-image"></i></div>
-        <h4>PNG to PDF</h4>
-        <p>Transform transparent or crisp PNG graphics into crisp PDF pages.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-word"></i></div>
-        <h4>Word to PDF</h4>
-        <p>Convert DOCX and DOC documents into standardized PDF viewables.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-excel"></i></div>
-        <h4>Excel to PDF</h4>
-        <p>Turn XLSX spreadsheets, budgets, and balance sheets into PDF tables.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
-        <h4>PowerPoint to PDF</h4>
-        <p>Convert PPTX slide decks into presentation-ready document files.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-lines"></i></div>
-        <h4>Text (TXT) to PDF</h4>
-        <p>Convert plain raw notepad files into clean formatted PDF sheets.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-globe"></i></div>
-        <h4>HTML to PDF</h4>
-        <p>Save complete web pages and HTML templates directly into PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-book-open"></i></div>
-        <h4>EPUB to PDF</h4>
-        <p>Convert digital eBooks from EPUB format to universal PDF pages.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-camera"></i></div>
-        <h4>TIFF to PDF</h4>
-        <p>Convert multi-page fax or archive TIFF image files into PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-vector-square"></i></div>
-        <h4>SVG to PDF</h4>
-        <p>Embed resolution-independent SVG vector graphics inside a PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-code"></i></div>
-        <h4>Markdown to PDF</h4>
-        <p>Render developer README and Markdown (.md) notes into PDF documents.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-        <h4>HEIC to PDF</h4>
-        <p>Convert iPhone/Apple high-efficiency HEIC photos directly into PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
-        <h4>BMP to PDF</h4>
-        <p>Convert raw bitmap (.bmp) pictures to standardized PDF.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="to-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-photo-film"></i></div>
-        <h4>WebP to PDF</h4>
-        <p>Convert modern lightweight WebP web pictures into clean PDF pages.</p>
-        <span class="tool-badge">Convert to PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-
-      <!-- CATEGORY 3: CONVERT FROM PDF (29-42) -->
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-image"></i></div>
         <h4>PDF to JPG</h4>
         <p>Extract each PDF sheet as high-resolution individual JPG pictures.</p>
         <span class="tool-badge">Convert from PDF</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
+      <div class="tool-card" data-mode="pdf2img" data-cat="from-pdf">
         <div class="tool-icon"><i class="fa-solid fa-file-circle-check"></i></div>
         <h4>PDF to PNG</h4>
-        <p>Export pages into lossless PNG images with transparent backgrounds.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-word"></i></div>
-        <h4>PDF to Word (DOCX)</h4>
-        <p>Turn read-only PDF sheets into editable Microsoft Word documents.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-table"></i></div>
-        <h4>PDF to Excel (XLSX)</h4>
-        <p>Extract tabular numbers and billing tables into Excel spreadsheets.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
-        <h4>PDF to PowerPoint</h4>
-        <p>Convert slides captured in PDF back to PowerPoint PPTX decks.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-align-left"></i></div>
-        <h4>PDF to Plain Text</h4>
-        <p>Extract clean text strings from pages for notes or coding use.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
-        <h4>PDF to HTML</h4>
-        <p>Export document pages into web-embeddable HTML & CSS snippets.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-book"></i></div>
-        <h4>PDF to EPUB</h4>
-        <p>Reflow PDF novels and manuals into responsive EPUB eBook readers.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-images"></i></div>
-        <h4>Extract Embedded Images</h4>
-        <p>Pull out all raw photos and figures embedded inside the document.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-csv"></i></div>
-        <h4>PDF to CSV</h4>
-        <p>Parse statement tables into comma-separated value database sheets.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-shield"></i></div>
-        <h4>PDF to PDF/A</h4>
-        <p>Convert standard files into long-term legal archiving format (ISO 19005).</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-square-binary"></i></div>
-        <h4>PDF to JSON</h4>
-        <p>Extract structured metadata and table contents into JSON feeds.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-vector-square"></i></div>
-        <h4>PDF to SVG</h4>
-        <p>Vectorize vector drawing layers from PDF into standalone SVG graphics.</p>
-        <span class="tool-badge">Convert from PDF</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="from-pdf" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-camera-retro"></i></div>
-        <h4>PDF to TIFF</h4>
-        <p>Convert PDF documents into high-dpi multi-frame TIFF images.</p>
+        <p>Export pages into lossless PNG images with high resolution.</p>
         <span class="tool-badge">Convert from PDF</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
 
-      <!-- CATEGORY 4: OPTIMIZE & FIX (43-56) -->
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-zipper"></i></div>
-        <h4>Compress PDF</h4>
-        <p>Shrink file megabytes for quick email transmission without text blur.</p>
-        <span class="tool-badge">Optimization</span>
+      <!-- CONVERT TO PDF -->
+      <div class="tool-card" data-mode="merge" data-cat="to-pdf">
+        <div class="tool-icon"><i class="fa-solid fa-file-image"></i></div>
+        <h4>JPG to PDF</h4>
+        <p>Convert digital photos, receipts, and scans into a single printable PDF.</p>
+        <span class="tool-badge">Convert to PDF</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-wrench"></i></div>
-        <h4>Repair Damaged PDF</h4>
-        <p>Recover corrupted or unreadable byte streams and recover pages.</p>
-        <span class="tool-badge">Optimization</span>
+      <div class="tool-card" data-mode="merge" data-cat="to-pdf">
+        <div class="tool-icon"><i class="fa-solid fa-photo-film"></i></div>
+        <h4>PNG to PDF</h4>
+        <p>Transform transparent or crisp PNG graphics into clean PDF pages.</p>
+        <span class="tool-badge">Convert to PDF</span>
         <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
       </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-layer-group"></i></div>
-        <h4>Flatten PDF</h4>
-        <p>Lock all interactive form fields, shapes, and layers permanently.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-eye"></i></div>
-        <h4>OCR Scanned PDF</h4>
-        <p>Run optical character recognition to make scanned papers searchable.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-gauge-high"></i></div>
-        <h4>Linearize (Fast Web View)</h4>
-        <p>Optimize large files to display the first page instantly on browsers.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-circle-half-stroke"></i></div>
-        <h4>Grayscale PDF</h4>
-        <p>Strip out unnecessary color inks to save printing cost on office copiers.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-sliders"></i></div>
-        <h4>Deskew Pages</h4>
-        <p>Straighten crooked scanning angles on physical camera scans.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-broom"></i></div>
-        <h4>Clean Metadata</h4>
-        <p>Remove author names, GPS traces, revision logs, and hidden info.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-moon"></i></div>
-        <h4>Invert Colors (Dark Mode)</h4>
-        <p>Flip black text on white into night reading mode to reduce eye strain.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-adjust"></i></div>
-        <h4>Contrast Booster</h4>
-        <p>Darken faded pencil handwriting or light scanner exposures.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-down-left-and-up-right-to-center"></i></div>
-        <h4>Resize Page Dimensions</h4>
-        <p>Standardize mismatched dimensions to standard A4, Letter, or Legal.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-print"></i></div>
-        <h4>Optimize for Printing</h4>
-        <p>Convert RGB graphics into CMYK print profiles with 300 DPI.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-font"></i></div>
-        <h4>Font Subsetter</h4>
-        <p>Strip out unused embedded font glyphs to reduce file overhead.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="optimize" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-link"></i></div>
-        <h4>Verify URL Hyperlinks</h4>
-        <p>Audit and validate all web links inside the document to fix broken URLs.</p>
-        <span class="tool-badge">Optimization</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-
-      <!-- CATEGORY 5: SECURITY & EDIT (57-70) -->
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-lock"></i></div>
-        <h4>Protect with Password</h4>
-        <p>Apply military-grade AES 256-bit password encryption to lock files.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-lock-open"></i></div>
-        <h4>Unlock PDF</h4>
-        <p>Remove printing and copying password restrictions from known files.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-signature"></i></div>
-        <h4>Sign PDF (eSign)</h4>
-        <p>Draw, type, or upload your legal digital signature on agreements.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-user-shield"></i></div>
-        <h4>Redact Sensitive Data</h4>
-        <p>Permanently black out confidential numbers, SSNs, and names.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-ban"></i></div>
-        <h4>Restrict Printing</h4>
-        <p>Disable unauthorized printing, copying, and text selection permissions.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-certificate"></i></div>
-        <h4>Digital Certificate Sign</h4>
-        <p>Attach verifiable cryptographic X.509 signature stamps.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-pen-to-square"></i></div>
-        <h4>Edit PDF Text</h4>
-        <p>Add new text blocks, edit paragraphs, and adjust headings in real time.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-highlighter"></i></div>
-        <h4>Annotate & Highlight</h4>
-        <p>Underline, strikethrough, and highlight paragraphs with color notes.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-draw-polygon"></i></div>
-        <h4>Freehand Drawing</h4>
-        <p>Sketch arrows, circles, and handwritten markings directly onto pages.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-file-circle-plus"></i></div>
-        <h4>Add Blank Page</h4>
-        <p>Insert clean blank sheets anywhere inside your existing document.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-heading"></i></div>
-        <h4>Header & Footer Stamping</h4>
-        <p>Add dynamic header and footer banners with custom dates and titles.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-barcode"></i></div>
-        <h4>Bates Numbering</h4>
-        <p>Index legal and trial discovery papers with sequential reference codes.</p>
-        <span class="tool-badge">Security</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-shapes"></i></div>
-        <h4>Add Shapes & Icons</h4>
-        <p>Insert clean rectangles, checkmarks, callout boxes, and icons.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-      <div class="tool-card" data-cat="security" role="button" tabindex="0">
-        <div class="tool-icon"><i class="fa-solid fa-window-restore"></i></div>
-        <h4>Fill Interactive Forms</h4>
-        <p>Complete official government text inputs, checkboxes, and radio buttons.</p>
-        <span class="tool-badge">Editor</span>
-        <div class="tool-card-cta">Open Tool <i class="fa-solid fa-arrow-right"></i></div>
-      </div>
-
     </div>
   </section>
 
-  <!-- ================= 5. ABOUT & CONTACT SECTION ================= -->
+  <!-- ================= 5. ABOUT & CONTACT ================= -->
   <section class="about-section" id="about">
-    <h3><i class="fa-solid fa-circle-info" style="color:var(--accent);"></i> About PDFMaster555</h3>
-    <p>
-      <strong>PDFMaster555</strong> is a high-speed, 100% private document productivity workspace built for privacy-conscious users. Unlike typical online file converters that store your private receipts and PDFs on third-party servers, PDFMaster555 executes document compilation entirely inside your browser sandbox.
-    </p>
-    <p>
-      With over 70 tools available for conversion, organization, compression, and security, you can effortlessly combine multi-page PDFs with camera photos and images without risking document leaks.
-    </p>
-
-    <!-- CONTACT US SUB-SECTION -->
-    <div id="contact" style="padding-top: 1.5rem; border-top: 1px solid var(--card-border); margin-top: 1.5rem;">
-      <h3 style="font-size: 1.25rem;"><i class="fa-solid fa-envelope-circle-check" style="color:var(--accent);"></i> Contact Us</h3>
-      <p>Have questions, tool requests, or feedback? Get in touch with our support team directly:</p>
-      
-      <div class="contact-card-box">
-        <div>
-          <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Official Support Email</span>
-          <strong style="color: #fff; font-size: 1.05rem;">pdfmaster555@gmail.com</strong>
-        </div>
-        <a href="mailto:pdfmaster555@gmail.com" class="contact-link-pill">
-          <i class="fa-solid fa-paper-plane"></i> Send Email
-        </a>
+    <h3 style="font-size: 1.4rem; margin-bottom: 0.8rem;"><i class="fa-solid fa-circle-info" style="color:var(--accent);"></i> About PDFMaster555</h3>
+    <p>PDFMaster555 executes all file manipulations directly inside your browser sandbox. No files are uploaded to servers, ensuring 100% privacy and blazing fast execution speeds.</p>
+    
+    <div class="contact-card-box">
+      <div>
+        <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">Official Support Email</span>
+        <strong style="color: #fff; font-size: 1.05rem;">pdfmaster555@gmail.com</strong>
       </div>
+      <a href="mailto:pdfmaster555@gmail.com" class="contact-link-pill"><i class="fa-solid fa-paper-plane"></i> Send Email</a>
     </div>
   </section>
 
   <!-- ================= 6. FOOTER ================= -->
   <footer>
-    <a href="#" class="brand-logo-unit brand-logo-footer">
-      <div class="brand-icon-box">
-        <i class="fa-solid fa-file-shield"></i>
-      </div>
-      <div class="brand-text-wrap">
-        <span class="brand-text-pdf">PDF</span>
-        <span class="brand-text-master">Master</span>
-        <span class="brand-badge-555">555</span>
-      </div>
-    </a>
-    <p style="margin-bottom: 0.6rem;">&copy; 2026 PDFMaster555. 70+ Private & Fast Client-Side PDF Utilities.</p>
-    <p style="font-size: 0.9rem;">
-      Need Help? Email us anytime at: 
-      <a href="mailto:pdfmaster555@gmail.com" class="footer-contact-link">pdfmaster555@gmail.com</a>
-    </p>
+    <p>&copy; 2026 PDFMaster555. 100% Client-Side Private Document Utilities.</p>
   </footer>
 
   <!-- ================= JAVASCRIPT ================= -->
   <script>
-    // Init PDF.js Worker for fast thumbnails
+    // PDF.js worker setup
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-    // 1. Mobile Menu Toggle & Navigation Links Fix
-    const menuToggle = document.getElementById('menuToggle');
-    const navTabs = document.getElementById('navTabs');
-    menuToggle.addEventListener('click', () => {
-      navTabs.classList.toggle('open');
+    // Application State
+    let activeTab = 'merge';
+    let allPages = []; // Stores objects: { id, file, buffer, originalPageIndex, pageNumber, totalPages, rotation, isDeleted, isSelected, canvas, isImage, imgUrl }
+    
+    const dropzone = document.getElementById('dropzone');
+    const fileInput = document.getElementById('fileInput');
+    const chooseFilesBtn = document.getElementById('chooseFilesBtn');
+    const filesGrid = document.getElementById('filesGrid');
+    const actionBtn = document.getElementById('actionBtn');
+    const activeToolLabel = document.getElementById('activeToolLabel');
+    const pagesCountBadge = document.getElementById('pagesCountBadge');
+    const modeInstruction = document.getElementById('modeInstruction');
+    const dropzoneTitle = document.getElementById('dropzoneTitle');
+    const dropzoneSubtitle = document.getElementById('dropzoneSubtitle');
+    const dropzoneIcon = document.getElementById('dropzoneIcon');
+
+    // Tab configurations
+    const tabConfigs = {
+      merge: {
+        title: 'Merge PDF & JPG',
+        instruction: 'Upload multiple PDFs or images. Drag cards to reorder, then merge into one single PDF.',
+        btnText: '<i class="fa-solid fa-object-group"></i> Merge All Files to Single PDF',
+        icon: 'fa-solid fa-object-group',
+        multiple: true
+      },
+      split: {
+        title: 'Split / Extract Pages',
+        instruction: 'Select pages using the checkboxes below to extract them into a separate new PDF document.',
+        btnText: '<i class="fa-solid fa-scissors"></i> Extract Selected Pages',
+        icon: 'fa-solid fa-scissors',
+        multiple: false
+      },
+      rotate: {
+        title: 'Rotate PDF',
+        instruction: 'Click the "Rotate 90°" button below any page to rotate it, then save the rotated PDF.',
+        btnText: '<i class="fa-solid fa-rotate-right"></i> Save & Download Rotated PDF',
+        icon: 'fa-solid fa-rotate-right',
+        multiple: false
+      },
+      delete: {
+        title: 'Remove Pages',
+        instruction: 'Click the red "Delete" button below any page you want to delete, then download the clean PDF.',
+        btnText: '<i class="fa-solid fa-trash-can"></i> Download Clean PDF (Without Deleted Pages)',
+        icon: 'fa-solid fa-trash-can',
+        multiple: false
+      },
+      reorder: {
+        title: 'Reorder Pages',
+        instruction: 'Drag and drop the numbered page cards below into your preferred order, then save.',
+        btnText: '<i class="fa-solid fa-arrow-down-up-across-line"></i> Save Reordered PDF',
+        icon: 'fa-solid fa-arrow-down-up-across-line',
+        multiple: false
+      },
+      pdf2img: {
+        title: 'PDF to JPG',
+        instruction: 'Every page is rendered below. Click the JPG button under any page or download all at once.',
+        btnText: '<i class="fa-solid fa-download"></i> Download All Pages as JPG',
+        icon: 'fa-solid fa-image',
+        multiple: false
+      }
+    };
+
+    // 1. Tool Tab Switcher Logic
+    function switchToolTab(mode) {
+      activeTab = mode;
+      const config = tabConfigs[mode] || tabConfigs.merge;
+
+      // Update Tab Styles
+      document.querySelectorAll('.tool-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('onclick').includes(`'${mode}'`));
+      });
+
+      // Update UI texts & labels
+      activeToolLabel.textContent = config.title;
+      modeInstruction.innerHTML = `<i class="fa-solid fa-circle-info"></i> ${config.instruction}`;
+      actionBtn.innerHTML = config.btnText;
+      dropzoneTitle.textContent = `Upload Files for ${config.title}`;
+      dropzoneSubtitle.textContent = config.multiple ? 'Supports multiple PDFs & Images simultaneously' : 'Upload 1 PDF file to inspect its pages';
+      dropzoneIcon.className = `${config.icon} upload-icon`;
+      fileInput.multiple = config.multiple;
+
+      renderAllPages();
+      updateButtonStatus();
+    }
+
+    // 2. Upload Listeners
+    chooseFilesBtn.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
+    dropzone.addEventListener('click', () => fileInput.click());
+
+    ['dragenter', 'dragover'].forEach(name => {
+      dropzone.addEventListener(name, (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      dropzone.addEventListener(name, (e) => { e.preventDefault(); dropzone.classList.remove('dragover'); });
     });
 
-    document.querySelectorAll('.nav-tabs a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
-        this.classList.add('active');
-        navTabs.classList.remove('open');
+    dropzone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      processUploadedFiles(Array.from(e.dataTransfer.files));
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      processUploadedFiles(Array.from(e.target.files));
+      fileInput.value = '';
+    });
+
+    // 3. Process Uploaded Files - RENDER EVERY PAGE ON SCREEN
+    async function processUploadedFiles(files) {
+      if (!files.length) return;
+
+      actionBtn.disabled = true;
+      actionBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Rendering every page on screen...';
+
+      // Reset list if single-file mode
+      if (!tabConfigs[activeTab].multiple) {
+        allPages = [];
+        filesGrid.innerHTML = '';
+      }
+
+      for (let file of files) {
+        if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
+          const buffer = await file.arrayBuffer();
+          const pdfDoc = await pdfjsLib.getDocument({ data: buffer.slice(0) }).promise;
+
+          // Render EVERY page of this PDF
+          for (let p = 1; p <= pdfDoc.numPages; p++) {
+            const page = await pdfDoc.getPage(p);
+            const viewport = page.getViewport({ scale: 0.35 });
+
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
+            await page.render({ canvasContext: ctx, viewport }).promise;
+
+            allPages.push({
+              id: 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+              file: file,
+              buffer: buffer,
+              originalPageIndex: p - 1,
+              pageNumber: p,
+              totalPages: pdfDoc.numPages,
+              rotation: 0,
+              isDeleted: false,
+              isSelected: true,
+              canvas: canvas,
+              isImage: false
+            });
+          }
+        } else if (file.type.startsWith('image/')) {
+          const imgUrl = URL.createObjectURL(file);
+          allPages.push({
+            id: 'p_' + Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+            file: file,
+            originalPageIndex: 0,
+            pageNumber: 1,
+            totalPages: 1,
+            rotation: 0,
+            isDeleted: false,
+            isSelected: true,
+            imgUrl: imgUrl,
+            isImage: true
+          });
+        }
+      }
+
+      renderAllPages();
+      updateButtonStatus();
+    }
+
+    // 4. Render Pages on Screen with Page Number Pills
+    function renderAllPages() {
+      filesGrid.innerHTML = '';
+      let visibleCount = 0;
+
+      allPages.forEach((pageObj, index) => {
+        if (pageObj.isDeleted) return;
+        visibleCount++;
+
+        const card = document.createElement('div');
+        card.className = 'page-card';
+        card.id = pageObj.id;
+
+        // Preview box
+        const box = document.createElement('div');
+        box.className = 'card-preview-box';
+
+        if (pageObj.isImage) {
+          const img = document.createElement('img');
+          img.src = pageObj.imgUrl;
+          img.style.transform = `rotate(${pageObj.rotation}deg)`;
+          box.appendChild(img);
+        } else {
+          const canvasClone = document.createElement('canvas');
+          canvasClone.width = pageObj.canvas.width;
+          canvasClone.height = pageObj.canvas.height;
+          canvasClone.getContext('2d').drawImage(pageObj.canvas, 0, 0);
+          canvasClone.style.transform = `rotate(${pageObj.rotation}deg)`;
+          box.appendChild(canvasClone);
+        }
+        card.appendChild(box);
+
+        // CLEAR VISIBLE PAGE NUMBER PILL
+        const badge = document.createElement('div');
+        badge.className = 'page-number-pill';
+        badge.textContent = `Page ${pageObj.pageNumber} of ${pageObj.totalPages}`;
+        card.appendChild(badge);
+
+        // File Name
+        const nameLabel = document.createElement('div');
+        nameLabel.className = 'page-doc-name';
+        nameLabel.textContent = pageObj.file.name;
+        nameLabel.title = pageObj.file.name;
+        card.appendChild(nameLabel);
+
+        // Tool Action Bar
+        const bar = document.createElement('div');
+        bar.className = 'card-action-bar';
+
+        if (activeTab === 'split') {
+          const chk = document.createElement('input');
+          chk.type = 'checkbox';
+          chk.className = 'page-checkbox';
+          chk.checked = pageObj.isSelected;
+          chk.onchange = () => { pageObj.isSelected = chk.checked; };
+          bar.appendChild(document.createTextNode('Select '));
+          bar.appendChild(chk);
+        } else if (activeTab === 'rotate') {
+          const rotBtn = document.createElement('button');
+          rotBtn.className = 'rotate-single-btn';
+          rotBtn.innerHTML = '<i class="fa-solid fa-rotate-right"></i> 90°';
+          rotBtn.onclick = () => {
+            pageObj.rotation = (pageObj.rotation + 90) % 360;
+            renderAllPages();
+          };
+          bar.appendChild(rotBtn);
+        } else if (activeTab === 'delete') {
+          const delBtn = document.createElement('button');
+          delBtn.className = 'delete-single-btn';
+          delBtn.innerHTML = '<i class="fa-solid fa-trash-can"></i> Delete';
+          delBtn.onclick = () => {
+            pageObj.isDeleted = true;
+            renderAllPages();
+            updateButtonStatus();
+          };
+          bar.appendChild(delBtn);
+        } else if (activeTab === 'pdf2img') {
+          const dwnBtn = document.createElement('button');
+          dwnBtn.className = 'rotate-single-btn';
+          dwnBtn.style.background = '#10b981';
+          dwnBtn.innerHTML = '<i class="fa-solid fa-download"></i> JPG';
+          dwnBtn.onclick = () => downloadSinglePage(pageObj);
+          bar.appendChild(dwnBtn);
+        } else {
+          // Merge & Reorder default index
+          const info = document.createElement('span');
+          info.style.fontSize = '11px';
+          info.style.color = '#94a3b8';
+          info.textContent = `Position #${index + 1}`;
+          bar.appendChild(info);
+        }
+
+        card.appendChild(bar);
+        filesGrid.appendChild(card);
+      });
+
+      pagesCountBadge.textContent = visibleCount;
+    }
+
+    // Sortable Drag & Drop Setup
+    new Sortable(filesGrid, {
+      animation: 180,
+      ghostClass: 'sortable-ghost',
+      onEnd: function() {
+        const orderIds = Array.from(filesGrid.children).map(c => c.id);
+        allPages.sort((a, b) => orderIds.indexOf(a.id) - orderIds.indexOf(b.id));
+      }
+    });
+
+    function updateButtonStatus() {
+      const activePages = allPages.filter(p => !p.isDeleted);
+      actionBtn.disabled = activePages.length === 0;
+      const config = tabConfigs[activeTab];
+      actionBtn.innerHTML = config.btnText;
+    }
+
+    // 5. MASTER ACTION LOGIC FOR ALL TOOLS
+    actionBtn.addEventListener('click', async () => {
+      const activePages = allPages.filter(p => !p.isDeleted);
+      if (activePages.length === 0) return;
+
+      actionBtn.disabled = true;
+      actionBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing in Browser...';
+
+      try {
+        if (activeTab === 'merge' || activeTab === 'reorder') {
+          // MERGE & REORDER LOGIC
+          const newDoc = await PDFLib.PDFDocument.create();
+
+          for (let pageObj of activePages) {
+            if (pageObj.isImage) {
+              const buffer = await pageObj.file.arrayBuffer();
+              const isPng = pageObj.file.type.includes('png');
+              const embeddedImg = isPng ? await newDoc.embedPng(buffer) : await newDoc.embedJpg(buffer);
+              const p = newDoc.addPage([embeddedImg.width, embeddedImg.height]);
+              p.drawImage(embeddedImg, { x: 0, y: 0, width: embeddedImg.width, height: embeddedImg.height });
+            } else {
+              const srcDoc = await PDFLib.PDFDocument.load(pageObj.buffer);
+              const [copiedPage] = await newDoc.copyPages(srcDoc, [pageObj.originalPageIndex]);
+              if (pageObj.rotation) {
+                copiedPage.setRotation(PDFLib.degrees(copiedPage.getRotation().angle + pageObj.rotation));
+              }
+              newDoc.addPage(copiedPage);
+            }
+          }
+          const bytes = await newDoc.save();
+          downloadBlob(bytes, 'PDFMaster555_Merged.pdf');
+
+        } else if (activeTab === 'split') {
+          // SPLIT / EXTRACT LOGIC
+          const selected = activePages.filter(p => p.isSelected);
+          if (selected.length === 0) {
+            alert('Kripya kam se kam ek page checkbox me select karein!');
+            actionBtn.disabled = false;
+            updateButtonStatus();
+            return;
+          }
+
+          const newDoc = await PDFLib.PDFDocument.create();
+          for (let pageObj of selected) {
+            const srcDoc = await PDFLib.PDFDocument.load(pageObj.buffer);
+            const [copiedPage] = await newDoc.copyPages(srcDoc, [pageObj.originalPageIndex]);
+            newDoc.addPage(copiedPage);
+          }
+          const bytes = await newDoc.save();
+          downloadBlob(bytes, 'PDFMaster555_Extracted.pdf');
+
+        } else if (activeTab === 'rotate') {
+          // ROTATE LOGIC
+          const newDoc = await PDFLib.PDFDocument.create();
+          for (let pageObj of activePages) {
+            const srcDoc = await PDFLib.PDFDocument.load(pageObj.buffer);
+            const [copiedPage] = await newDoc.copyPages(srcDoc, [pageObj.originalPageIndex]);
+            copiedPage.setRotation(PDFLib.degrees(copiedPage.getRotation().angle + pageObj.rotation));
+            newDoc.addPage(copiedPage);
+          }
+          const bytes = await newDoc.save();
+          downloadBlob(bytes, 'PDFMaster555_Rotated.pdf');
+
+        } else if (activeTab === 'delete') {
+          // DELETE PAGES LOGIC
+          const newDoc = await PDFLib.PDFDocument.create();
+          for (let pageObj of activePages) {
+            const srcDoc = await PDFLib.PDFDocument.load(pageObj.buffer);
+            const [copiedPage] = await newDoc.copyPages(srcDoc, [pageObj.originalPageIndex]);
+            newDoc.addPage(copiedPage);
+          }
+          const bytes = await newDoc.save();
+          downloadBlob(bytes, 'PDFMaster555_Cleaned.pdf');
+
+        } else if (activeTab === 'pdf2img') {
+          // PDF TO JPG DOWNLOAD
+          for (let pageObj of activePages) {
+            downloadSinglePage(pageObj);
+          }
+        }
+
+        setTimeout(updateButtonStatus, 1500);
+      } catch (err) {
+        console.error(err);
+        alert('File process karne me error aayi. Please make sure file password protected nahi hai.');
+        updateButtonStatus();
+      }
+    });
+
+    // Download helpers
+    function downloadBlob(bytes, filename) {
+      const blob = new Blob([bytes], { type: 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function downloadSinglePage(pageObj) {
+      const a = document.createElement('a');
+      a.download = `${pageObj.file.name}_Page_${pageObj.pageNumber}.jpg`;
+      a.href = pageObj.isImage ? pageObj.imgUrl : pageObj.canvas.toDataURL('image/jpeg', 0.95);
+      a.click();
+    }
+
+    // 6. 70 Tools Grid Click Handler
+    document.querySelectorAll('.tool-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const mode = card.getAttribute('data-mode') || 'merge';
+        switchToolTab(mode);
+        document.getElementById('workspace').scrollIntoView({ behavior: 'smooth' });
+        dropzone.classList.add('dragover');
+        setTimeout(() => dropzone.classList.remove('dragover'), 1000);
       });
     });
 
-    // 2. 70 Tools Filter & Search Engine
+    // Search and Filter Functionality
     const searchInput = document.getElementById('toolSearchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const toolCards = document.querySelectorAll('.tool-card');
     const toolsCounter = document.getElementById('toolsCounter');
 
-    let currentCategory = 'all';
+    let currentFilter = 'all';
 
     function filterTools() {
-      const query = searchInput.value.toLowerCase().trim();
-      let visibleCount = 0;
-
+      const q = searchInput.value.toLowerCase().trim();
+      let count = 0;
       toolCards.forEach(card => {
         const title = card.querySelector('h4').textContent.toLowerCase();
         const desc = card.querySelector('p').textContent.toLowerCase();
-        const category = card.getAttribute('data-cat');
+        const cat = card.getAttribute('data-cat');
+        const matchText = title.includes(q) || desc.includes(q);
+        const matchCat = currentFilter === 'all' || cat === currentFilter;
 
-        const matchesQuery = title.includes(query) || desc.includes(query);
-        const matchesCategory = currentCategory === 'all' || category === currentCategory;
-
-        if (matchesQuery && matchesCategory) {
+        if (matchText && matchCat) {
           card.style.display = 'flex';
-          visibleCount++;
+          count++;
         } else {
           card.style.display = 'none';
         }
       });
-
-      toolsCounter.textContent = `Showing ${visibleCount} Tool${visibleCount === 1 ? '' : 's'}`;
+      toolsCounter.textContent = `Showing ${count} Tools`;
     }
 
     searchInput.addEventListener('input', filterTools);
-
     filterBtns.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
+      btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        currentCategory = btn.getAttribute('data-cat');
+        currentFilter = btn.getAttribute('data-cat');
         filterTools();
       });
     });
 
-    // Tool Card Click Action: Activate Workspace with Selected Tool
-    const dropzoneTitle = document.getElementById('dropzoneTitle');
-    const dropzoneSubtitle = document.getElementById('dropzoneSubtitle');
-    const dropzoneIcon = document.getElementById('dropzoneIcon');
-
-    toolCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const toolName = card.querySelector('h4').textContent;
-        const iconClass = card.querySelector('.tool-icon i').className;
-
-        // Workspace ko selected tool ke anusaar update karein
-        dropzoneTitle.textContent = `${toolName} - Upload Files`;
-        dropzoneSubtitle.textContent = `Upload files to execute ${toolName} directly in browser`;
-        dropzoneIcon.className = `${iconClass} upload-icon`;
-
-        // Smoothly workspace par scroll karein
-        const workspaceEl = document.getElementById('workspace');
-        workspaceEl.scrollIntoView({ behavior: 'smooth' });
-
-        // Highlight effect on workspace dropzone
-        dropzone.classList.add('dragover');
-        setTimeout(() => dropzone.classList.remove('dragover'), 1200);
-      });
-    });
-
-    // 3. Upgraded Upload & Visual Cards Workspace Logic
-    const dropzone = document.getElementById('dropzone');
-    const fileInput = document.getElementById('fileInput');
-    const chooseFilesBtn = document.getElementById('chooseFilesBtn');
-    const filesGrid = document.getElementById('filesGrid');
-    const fileCountBadge = document.getElementById('fileCountBadge');
-    const mergeBtn = document.getElementById('mergeBtn');
-
-    let uploadedFiles = [];
-
-    // Click on button explicitly
-    chooseFilesBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      fileInput.click();
-    });
-
-    // Click anywhere on dropzone
-    dropzone.addEventListener('click', () => fileInput.click());
-
-    // Drag-over styling
-    ['dragenter', 'dragover'].forEach(eventName => {
-      dropzone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        dropzone.classList.add('dragover');
-      });
-    });
-
-    ['dragleave', 'drop'].forEach(eventName => {
-      dropzone.addEventListener(eventName, (e) => {
-        e.preventDefault();
-        dropzone.classList.remove('dragover');
-      });
-    });
-
-    // Drop files
-    dropzone.addEventListener('drop', (e) => {
-      const files = Array.from(e.dataTransfer.files);
-      processFiles(files);
-    });
-
-    // File input select
-    fileInput.addEventListener('change', (e) => {
-      const files = Array.from(e.target.files);
-      processFiles(files);
-      fileInput.value = '';
-    });
-
-    function processFiles(files) {
-      const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
-      const filtered = files.filter(f => validTypes.includes(f.type) || f.name.match(/\.(pdf|jpg|jpeg|png)$/i));
-
-      filtered.forEach(file => {
-        const fileObj = {
-          id: 'card_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
-          file: file,
-          name: file.name,
-          thumbUrl: null,
-          pageCount: 1
-        };
-        uploadedFiles.push(fileObj);
-        renderCard(fileObj);
-      });
-
-      updateWorkspaceState();
-    }
-
-    // Render Card (Screenshot layout with Zoom, Delete, Thumbnail)
-    async function renderCard(fileObj) {
-      const card = document.createElement('div');
-      card.className = 'file-card';
-      card.id = fileObj.id;
-
-      card.innerHTML = `
-        <div class="card-top-bar">
-          <button type="button" class="card-btn" onclick="zoomCard('${fileObj.id}')" title="Zoom">
-            <i class="fa-solid fa-magnifying-glass-plus"></i>
-          </button>
-          <button type="button" class="card-btn delete" onclick="removeCard('${fileObj.id}')" title="Delete">
-            <i class="fa-solid fa-trash-can"></i>
-          </button>
-        </div>
-        <div class="card-preview-box" id="box_${fileObj.id}">
-          <i class="fa-solid fa-spinner fa-spin" style="color:var(--accent);"></i>
-        </div>
-        <div class="card-file-name" title="${fileObj.name}">${fileObj.name}</div>
-      `;
-
-      filesGrid.appendChild(card);
-      generateThumbnail(fileObj);
-    }
-
-    async function generateThumbnail(fileObj) {
-      const container = document.getElementById(`box_${fileObj.id}`);
-      if (!container) return;
-
-      try {
-        if (fileObj.file.type === 'application/pdf' || fileObj.file.name.toLowerCase().endsWith('.pdf')) {
-          const buffer = await fileObj.file.arrayBuffer();
-          const pdfDoc = await pdfjsLib.getDocument({ data: buffer }).promise;
-          fileObj.pageCount = pdfDoc.numPages;
-
-          const firstPage = await pdfDoc.getPage(1);
-          const viewport = firstPage.getViewport({ scale: 0.35 });
-
-          const canvas = document.createElement('canvas');
-          const ctx = canvas.getContext('2d');
-          canvas.height = viewport.height;
-          canvas.width = viewport.width;
-
-          await firstPage.render({ canvasContext: ctx, viewport: viewport }).promise;
-
-          container.innerHTML = '';
-          container.appendChild(canvas);
-          container.innerHTML += `<span class="card-pages-tag">${fileObj.pageCount} p</span>`;
-          fileObj.thumbUrl = canvas.toDataURL();
-
-        } else if (fileObj.file.type.startsWith('image/') || fileObj.file.name.match(/\.(jpg|jpeg|png)$/i)) {
-          const img = document.createElement('img');
-          const url = URL.createObjectURL(fileObj.file);
-          img.src = url;
-          fileObj.thumbUrl = url;
-          container.innerHTML = '';
-          container.appendChild(img);
-        }
-      } catch (err) {
-        container.innerHTML = `<i class="fa-solid fa-file-circle-exclamation" style="color:#ef4444; font-size:1.8rem;"></i>`;
-      }
-    }
-
-    // 4. Drag & Drop Reordering of Cards (SortableJS)
-    new Sortable(filesGrid, {
-      animation: 180,
-      ghostClass: 'sortable-ghost',
-      onEnd: function() {
-        const newOrder = Array.from(filesGrid.children).map(c => c.id);
-        uploadedFiles.sort((a, b) => newOrder.indexOf(a.id) - newOrder.indexOf(b.id));
-      }
-    });
-
-    // Delete single file card
-    window.removeCard = function(id) {
-      uploadedFiles = uploadedFiles.filter(item => item.id !== id);
-      const cardEl = document.getElementById(id);
-      if (cardEl) cardEl.remove();
-      updateWorkspaceState();
-    };
-
-    // Zoom modal preview
-    window.zoomCard = function(id) {
-      const item = uploadedFiles.find(f => f.id === id);
-      if (!item || !item.thumbUrl) return;
-
-      const modal = document.getElementById('zoomModal');
-      const body = document.getElementById('zoomModalBody');
-      body.innerHTML = `
-        <h4 style="color:#fff; margin-bottom:8px; font-size:0.9rem;">${item.name}</h4>
-        <img src="${item.thumbUrl}" style="max-width:100%; max-height:75vh; border-radius:6px; display:block; margin:auto;" />
-      `;
-      modal.style.display = 'flex';
-    };
-
-    document.getElementById('zoomCloseBtn').addEventListener('click', () => {
-      document.getElementById('zoomModal').style.display = 'none';
-    });
-
-    function updateWorkspaceState() {
-      fileCountBadge.textContent = uploadedFiles.length;
-      mergeBtn.disabled = uploadedFiles.length === 0;
-    }
-
-    // 5. PDF & JPG Merging Engine (pdf-lib)
-    mergeBtn.addEventListener('click', async () => {
-      if (uploadedFiles.length === 0) return;
-      mergeBtn.disabled = true;
-      mergeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Merging in Browser...';
-
-      try {
-        const mergedPdf = await PDFLib.PDFDocument.create();
-
-        for (const item of uploadedFiles) {
-          const file = item.file;
-          const arrayBuffer = await file.arrayBuffer();
-
-          if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
-            const donorPdf = await PDFLib.PDFDocument.load(arrayBuffer);
-            const copiedPages = await mergedPdf.copyPages(donorPdf, donorPdf.getPageIndices());
-            copiedPages.forEach((page) => mergedPdf.addPage(page));
-          } else if (file.type.includes('jpeg') || file.type.includes('jpg') || file.name.match(/\.(jpg|jpeg)$/i)) {
-            const jpgImage = await mergedPdf.embedJpg(arrayBuffer);
-            const page = mergedPdf.addPage([jpgImage.width, jpgImage.height]);
-            page.drawImage(jpgImage, { x: 0, y: 0, width: jpgImage.width, height: jpgImage.height });
-          } else if (file.type.includes('png') || file.name.match(/\.png$/i)) {
-            const pngImage = await mergedPdf.embedPng(arrayBuffer);
-            const page = mergedPdf.addPage([pngImage.width, pngImage.height]);
-            page.drawImage(pngImage, { x: 0, y: 0, width: pngImage.width, height: pngImage.height });
-          }
-        }
-
-        const mergedPdfBytes = await mergedPdf.save();
-        const blob = new Blob([mergedPdfBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const downloadLink = document.createElement('a');
-        downloadLink.href = url;
-        downloadLink.download = 'pdfmaster555_merged_document.pdf';
-        document.body.appendChild(downloadLink);
-        downloadLink.click();
-        document.body.removeChild(downloadLink);
-
-        mergeBtn.innerHTML = '<i class="fa-solid fa-check"></i> Merged Successfully!';
-        setTimeout(() => {
-          mergeBtn.innerHTML = '<i class="fa-solid fa-layer-group"></i> Merge Files to Single PDF';
-          mergeBtn.disabled = false;
-        }, 3000);
-      } catch (err) {
-        console.error(err);
-        alert('An error occurred during file merging. Please verify file integrity.');
-        mergeBtn.innerHTML = '<i class="fa-solid fa-layer-group"></i> Merge Files to Single PDF';
-        mergeBtn.disabled = false;
-      }
+    // Mobile Navbar Toggle
+    document.getElementById('menuToggle').addEventListener('click', () => {
+      document.getElementById('navTabs').classList.toggle('open');
     });
   </script>
 </body>
