@@ -25,9 +25,11 @@
   }
   </script>
 
-  <!-- Icons & PDF Engine -->
+  <!-- Icons, PDF Engines & Drag-Reorder Libraries -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
 
   <style>
     :root {
@@ -47,6 +49,10 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Roboto, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
@@ -153,12 +159,12 @@
       margin-bottom: 0.8rem;
     }
 
-    /* ================= TOP NAVIGATION (RESPONSIVE) ================= */
+    /* ================= TOP NAVIGATION (FIXED CLICKS) ================= */
     .top-ribbon {
       position: sticky;
       top: 0;
-      z-index: 200;
-      background: rgba(8, 13, 22, 0.9);
+      z-index: 1000;
+      background: rgba(8, 13, 22, 0.92);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--card-border);
       padding: 0.8rem 5%;
@@ -189,6 +195,7 @@
       font-weight: 500;
       font-size: 0.95rem;
       transition: color 0.3s;
+      cursor: pointer;
     }
 
     .nav-tabs a:hover, .nav-tabs a.active {
@@ -204,11 +211,8 @@
       box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
     }
 
-    /* Mobile Hamburger styling */
     @media (max-width: 768px) {
-      .menu-toggle {
-        display: block;
-      }
+      .menu-toggle { display: block; }
       .nav-tabs {
         display: none;
         position: absolute;
@@ -221,9 +225,7 @@
         padding: 1.2rem;
         gap: 1rem;
       }
-      .nav-tabs.open {
-        display: flex;
-      }
+      .nav-tabs.open { display: flex; }
     }
 
     /* ================= HERO SECTION ================= */
@@ -264,22 +266,34 @@
       line-height: 1.6;
     }
 
-    /* ================= WORKSPACE (MERGE TOOL) ================= */
-    .workspace-container {
-      max-width: 750px;
-      margin: 1.5rem auto 3rem auto;
-      width: 90%;
+    .hero-checks {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #10b981;
+      margin-top: 12px;
     }
 
+    /* ================= WORKSPACE (MERGE TOOL WITH SCREENSHOT UI) ================= */
+    .workspace-container {
+      max-width: 1100px;
+      margin: 1.5rem auto 3rem auto;
+      width: 92%;
+    }
+
+    /* Combined Drop Zone + Select Button */
     .dropzone-card {
       background: var(--card-bg);
       border: 2px dashed rgba(99, 102, 241, 0.45);
       border-radius: 18px;
-      padding: 2.5rem 1.5rem;
+      padding: 2.2rem 1.5rem;
       text-align: center;
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      margin-bottom: 1.5rem;
     }
 
     .dropzone-card:hover, .dropzone-card.dragover {
@@ -289,67 +303,231 @@
     }
 
     .dropzone-card i.upload-icon {
-      font-size: 3rem;
+      font-size: 2.8rem;
       color: var(--accent);
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
     }
 
-    .file-list {
-      margin-top: 1.2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
+    .btn-select-file {
+      display: inline-block;
+      margin: 10px auto;
+      padding: 0.6rem 1.6rem;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(6, 182, 212, 0.3);
+      transition: transform 0.2s;
     }
 
-    .file-item {
-      background: rgba(15, 23, 42, 0.85);
+    .btn-select-file:hover {
+      transform: scale(1.03);
+    }
+
+    /* Persistent Sticky Action Display Bar */
+    .workspace-sticky-bar {
+      position: sticky;
+      top: 65px;
+      z-index: 900;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
       border: 1px solid var(--card-border);
-      border-radius: 10px;
-      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      padding: 0.9rem 1.4rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
     }
 
-    .file-info {
-      display: flex;
+    .merge-action-btn {
+      padding: 0.75rem 1.8rem;
+      background: linear-gradient(135deg, #ef4444, #dc2626);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
       align-items: center;
-      gap: 10px;
-      overflow: hidden;
+      gap: 8px;
+      transition: all 0.2s;
     }
 
-    .file-info span {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      max-width: 320px;
+    .merge-action-btn:hover {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
     }
 
-    .remove-btn {
-      color: #ef4444;
+    .merge-action-btn:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    /* Visual Cards Grid Container */
+    .cards-wrapper {
+      border: 2px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      background: rgba(13, 19, 33, 0.65);
+      padding: 1.5rem;
+      min-height: 250px;
+    }
+
+    .cards-instruction {
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.2rem;
+    }
+
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+    }
+
+    /* Individual Card (Screenshot Style) */
+    .file-card {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+      cursor: grab;
+      user-select: none;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .file-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .file-card:active {
+      cursor: grabbing;
+    }
+
+    .card-top-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .card-btn {
       background: none;
       border: none;
       cursor: pointer;
-      font-size: 1.1rem;
+      font-size: 13px;
+      color: #38bdf8;
+      padding: 2px 4px;
     }
 
-    .action-btn {
+    .card-btn.delete {
+      color: #ef4444;
+    }
+
+    .card-btn:hover {
+      transform: scale(1.15);
+    }
+
+    .card-preview-box {
       width: 100%;
-      margin-top: 1.2rem;
-      padding: 0.95rem;
-      background: linear-gradient(135deg, var(--primary), #0284c7);
-      border: none;
-      border-radius: 10px;
-      color: #fff;
-      font-size: 1rem;
+      height: 140px;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .card-preview-box canvas, .card-preview-box img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .card-pages-tag {
+      position: absolute;
+      bottom: 4px;
+      right: 4px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #38bdf8;
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 4px;
       font-weight: 700;
-      cursor: pointer;
+    }
+
+    .card-file-name {
+      font-size: 11px;
+      color: #e2e8f0;
+      margin-top: 6px;
+      text-align: center;
+      width: 100%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-weight: 500;
+    }
+
+    /* Modal for Zoom Preview */
+    .zoom-modal {
       display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .zoom-modal-content {
+      background: #1e293b;
+      padding: 12px;
+      border-radius: 12px;
+      max-width: 90vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      border: 1px solid var(--accent);
+    }
+
+    .zoom-close-btn {
+      position: absolute;
+      top: -12px;
+      right: -12px;
+      background: #ef4444;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
     }
 
     /* ================= 70 TOOLS SEARCH & FILTER ================= */
     .tools-search-section {
-      max-width: 800px;
+      max-width: 850px;
       margin: 0 auto 2rem auto;
       padding: 0 1rem;
       text-align: center;
@@ -385,7 +563,6 @@
       color: var(--text-muted);
     }
 
-    /* Category Filter Tabs */
     .filter-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -417,7 +594,6 @@
       font-weight: 600;
     }
 
-    /* 70 Tools Grid */
     .tools-grid {
       max-width: 1200px;
       margin: 0 auto 4rem auto;
@@ -498,7 +674,6 @@
       margin-bottom: 0.8rem;
     }
 
-    /* Footer */
     footer {
       margin-top: auto;
       border-top: 1px solid var(--card-border);
@@ -524,7 +699,6 @@
       </div>
     </a>
 
-    <!-- Hamburger Button for Mobile -->
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle Navigation">
       <i class="fa-solid fa-bars"></i>
     </button>
@@ -540,7 +714,7 @@
     </nav>
   </header>
 
-  <!-- ================= 2. HERO SECTION CENTERPIECE ================= -->
+  <!-- ================= 2. HERO SECTION ================= -->
   <section class="hero" id="hero">
     <div class="brand-logo-unit brand-logo-hero">
       <div class="brand-icon-box">
@@ -555,26 +729,60 @@
 
     <span class="hero-badge"><i class="fa-solid fa-bolt"></i> 70+ Private Client-Side Tools & Utilities</span>
     <h1>Ultimate All-in-One PDF Suite</h1>
-    <p>Merge PDF files and JPG/PNG images together with 100% browser privacy. Explore all 70 document tools with instant search.</p>
+    <p>Merge multiple PDF files, JPG and PNG images together without losing quality. Explore all 70 document tools with instant search.</p>
+    <div class="hero-checks">
+      <span>✓ Free</span>
+      <span>✓ Online</span>
+      <span>✓ No limits</span>
+      <span>✓ 100% Private</span>
+    </div>
   </section>
 
-  <!-- ================= ACTIVE WORKSPACE: DRAG & DROP MERGER ================= -->
+  <!-- ================= 3. ACTIVE WORKSPACE (UPGRADED WITH PREVIEW CARDS) ================= -->
   <main class="workspace-container" id="workspace">
+
+    <!-- DROPZONE + "CHOOSE FILES" BUTTON TOGETHER -->
     <div class="dropzone-card" id="dropzone">
       <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
       <h3>Drag & Drop PDF or JPG Files Here</h3>
-      <p>Supports .pdf, .jpg, .jpeg, and .png simultaneously</p>
+      <p style="color: var(--text-muted); font-size: 0.9rem; margin-top: 4px;">or</p>
+      <button type="button" class="btn-select-file" id="chooseFilesBtn">
+        <i class="fa-solid fa-folder-open"></i> Choose Files
+      </button>
+      <p style="color: var(--text-muted); font-size: 0.85rem;">Supports .pdf, .jpg, .jpeg, and .png simultaneously</p>
       <input type="file" id="fileInput" multiple accept=".pdf,.jpg,.jpeg,.png" style="display:none;" />
     </div>
 
-    <div class="file-list" id="fileList"></div>
+    <!-- PERSISTENT STICKY ACTION DISPLAY BAR -->
+    <div class="workspace-sticky-bar">
+      <div>
+        <strong style="color: #fff;">Selected Files:</strong>
+        <span id="fileCountBadge" style="color: var(--accent); font-weight: 700; margin-left: 6px;">0</span>
+      </div>
+      <button class="merge-action-btn" id="mergeBtn" disabled>
+        <i class="fa-solid fa-layer-group"></i> Merge Files to Single PDF
+      </button>
+    </div>
 
-    <button class="action-btn" id="mergeBtn">
-      <i class="fa-solid fa-layer-group"></i> Merge Files to Single PDF
-    </button>
+    <!-- CARDS DISPLAY (Drag to Reorder) -->
+    <div class="cards-wrapper">
+      <div class="cards-instruction">
+        <i class="fa-solid fa-arrow-down-up-across-line"></i> Order of files can be changed by drag and drop
+      </div>
+      <div class="files-grid" id="filesGrid"></div>
+    </div>
+
   </main>
 
-  <!-- ================= 70+ TOOLS DIRECTORY WITH SEARCH & FILTERS ================= -->
+  <!-- ZOOM PREVIEW MODAL -->
+  <div class="zoom-modal" id="zoomModal">
+    <div class="zoom-modal-content">
+      <button class="zoom-close-btn" id="zoomCloseBtn">&times;</button>
+      <div id="zoomModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ================= 4. ALL 70 TOOLS DIRECTORY WITH SEARCH & FILTERS ================= -->
   <section id="tools">
     <div class="tools-search-section">
       <h2 style="font-size: 1.8rem; margin-bottom: 0.5rem;">Browse All 70 PDF & Image Tools</h2>
@@ -599,7 +807,7 @@
     <!-- 70 TOOLS GRID -->
     <div class="tools-grid" id="toolsGrid">
       
-      <!-- ============ CATEGORY 1: ORGANIZE & PAGES (1-14) ============ -->
+      <!-- CATEGORY 1: ORGANIZE & PAGES (1-14) -->
       <div class="tool-card" data-cat="organize">
         <div class="tool-icon"><i class="fa-solid fa-object-group"></i></div>
         <h4>Merge PDF & JPG</h4>
@@ -685,7 +893,7 @@
         <span class="tool-badge">Organize</span>
       </div>
 
-      <!-- ============ CATEGORY 2: CONVERT TO PDF (15-28) ============ -->
+      <!-- CATEGORY 2: CONVERT TO PDF (15-28) -->
       <div class="tool-card" data-cat="to-pdf">
         <div class="tool-icon"><i class="fa-solid fa-image"></i></div>
         <h4>JPG to PDF</h4>
@@ -771,7 +979,7 @@
         <span class="tool-badge">Convert to PDF</span>
       </div>
 
-      <!-- ============ CATEGORY 3: CONVERT FROM PDF (29-42) ============ -->
+      <!-- CATEGORY 3: CONVERT FROM PDF (29-42) -->
       <div class="tool-card" data-cat="from-pdf">
         <div class="tool-icon"><i class="fa-solid fa-file-image"></i></div>
         <h4>PDF to JPG</h4>
@@ -857,7 +1065,7 @@
         <span class="tool-badge">Convert from PDF</span>
       </div>
 
-      <!-- ============ CATEGORY 4: OPTIMIZE & FIX (43-56) ============ -->
+      <!-- CATEGORY 4: OPTIMIZE & FIX (43-56) -->
       <div class="tool-card" data-cat="optimize">
         <div class="tool-icon"><i class="fa-solid fa-file-zipper"></i></div>
         <h4>Compress PDF</h4>
@@ -943,7 +1151,7 @@
         <span class="tool-badge">Optimization</span>
       </div>
 
-      <!-- ============ CATEGORY 5: SECURITY & EDIT (57-70) ============ -->
+      <!-- CATEGORY 5: SECURITY & EDIT (57-70) -->
       <div class="tool-card" data-cat="security">
         <div class="tool-icon"><i class="fa-solid fa-lock"></i></div>
         <h4>Protect with Password</h4>
@@ -1032,7 +1240,7 @@
     </div>
   </section>
 
-  <!-- ================= ABOUT SECTION ================= -->
+  <!-- ================= 5. ABOUT SECTION ================= -->
   <section class="about-section" id="about">
     <h3><i class="fa-solid fa-circle-info"></i> About PDFMaster555</h3>
     <p>
@@ -1043,7 +1251,7 @@
     </p>
   </section>
 
-  <!-- ================= 3. FOOTER BRANDING ================= -->
+  <!-- ================= 6. FOOTER ================= -->
   <footer>
     <a href="#" class="brand-logo-unit brand-logo-footer">
       <div class="brand-icon-box">
@@ -1060,19 +1268,25 @@
 
   <!-- ================= JAVASCRIPT ================= -->
   <script>
-    // Mobile Hamburger Menu
+    // Init PDF.js Worker for fast thumbnails
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // 1. Mobile Menu Toggle & Navigation Links Fix
     const menuToggle = document.getElementById('menuToggle');
     const navTabs = document.getElementById('navTabs');
     menuToggle.addEventListener('click', () => {
       navTabs.classList.toggle('open');
     });
 
-    // Close menu when clicking nav link
-    navTabs.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => navTabs.classList.remove('open'));
+    document.querySelectorAll('.nav-tabs a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        document.querySelectorAll('.nav-tabs a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+        navTabs.classList.remove('open');
+      });
     });
 
-    // 70 Tools Filter & Search Engine
+    // 2. 70 Tools Filter & Search Engine
     const searchInput = document.getElementById('toolSearchInput');
     const filterBtns = document.querySelectorAll('.filter-btn');
     const toolCards = document.querySelectorAll('.tool-card');
@@ -1106,7 +1320,8 @@
     searchInput.addEventListener('input', filterTools);
 
     filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         currentCategory = btn.getAttribute('data-cat');
@@ -1114,16 +1329,26 @@
       });
     });
 
-    // Merge PDF & JPG Logic (pdf-lib)
+    // 3. Upgraded Upload & Visual Cards Workspace Logic
     const dropzone = document.getElementById('dropzone');
     const fileInput = document.getElementById('fileInput');
-    const fileListContainer = document.getElementById('fileList');
+    const chooseFilesBtn = document.getElementById('chooseFilesBtn');
+    const filesGrid = document.getElementById('filesGrid');
+    const fileCountBadge = document.getElementById('fileCountBadge');
     const mergeBtn = document.getElementById('mergeBtn');
 
     let uploadedFiles = [];
 
+    // Click on button explicitly
+    chooseFilesBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      fileInput.click();
+    });
+
+    // Click anywhere on dropzone
     dropzone.addEventListener('click', () => fileInput.click());
 
+    // Drag-over styling
     ['dragenter', 'dragover'].forEach(eventName => {
       dropzone.addEventListener(eventName, (e) => {
         e.preventDefault();
@@ -1138,64 +1363,153 @@
       });
     });
 
+    // Drop files
     dropzone.addEventListener('drop', (e) => {
       const files = Array.from(e.dataTransfer.files);
-      handleFiles(files);
+      processFiles(files);
     });
 
+    // File input select
     fileInput.addEventListener('change', (e) => {
       const files = Array.from(e.target.files);
-      handleFiles(files);
+      processFiles(files);
+      fileInput.value = '';
     });
 
-    function handleFiles(files) {
+    function processFiles(files) {
       const validTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
       const filtered = files.filter(f => validTypes.includes(f.type) || f.name.match(/\.(pdf|jpg|jpeg|png)$/i));
-      uploadedFiles = [...uploadedFiles, ...filtered];
-      renderFileList();
+
+      filtered.forEach(file => {
+        const fileObj = {
+          id: 'card_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6),
+          file: file,
+          name: file.name,
+          thumbUrl: null,
+          pageCount: 1
+        };
+        uploadedFiles.push(fileObj);
+        renderCard(fileObj);
+      });
+
+      updateWorkspaceState();
     }
 
-    function renderFileList() {
-      fileListContainer.innerHTML = '';
-      if (uploadedFiles.length === 0) {
-        mergeBtn.style.display = 'none';
-        return;
-      }
-      mergeBtn.style.display = 'block';
+    // Render Card (Screenshot layout with Zoom, Delete, Thumbnail)
+    async function renderCard(fileObj) {
+      const card = document.createElement('div');
+      card.className = 'file-card';
+      card.id = fileObj.id;
 
-      uploadedFiles.forEach((file, index) => {
-        const item = document.createElement('div');
-        item.className = 'file-item';
-        const iconClass = file.name.endsWith('.pdf') ? 'fa-file-pdf' : 'fa-file-image';
-        const iconColor = file.name.endsWith('.pdf') ? '#ef4444' : '#38bdf8';
-
-        item.innerHTML = `
-          <div class="file-info">
-            <i class="fa-solid ${iconClass}" style="color:${iconColor}; font-size:1.2rem;"></i>
-            <span>${file.name}</span>
-          </div>
-          <button class="remove-btn" onclick="removeFile(${index})" title="Remove">
+      card.innerHTML = `
+        <div class="card-top-bar">
+          <button type="button" class="card-btn" onclick="zoomCard('${fileObj.id}')" title="Zoom">
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+          </button>
+          <button type="button" class="card-btn delete" onclick="removeCard('${fileObj.id}')" title="Delete">
             <i class="fa-solid fa-trash-can"></i>
           </button>
-        `;
-        fileListContainer.appendChild(item);
-      });
+        </div>
+        <div class="card-preview-box" id="box_${fileObj.id}">
+          <i class="fa-solid fa-spinner fa-spin" style="color:var(--accent);"></i>
+        </div>
+        <div class="card-file-name" title="${fileObj.name}">${fileObj.name}</div>
+      `;
+
+      filesGrid.appendChild(card);
+      generateThumbnail(fileObj);
     }
 
-    window.removeFile = function(index) {
-      uploadedFiles.splice(index, 1);
-      renderFileList();
+    async function generateThumbnail(fileObj) {
+      const container = document.getElementById(`box_${fileObj.id}`);
+      if (!container) return;
+
+      try {
+        if (fileObj.file.type === 'application/pdf' || fileObj.file.name.toLowerCase().endsWith('.pdf')) {
+          const buffer = await fileObj.file.arrayBuffer();
+          const pdfDoc = await pdfjsLib.getDocument({ data: buffer }).promise;
+          fileObj.pageCount = pdfDoc.numPages;
+
+          const firstPage = await pdfDoc.getPage(1);
+          const viewport = firstPage.getViewport({ scale: 0.35 });
+
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          canvas.height = viewport.height;
+          canvas.width = viewport.width;
+
+          await firstPage.render({ canvasContext: ctx, viewport: viewport }).promise;
+
+          container.innerHTML = '';
+          container.appendChild(canvas);
+          container.innerHTML += `<span class="card-pages-tag">${fileObj.pageCount} p</span>`;
+          fileObj.thumbUrl = canvas.toDataURL();
+
+        } else if (fileObj.file.type.startsWith('image/') || fileObj.file.name.match(/\.(jpg|jpeg|png)$/i)) {
+          const img = document.createElement('img');
+          const url = URL.createObjectURL(fileObj.file);
+          img.src = url;
+          fileObj.thumbUrl = url;
+          container.innerHTML = '';
+          container.appendChild(img);
+        }
+      } catch (err) {
+        container.innerHTML = `<i class="fa-solid fa-file-circle-exclamation" style="color:#ef4444; font-size:1.8rem;"></i>`;
+      }
+    }
+
+    // 4. Drag & Drop Reordering of Cards (SortableJS)
+    new Sortable(filesGrid, {
+      animation: 180,
+      ghostClass: 'sortable-ghost',
+      onEnd: function() {
+        const newOrder = Array.from(filesGrid.children).map(c => c.id);
+        uploadedFiles.sort((a, b) => newOrder.indexOf(a.id) - newOrder.indexOf(b.id));
+      }
+    });
+
+    // Delete single file card
+    window.removeCard = function(id) {
+      uploadedFiles = uploadedFiles.filter(item => item.id !== id);
+      const cardEl = document.getElementById(id);
+      if (cardEl) cardEl.remove();
+      updateWorkspaceState();
     };
 
+    // Zoom modal preview
+    window.zoomCard = function(id) {
+      const item = uploadedFiles.find(f => f.id === id);
+      if (!item || !item.thumbUrl) return;
+
+      const modal = document.getElementById('zoomModal');
+      const body = document.getElementById('zoomModalBody');
+      body.innerHTML = `
+        <h4 style="color:#fff; margin-bottom:8px; font-size:0.9rem;">${item.name}</h4>
+        <img src="${item.thumbUrl}" style="max-width:100%; max-height:75vh; border-radius:6px; display:block; margin:auto;" />
+      `;
+      modal.style.display = 'flex';
+    };
+
+    document.getElementById('zoomCloseBtn').addEventListener('click', () => {
+      document.getElementById('zoomModal').style.display = 'none';
+    });
+
+    function updateWorkspaceState() {
+      fileCountBadge.textContent = uploadedFiles.length;
+      mergeBtn.disabled = uploadedFiles.length === 0;
+    }
+
+    // 5. PDF & JPG Merging Engine (pdf-lib)
     mergeBtn.addEventListener('click', async () => {
       if (uploadedFiles.length === 0) return;
       mergeBtn.disabled = true;
-      mergeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing & Merging...';
+      mergeBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Merging in Browser...';
 
       try {
         const mergedPdf = await PDFLib.PDFDocument.create();
 
-        for (const file of uploadedFiles) {
+        for (const item of uploadedFiles) {
+          const file = item.file;
           const arrayBuffer = await file.arrayBuffer();
 
           if (file.type === 'application/pdf' || file.name.toLowerCase().endsWith('.pdf')) {
