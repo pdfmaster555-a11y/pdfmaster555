@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +14,7 @@
   <!-- FontAwesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-  <!-- Client-Side Document Engines (Verified CDN links with fallback support) -->
+  <!-- Client-Side Document Engines -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -129,7 +130,7 @@
     .hero-features-bar i { color: #16a34a; }
 
     /* WORKSPACE */
-    .workspace-container { max-width: 1240px; margin: 1rem auto 3rem auto; width: 94%; }
+    .workspace-container { max-width: 1300px; margin: 1rem auto 3rem auto; width: 94%; }
     
     /* TOOL HORIZONTAL BAR */
     .tool-tabs-bar {
@@ -164,19 +165,21 @@
     .dropzone-card:hover, .dropzone-card.dragover { border-color: var(--primary); background: #f0f9ff; }
     .dropzone-card i.upload-icon { font-size: 2.6rem; color: var(--primary); margin-bottom: 0.65rem; }
     .dropzone-card h3 { font-size: 1.25rem; font-weight: 800; color: #0f172a; word-break: break-word; }
-    .btn-select-file {
-      display: inline-block; margin-top: 12px; padding: 0.65rem 1.6rem;
+    
+    .upload-btn-group { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+    .btn-select-file, .btn-select-folder {
+      display: inline-flex; align-items: center; gap: 6px; padding: 0.65rem 1.4rem;
       background: var(--dark-navy); color: #fff; font-weight: 700;
-      font-size: 0.9rem; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      font-size: 0.88rem; border: none; border-radius: var(--radius-sm); cursor: pointer;
       transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
-    .btn-select-file:hover { background: #1e293b; color: #38bdf8; }
+    .btn-select-file:hover, .btn-select-folder:hover { background: #1e293b; color: #38bdf8; }
 
     .cards-wrapper {
       border: 1px solid var(--border-color); border-radius: var(--radius-lg);
-      background: #ffffff; padding: 1.2rem; min-height: 240px; box-shadow: var(--shadow-subtle);
+      background: #ffffff; padding: 1.4rem; min-height: 280px; box-shadow: var(--shadow-subtle);
     }
-    .cards-instruction { text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.9rem; line-height: 1.5; }
+    .cards-instruction { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
 
     /* SIDEBAR */
     .workspace-sidebar {
@@ -211,6 +214,12 @@
     .sidebar-input:focus, .sidebar-select:focus, .sidebar-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
     .field-hint { font-size: 0.73rem; color: var(--text-muted); margin-top: 5px; display: block; }
 
+    /* PAGE RANGE FROM & TO BOXES */
+    .range-inputs-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    .range-inputs-dual div { display: flex; flex-direction: column; }
+    .range-inputs-dual label { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 3px; font-weight: 700; }
+    .range-inputs-dual input { padding: 0.55rem; }
+
     .quick-pills-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; margin-top: 7px; }
     .pill-btn {
       background: #f1f5f9; border: 1px solid var(--border-color);
@@ -230,30 +239,61 @@
     .action-btn:hover { filter: brightness(1.08); box-shadow: 0 6px 18px rgba(2, 132, 199, 0.45); }
     .action-btn:disabled { background: #cbd5e1 !important; cursor: not-allowed; box-shadow: none; filter: none; }
 
-    /* THUMBNAIL PAGES GRID */
-    .files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 10px; }
+    /* ENLARGED THUMBNAIL PAGES GRID */
+    .files-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
     .page-card {
       background: #ffffff; border: 2px solid var(--border-color);
-      border-radius: 10px; padding: 7px; display: flex; flex-direction: column;
+      border-radius: 12px; padding: 10px; display: flex; flex-direction: column;
       align-items: center; cursor: grab; position: relative; box-shadow: var(--shadow-subtle);
+      transition: transform 0.15s, border-color 0.15s;
     }
+    .page-card:hover { border-color: #93c5fd; }
     .page-card.selected { border-color: var(--primary); background: #f0f9ff; }
+    
+    /* ENLARGED PREVIEW BOX */
     .card-preview-box {
-      width: 100%; height: 135px; background: #f8fafc; border-radius: 6px;
+      width: 100%; height: 240px; background: #f8fafc; border-radius: 8px;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
-      border: 1px solid #e2e8f0;
+      border: 1px solid #e2e8f0; position: relative;
     }
     .card-preview-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+    
     .page-number-pill {
-      background: #e2e8f0; color: #334155; font-size: 10px; font-weight: 700;
-      padding: 2px 6px; border-radius: 8px; margin-top: 5px;
+      background: #e2e8f0; color: #334155; font-size: 11px; font-weight: 700;
+      padding: 3px 8px; border-radius: 10px; margin-top: 7px;
     }
-    .card-action-bar { display: flex; gap: 5px; align-items: center; margin-top: 6px; width: 100%; justify-content: space-between; }
+
+    /* CLICKABLE FULL FILE NAME BANNER */
+    .card-filename-box {
+      font-size: 11px; color: var(--primary); font-weight: 700; margin-top: 5px;
+      width: 100%; text-align: center; overflow: hidden; text-overflow: ellipsis;
+      white-space: nowrap; cursor: pointer; padding: 2px 4px; border-radius: 4px;
+      background: #f1f5f9;
+    }
+    .card-filename-box:hover { text-decoration: underline; background: #e2e8f0; }
+
+    .card-action-bar { display: flex; gap: 6px; align-items: center; margin-top: 8px; width: 100%; justify-content: space-between; }
     .rotate-single-btn, .delete-single-btn {
-      border: none; font-size: 11px; padding: 4px 6px; border-radius: 4px; cursor: pointer; color: #fff;
+      border: none; font-size: 12px; padding: 5px 8px; border-radius: 6px; cursor: pointer; color: #fff;
     }
     .rotate-single-btn { background: #0284c7; }
     .delete-single-btn { background: #ef4444; }
+
+    /* ADD MORE (+) CARD */
+    .add-more-card {
+      border: 2px dashed #93c5fd; background: #f8fafc; border-radius: 12px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      min-height: 240px; cursor: pointer; transition: 0.2s; color: var(--primary);
+      text-align: center; padding: 15px;
+    }
+    .add-more-card:hover { background: #f0f9ff; border-color: var(--primary); transform: translateY(-3px); }
+    .add-more-card i { font-size: 2.2rem; margin-bottom: 8px; }
+    .add-more-card span { font-size: 0.9rem; font-weight: 800; }
+    .add-more-card p { font-size: 0.75rem; color: var(--text-muted); margin-top: 4px; }
 
     /* SIGNATURE CANVAS BOX */
     #sigCanvasContainer { width: 100%; }
@@ -329,6 +369,30 @@
       display: flex; align-items: center; gap: 5px;
     }
 
+    /* MODAL FOR FULL FILENAME & INFO */
+    .file-info-modal {
+      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+      background: rgba(9, 13, 22, 0.7); backdrop-filter: blur(4px);
+      z-index: 2000; display: none; align-items: center; justify-content: center;
+      padding: 1rem;
+    }
+    .file-info-modal.active { display: flex; }
+    .file-info-content {
+      background: #ffffff; border-radius: 14px; max-width: 500px; width: 100%;
+      padding: 1.5rem; box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      border: 1px solid var(--border-color); animation: modalIn 0.2s ease-out;
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .modal-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+    .modal-head h3 { font-size: 1.15rem; font-weight: 800; color: #0f172a; }
+    .modal-close-btn { background: none; border: none; font-size: 1.25rem; color: var(--text-muted); cursor: pointer; }
+    .modal-row { margin-bottom: 0.8rem; }
+    .modal-row strong { display: block; font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
+    .modal-row span { font-size: 0.92rem; color: var(--text-main); word-break: break-all; font-weight: 600; }
+
     /* ABOUT SECTION */
     .about-section {
       background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
@@ -374,9 +438,7 @@
     }
     .footer-brand { display: flex; align-items: center; gap: 8px; color: #fff; font-weight: 800; font-size: 1.05rem; }
 
-    /* ============================================================
-       MOBILE RESPONSIVENESS TWEAKS
-       ============================================================ */
+    /* MOBILE RESPONSIVENESS */
     @media (max-width: 900px) {
       .workspace-layout { grid-template-columns: 1fr; }
       .workspace-sidebar { position: static; margin-top: 1rem; }
@@ -405,8 +467,8 @@
       .dropzone-card i.upload-icon { font-size: 2.3rem; }
       .dropzone-card h3 { font-size: 1.15rem; }
 
-      .files-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-      .card-preview-box { height: 120px; }
+      .files-grid { grid-template-columns: 1fr; gap: 12px; }
+      .card-preview-box { height: 210px; }
 
       .tools-search-section h2 { font-size: 1.65rem; }
       .tools-grid { grid-template-columns: 1fr; gap: 0.9rem; padding: 0 0.5rem; }
@@ -452,11 +514,12 @@
       <i class="fa-solid fa-shield-halved"></i> 100% Client-Side Private Document Engine
     </div>
     <h1>The Professional PDF & <span>Document Architecture</span></h1>
-    <p>Perform enterprise-grade document conversion, compression, signing, structural editing, and sanitization instantly in your browser with zero cloud storage.</p>
+    <p>Perform enterprise-grade document conversion, compression, signing, structural editing, and Word merging instantly in your browser with zero cloud storage.</p>
     
     <div class="hero-features-bar">
       <span><i class="fa-solid fa-circle-check"></i> Zero File Uploads (Strict Local Sandbox)</span>
       <span><i class="fa-solid fa-bolt"></i> Instant Native Assembly</span>
+      <span><i class="fa-solid fa-folder-tree"></i> Full Folder & File Batch Support</span>
       <span><i class="fa-solid fa-lock"></i> GDPR & Confidential Workflows Ready</span>
     </div>
   </section>
@@ -467,6 +530,7 @@
     <!-- TOOL QUICK SELECT TABS -->
     <div class="tool-tabs-bar" id="toolTabsBar">
       <button class="tool-tab-btn active" onclick="activateTool('merge')"><i class="fa-solid fa-object-group"></i> Merge PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('merge-word')"><i class="fa-solid fa-file-word" style="color:#2563eb;"></i> Merge Word</button>
       <button class="tool-tab-btn" onclick="activateTool('split')"><i class="fa-solid fa-scissors"></i> Split PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('compress')"><i class="fa-solid fa-compress"></i> Compress PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('img2pdf')"><i class="fa-solid fa-images" style="color:#0284c7;"></i> Images to PDF</button>
@@ -485,16 +549,24 @@
         <div class="dropzone-card" id="dropzone">
           <i class="fa-solid fa-cloud-arrow-up upload-icon" id="dropzoneIcon"></i>
           <h3 id="dropzoneTitle">Select Document</h3>
-          <p id="dropzoneSubtitle" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;">Drag & drop files directly or browse locally</p>
-          <button type="button" class="btn-select-file" id="chooseFilesBtn">
-            <i class="fa-solid fa-folder-open"></i> Browse Files
-          </button>
+          <p id="dropzoneSubtitle" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;">Drag & drop individual files OR entire folders here</p>
+          
+          <div class="upload-btn-group">
+            <button type="button" class="btn-select-file" id="chooseFilesBtn">
+              <i class="fa-solid fa-folder-open"></i> Browse Files
+            </button>
+            <button type="button" class="btn-select-folder" id="chooseFolderBtn">
+              <i class="fa-solid fa-folder-tree"></i> Choose Folder
+            </button>
+          </div>
+
           <input type="file" id="fileInput" multiple style="display:none;" />
+          <input type="file" id="folderInput" webkitdirectory directory multiple style="display:none;" />
         </div>
 
         <div class="cards-wrapper">
           <div class="cards-instruction" id="modeInstruction">
-            <i class="fa-solid fa-circle-info"></i> Upload your files. Extracted pages, images, and items will appear here for ordering and processing.
+            <i class="fa-solid fa-circle-info"></i> Upload your files or folders. High-resolution preview sheets will display here. Click on any file name to view complete details.
           </div>
           <div class="files-grid" id="filesGrid"></div>
         </div>
@@ -512,11 +584,24 @@
           <div><span>Active Selection:</span> <strong id="selectedPagesCount">0</strong></div>
         </div>
 
-        <!-- Custom Page Range -->
+        <!-- Custom Page Range: From & To and Custom String -->
         <div class="sidebar-field-group" id="rangeInputGroup">
-          <label><i class="fa-solid fa-hashtag"></i> Page Selection Range:</label>
+          <label><i class="fa-solid fa-arrow-down-1-9"></i> Page Range Selection:</label>
+          <div class="range-inputs-dual">
+            <div>
+              <label for="rangeFromInput">From Page:</label>
+              <input type="number" id="rangeFromInput" class="sidebar-input" min="1" placeholder="1" />
+            </div>
+            <div>
+              <label for="rangeToInput">To Page:</label>
+              <input type="number" id="rangeToInput" class="sidebar-input" min="1" placeholder="Max" />
+            </div>
+          </div>
+
+          <label style="margin-top: 6px;"><i class="fa-solid fa-hashtag"></i> Custom Range / Items:</label>
           <input type="text" id="customRangeInput" class="sidebar-input" placeholder="e.g. 1, 3, 5-8" />
-          <span class="field-hint">Synchronizes automatically with page checkboxes.</span>
+          <span class="field-hint">Automatically syncs with checkboxes across all tools.</span>
+
           <div class="quick-pills-bar">
             <button type="button" class="pill-btn" onclick="applyQuickRange('all')">All</button>
             <button type="button" class="pill-btn" onclick="applyQuickRange('odd')">Odd</button>
@@ -535,6 +620,37 @@
     </div>
   </main>
 
+  <!-- FILE INFORMATION MODAL -->
+  <div class="file-info-modal" id="fileInfoModal">
+    <div class="file-info-content">
+      <div class="modal-head">
+        <h3><i class="fa-solid fa-circle-info" style="color:var(--primary);"></i> Document Specifications</h3>
+        <button type="button" class="modal-close-btn" onclick="closeFileInfoModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-row">
+        <strong>Complete File Name:</strong>
+        <span id="modalFullFileName">-</span>
+      </div>
+      <div class="modal-row">
+        <strong>Document Item / Page:</strong>
+        <span id="modalDocPage">-</span>
+      </div>
+      <div class="modal-row">
+        <strong>Original File Size:</strong>
+        <span id="modalFileSize">-</span>
+      </div>
+      <div class="modal-row">
+        <strong>File Extension / Type:</strong>
+        <span id="modalFileType">-</span>
+      </div>
+      <div class="modal-row">
+        <strong>Current Orientation:</strong>
+        <span id="modalFileRotation">0°</span>
+      </div>
+      <button type="button" class="btn-select-file" style="width:100%; justify-content:center; margin-top:12px;" onclick="closeFileInfoModal()">Close Details</button>
+    </div>
+  </div>
+
   <!-- ALL TOOLS SECTION -->
   <section id="tools">
     <div class="tools-search-section">
@@ -543,7 +659,7 @@
 
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="toolSearchInput" placeholder="Search tools: word, excel, signature, redact, bates, compress..." />
+        <input type="text" id="toolSearchInput" placeholder="Search tools: word, excel, signature, compress, watermark..." />
       </div>
 
       <div class="filter-tabs" id="filterTabs">
@@ -626,7 +742,7 @@
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
 
-    // Smart, resilient PDF-Lib loader with automatic multi-CDN fallback
+    // Smart PDF-Lib loader with automatic multi-CDN fallback
     async function getPdfLib() {
       if (typeof window.PDFLib !== 'undefined' && window.PDFLib.PDFDocument) {
         return window.PDFLib;
@@ -684,6 +800,7 @@
 
       // 3. ORGANIZE & MANAGE
       { id: 'merge', name: 'Merge <span class="highlight-format">PDF</span>', rawName: 'Merge PDF', cat: 'organize', theme: 'theme-pdf', tag: 'JOIN FILES', icon: 'fa-object-group', desc: 'Combine multiple individual PDFs and sheets into one ordered document.' },
+      { id: 'merge-word', name: 'Merge <span class="highlight-format">Word (.docx)</span>', rawName: 'Merge Word', cat: 'organize', theme: 'theme-word', tag: 'JOIN DOCX', icon: 'fa-file-word', desc: 'Combine multiple Microsoft Word documents into one master Word file.' },
       { id: 'split', name: 'Split <span class="highlight-format">PDF</span>', rawName: 'Split PDF', cat: 'organize', theme: 'theme-pdf', tag: 'PAGE EXTRACT', icon: 'fa-scissors', desc: 'Extract selected pages, custom ranges, or sections into a new PDF.' },
       { id: 'delete', name: 'Remove <span class="highlight-format">Pages</span>', rawName: 'Remove Pages', cat: 'organize', theme: 'theme-pdf', tag: 'CLEANUP', icon: 'fa-trash-can', desc: 'Delete redundant, blank, or unwanted pages with one click.' },
       { id: 'rotate', name: 'Rotate <span class="highlight-format">Pages</span>', rawName: 'Rotate Pages', cat: 'organize', theme: 'theme-pdf', tag: 'ORIENTATION', icon: 'fa-rotate-right', desc: 'Fix page orientation permanently by rotating 90°, 180°, or 270°.' },
@@ -695,7 +812,6 @@
       // 4. SECURITY & SIGN
       { id: 'sign-pdf', name: 'Digital <span class="highlight-format">Signature</span>', rawName: 'Sign PDF', cat: 'security', theme: 'theme-sec', tag: 'ELECTRONIC SIGN', icon: 'fa-signature', desc: 'Draw, save, and apply your legal signature onto document sheets.' },
       { id: 'watermark', name: 'Text <span class="highlight-format">Watermark</span>', rawName: 'Watermark PDF', cat: 'security', theme: 'theme-sec', tag: 'STAMPING', icon: 'fa-stamp', desc: 'Overlay confidential, draft, or proprietary ownership watermarks.' },
-      { id: 'redact', name: 'Redact <span class="highlight-format">Blackout</span>', rawName: 'Redact PDF', cat: 'security', theme: 'theme-sec', tag: 'SANITIZATION', icon: 'fa-user-secret', desc: 'Permanently blackout sensitive personal records or proprietary data.' },
       { id: 'flatten', name: 'Flatten <span class="highlight-format">PDF</span>', rawName: 'Flatten PDF', cat: 'security', theme: 'theme-sec', tag: 'LOCK LAYERS', icon: 'fa-layer-group', desc: 'Lock annotations, forms, and signatures into immutable page graphics.' },
       { id: 'protect', name: 'Lock <span class="highlight-format">Metadata</span>', rawName: 'Lock Metadata', cat: 'security', theme: 'theme-sec', tag: 'IMMUTABLE', icon: 'fa-lock', desc: 'Mark document as verified and freeze structural descriptors.' },
 
@@ -742,6 +858,34 @@
       const bytes = new Uint8Array(len);
       for (let i = 0; i < len; i++) bytes[i] = binaryStr.charCodeAt(i);
       return bytes;
+    }
+
+    // Helper: Format bytes
+    function formatBytes(bytes) {
+      if (bytes === 0) return '0 Bytes';
+      const k = 1024;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    // Helper: Get Base Name
+    function getOriginalBaseName(fallback = 'Document') {
+      if (loadedPages.length > 0 && loadedPages[0].file && loadedPages[0].file.name) {
+        return loadedPages[0].file.name.replace(/\.[^/.]+$/, "");
+      }
+      if (uploadedRawFiles.length > 0 && uploadedRawFiles[0].name) {
+        return uploadedRawFiles[0].name.replace(/\.[^/.]+$/, "");
+      }
+      return fallback;
+    }
+
+    // Helper: Get Original Ext
+    function getOriginalExtension(fallback = 'pdf') {
+      if (loadedPages.length > 0 && loadedPages[0].file && loadedPages[0].file.name) {
+        return loadedPages[0].file.name.split('.').pop() || fallback;
+      }
+      return fallback;
     }
 
     // RENDER TOOL DIRECTORY CARDS
@@ -792,35 +936,42 @@
       });
     });
 
-    // ACTIVATE SELECTED TOOL
+    // ACTIVATE SELECTED TOOL (CLEAR PREVIOUS UPLOADS TO START FRESH)
     function activateTool(toolId, toolName) {
       currentMode = toolId;
       const matched = TOOLS_CONFIG.find(t => t.id === toolId);
       const name = toolName || (matched ? matched.rawName : toolId.toUpperCase());
+
+      // Clear previous uploaded documents automatically
+      loadedPages = [];
+      uploadedRawFiles = [];
+      document.getElementById('rangeFromInput').value = '';
+      document.getElementById('rangeToInput').value = '';
+      document.getElementById('customRangeInput').value = '';
 
       document.getElementById('activeToolBadge').innerText = toolId.toUpperCase().replace('-', ' ');
       document.getElementById('dropzoneTitle').innerText = `Select for ${name}`;
       document.getElementById('actionBtnText').innerText = `Execute (${name})`;
 
       const fInput = document.getElementById('fileInput');
-      if (toolId === 'word2pdf') {
+      if (toolId === 'word2pdf' || toolId === 'merge-word') {
         fInput.accept = '.docx';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select Microsoft Word (.docx) document';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select Microsoft Word (.docx) files or drop folders';
       } else if (toolId === 'excel2pdf' || toolId === 'csv2pdf') {
         fInput.accept = '.xlsx,.xls,.csv';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select spreadsheet data (.xlsx, .csv)';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select spreadsheet data (.xlsx, .csv) or folders';
       } else if (toolId === 'ppt2pdf') {
         fInput.accept = '.pptx';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select PowerPoint presentation (.pptx)';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select PowerPoint presentations (.pptx)';
       } else if (toolId === 'txt2pdf' || toolId === 'md2pdf') {
         fInput.accept = '.txt,.md,.json';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select text or Markdown file (.txt, .md)';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select text or Markdown files (.txt, .md)';
       } else if (toolId === 'img2pdf') {
         fInput.accept = '.jpg,.jpeg,.png,.webp,.gif,.bmp';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select images (JPG, PNG, WebP, etc.)';
+        document.getElementById('dropzoneSubtitle').innerText = 'Select images (JPG, PNG, WebP) or drop image folders';
       } else {
         fInput.accept = '.pdf,.jpg,.jpeg,.png,.webp';
-        document.getElementById('dropzoneSubtitle').innerText = 'Select PDF files or drop them here';
+        document.getElementById('dropzoneSubtitle').innerText = 'Drag & drop files or folders here';
       }
 
       // Update Nav Buttons
@@ -874,17 +1025,6 @@
           </div>
         `;
         initSignatureCanvas();
-      } else if (toolId === 'redact') {
-        dynamicOpts.innerHTML = `
-          <div class="sidebar-field-group">
-            <label><i class="fa-solid fa-user-secret"></i> Redaction Mode:</label>
-            <select id="redactAreaSelect" class="sidebar-select">
-              <option value="top">Top Header Region (Metadata & IDs)</option>
-              <option value="bottom">Bottom Footer Region (Legal Footers)</option>
-              <option value="center">Central Signature / Amount Box</option>
-            </select>
-          </div>
-        `;
       } else if (toolId === 'header-footer') {
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
@@ -927,6 +1067,8 @@
         `;
       }
 
+      renderCardsUI();
+      updateStats();
       updateActionState();
     }
 
@@ -936,7 +1078,6 @@
         signatureCanvas = document.getElementById('sigCanvas');
         if (!signatureCanvas) return;
 
-        // Auto-scale canvas resolution for sharp drawing on mobile retina screens
         const container = document.getElementById('sigCanvasContainer');
         const rect = container.getBoundingClientRect();
         signatureCanvas.width = rect.width || 280;
@@ -986,22 +1127,66 @@
       }
     };
 
-    // FILE INPUT HANDLING
+    // FILE & FOLDER INPUT HANDLING
     const fileInput = document.getElementById('fileInput');
+    const folderInput = document.getElementById('folderInput');
     const dropzone = document.getElementById('dropzone');
     const chooseFilesBtn = document.getElementById('chooseFilesBtn');
+    const chooseFolderBtn = document.getElementById('chooseFolderBtn');
 
     chooseFilesBtn.addEventListener('click', (e) => { e.stopPropagation(); fileInput.click(); });
+    chooseFolderBtn.addEventListener('click', (e) => { e.stopPropagation(); folderInput.click(); });
     dropzone.addEventListener('click', () => fileInput.click());
 
     dropzone.addEventListener('dragover', (e) => { e.preventDefault(); dropzone.classList.add('dragover'); });
     dropzone.addEventListener('dragleave', () => dropzone.classList.remove('dragover'));
-    dropzone.addEventListener('drop', (e) => {
-      e.preventDefault(); dropzone.classList.remove('dragover');
-      if (e.dataTransfer.files.length) handleIncomingFiles(e.dataTransfer.files);
+    
+    // RECURSIVE FOLDER AND FILE DRAG-AND-DROP SUPPORT
+    dropzone.addEventListener('drop', async (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('dragover');
+      
+      const items = e.dataTransfer.items;
+      if (items && items.length > 0 && items[0].webkitGetAsEntry) {
+        const fileList = [];
+        for (let i = 0; i < items.length; i++) {
+          const entry = items[i].webkitGetAsEntry();
+          if (entry) {
+            await traverseFileTree(entry, fileList);
+          }
+        }
+        if (fileList.length > 0) handleIncomingFiles(fileList);
+      } else if (e.dataTransfer.files.length) {
+        handleIncomingFiles(e.dataTransfer.files);
+      }
     });
+
+    async function traverseFileTree(item, fileList) {
+      if (item.isFile) {
+        return new Promise((resolve) => {
+          item.file((file) => {
+            fileList.push(file);
+            resolve();
+          });
+        });
+      } else if (item.isDirectory) {
+        const dirReader = item.createReader();
+        const entries = await new Promise((resolve) => {
+          dirReader.readEntries((entries) => resolve(entries));
+        });
+        for (const entry of entries) {
+          await traverseFileTree(entry, fileList);
+        }
+      }
+    }
+
     fileInput.addEventListener('change', (e) => {
       if (e.target.files.length) handleIncomingFiles(e.target.files);
+      fileInput.value = '';
+    });
+    folderInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleIncomingFiles(e.target.files);
+      folderInput.value = '';
     });
 
     async function handleIncomingFiles(files) {
@@ -1023,7 +1208,7 @@
       updateActionState();
     }
 
-    // RENDER PDF PAGES
+    // RENDER PDF PAGES (HIGH VISIBILITY RESOLUTION SCALE)
     async function renderPdfPages(file) {
       try {
         const arrayBuffer = await file.arrayBuffer();
@@ -1032,7 +1217,7 @@
         
         for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
           const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale: 0.35 });
+          const viewport = page.getViewport({ scale: 0.75 });
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           canvas.width = viewport.width;
@@ -1046,7 +1231,7 @@
             type: 'pdf',
             docPageNum: pageNum,
             totalDocPages: pdf.numPages,
-            canvasDataUrl: canvas.toDataURL('image/jpeg', 0.8),
+            canvasDataUrl: canvas.toDataURL('image/jpeg', 0.85),
             rotation: 0,
             isSelected: true
           });
@@ -1056,7 +1241,7 @@
       }
     }
 
-    // RENDER IMAGE PAGES (Universal support for mobile camera shots, JPG, PNG, WebP)
+    // RENDER IMAGE PAGES
     async function renderImagePage(file) {
       return new Promise((resolve) => {
         const reader = new FileReader();
@@ -1064,9 +1249,9 @@
           const img = new Image();
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const scale = Math.min(1, 400 / Math.max(img.width, img.height));
-            canvas.width = (img.width * scale) || 200;
-            canvas.height = (img.height * scale) || 200;
+            const scale = Math.min(1, 600 / Math.max(img.width, img.height));
+            canvas.width = (img.width * scale) || 300;
+            canvas.height = (img.height * scale) || 300;
             const ctx = canvas.getContext('2d');
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
@@ -1079,7 +1264,7 @@
               imageHeight: img.naturalHeight || img.height,
               docPageNum: 1,
               totalDocPages: 1,
-              canvasDataUrl: canvas.toDataURL('image/jpeg', 0.85),
+              canvasDataUrl: canvas.toDataURL('image/jpeg', 0.88),
               rotation: 0,
               isSelected: true
             });
@@ -1098,13 +1283,13 @@
     // RENDER OFFICE DOC PREVIEW
     function renderOfficeDocThumbnail(file) {
       const canvas = document.createElement('canvas');
-      canvas.width = 160; canvas.height = 200;
+      canvas.width = 240; canvas.height = 300;
       const ctx = canvas.getContext('2d');
-      ctx.fillStyle = '#090d16'; ctx.fillRect(0, 0, 160, 200);
-      ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 15px sans-serif';
+      ctx.fillStyle = '#090d16'; ctx.fillRect(0, 0, 240, 300);
+      ctx.fillStyle = '#38bdf8'; ctx.font = 'bold 22px sans-serif';
       ctx.textAlign = 'center';
       const ext = file.name.split('.').pop().toUpperCase();
-      ctx.fillText(ext || 'DOC', 80, 105);
+      ctx.fillText(ext || 'DOC', 120, 150);
 
       loadedPages.push({
         id: 'p_' + Math.random().toString(36).substr(2, 9),
@@ -1119,7 +1304,7 @@
       });
     }
 
-    // WORKSPACE CARDS UI
+    // WORKSPACE CARDS UI WITH ENLARGED PREVIEW, FULL FILENAME TRIGGER & ADD MORE (+)
     function renderCardsUI() {
       const grid = document.getElementById('filesGrid');
       grid.innerHTML = '';
@@ -1134,26 +1319,45 @@
         const card = document.createElement('div');
         card.className = `page-card ${p.isSelected ? 'selected' : ''}`;
         card.setAttribute('data-id', p.id);
+        
         card.innerHTML = `
-          <div class="card-preview-box">
+          <div class="card-preview-box" title="Drag to reorder page">
             <img src="${p.canvasDataUrl}" style="transform: rotate(${p.rotation}deg);" alt="Page Preview" />
           </div>
-          <span class="page-number-pill">Item ${index + 1}</span>
-          <div style="font-size:10px; color:var(--text-muted); margin-top:3px; max-width:105px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;">${p.file.name}</div>
+          <span class="page-number-pill">Item ${index + 1} of ${loadedPages.length}</span>
+          <div class="card-filename-box" onclick="showFileInfoModal(${index})" title="Click to view full filename & details">
+            <i class="fa-solid fa-file"></i> ${p.file.name}
+          </div>
           <div class="card-action-bar">
-            <label style="display:flex; align-items:center; gap:4px; font-size:11px; cursor:pointer;">
+            <label style="display:flex; align-items:center; gap:5px; font-size:12px; font-weight:700; cursor:pointer;">
               <input type="checkbox" ${p.isSelected ? 'checked' : ''} onchange="togglePageSelect(${index}, this.checked)" /> Select
             </label>
-            <button class="rotate-single-btn" onclick="rotateSinglePage(${index})" title="Rotate 90°"><i class="fa-solid fa-rotate-right"></i></button>
-            <button class="delete-single-btn" onclick="removeSinglePage(${index})" title="Remove"><i class="fa-solid fa-trash"></i></button>
+            <div style="display:flex; gap:5px;">
+              <button class="rotate-single-btn" onclick="rotateSinglePage(${index})" title="Rotate 90°"><i class="fa-solid fa-rotate-right"></i></button>
+              <button class="delete-single-btn" onclick="removeSinglePage(${index})" title="Remove"><i class="fa-solid fa-trash"></i></button>
+            </div>
           </div>
         `;
         grid.appendChild(card);
       });
 
+      // ADD MORE FILES (+) CARD AT THE END OF PREVIEWS
+      const addMoreCard = document.createElement('div');
+      addMoreCard.className = 'add-more-card';
+      addMoreCard.innerHTML = `
+        <i class="fa-solid fa-circle-plus"></i>
+        <span>Add More Files</span>
+        <p>Click to add extra documents or pages</p>
+      `;
+      addMoreCard.addEventListener('click', () => {
+        fileInput.click();
+      });
+      grid.appendChild(addMoreCard);
+
       if (window.pageSortable) window.pageSortable.destroy();
       if (typeof Sortable !== 'undefined') {
         window.pageSortable = new Sortable(grid, {
+          draggable: '.page-card',
           animation: 150,
           onEnd: (evt) => {
             const moved = loadedPages.splice(evt.oldIndex, 1)[0];
@@ -1163,6 +1367,22 @@
         });
       }
     }
+
+    // MODAL FOR DISPLAYING FULL FILE NAME & SPECS
+    window.showFileInfoModal = function(index) {
+      const p = loadedPages[index];
+      if (!p) return;
+      document.getElementById('modalFullFileName').innerText = p.file.name;
+      document.getElementById('modalDocPage').innerText = `Item ${index + 1} (Page ${p.docPageNum} of ${p.totalDocPages || 1})`;
+      document.getElementById('modalFileSize').innerText = formatBytes(p.file.size);
+      document.getElementById('modalFileType').innerText = p.file.type || p.file.name.split('.').pop().toUpperCase();
+      document.getElementById('modalFileRotation').innerText = `${p.rotation}°`;
+      document.getElementById('fileInfoModal').classList.add('active');
+    };
+
+    window.closeFileInfoModal = function() {
+      document.getElementById('fileInfoModal').classList.remove('active');
+    };
 
     window.togglePageSelect = function(index, checked) {
       loadedPages[index].isSelected = checked;
@@ -1185,6 +1405,35 @@
       updateActionState();
     };
 
+    // PAGE RANGE "FROM" AND "TO" LOGIC
+    const rangeFromInput = document.getElementById('rangeFromInput');
+    const rangeToInput = document.getElementById('rangeToInput');
+
+    function applyFromToRange() {
+      const total = loadedPages.length;
+      if (total === 0) return;
+
+      const fromVal = parseInt(rangeFromInput.value, 10);
+      const toVal = parseInt(rangeToInput.value, 10);
+
+      const start = isNaN(fromVal) ? 1 : Math.max(1, fromVal);
+      const end = isNaN(toVal) ? total : Math.min(total, toVal);
+
+      loadedPages.forEach((p, idx) => {
+        const pageNum = idx + 1;
+        p.isSelected = (pageNum >= start && pageNum <= end);
+      });
+
+      renderCardsUI();
+      updateStats();
+      syncRangeInputFromSelection();
+      updateActionState();
+    }
+
+    rangeFromInput.addEventListener('input', applyFromToRange);
+    rangeToInput.addEventListener('input', applyFromToRange);
+
+    // QUICK RANGE PILLS
     window.applyQuickRange = function(type) {
       loadedPages.forEach((p, idx) => {
         const pageNum = idx + 1;
@@ -1199,6 +1448,7 @@
       updateActionState();
     };
 
+    // CUSTOM COMMA RANGE INPUT
     const customRangeInput = document.getElementById('customRangeInput');
     customRangeInput.addEventListener('input', (e) => {
       const val = e.target.value.trim();
@@ -1232,6 +1482,13 @@
         if (p.isSelected) selectedNums.push(idx + 1);
       });
       customRangeInput.value = selectedNums.join(', ');
+      if (selectedNums.length > 0) {
+        rangeFromInput.value = selectedNums[0];
+        rangeToInput.value = selectedNums[selectedNums.length - 1];
+      } else {
+        rangeFromInput.value = '';
+        rangeToInput.value = '';
+      }
     }
 
     function updateStats() {
@@ -1253,7 +1510,7 @@
       }
     }
 
-    // Helper: Safely embed any image into PDF-Lib document via browser canvas
+    // Embed image helper
     async function embedImageToPdf(pdfDoc, item) {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -1288,7 +1545,9 @@
       btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing Locally...`;
 
       try {
-        if (currentMode === 'pdf2word') {
+        if (currentMode === 'merge-word') {
+          await executeMergeWord();
+        } else if (currentMode === 'pdf2word') {
           await executePdfToWord();
         } else if (currentMode === 'word2pdf') {
           await executeWordToPdf();
@@ -1329,7 +1588,7 @@
         } else if (currentMode === 'nup-2' || currentMode === 'nup-4') {
           await executeNupPdf(currentMode === 'nup-2' ? 2 : 4);
         } else {
-          // Standard Suite: merge, split, delete, rotate, sign-pdf, watermark, redact, flatten, protect, numbering, header-footer, margins, crop, deskew, repair, img2pdf
+          // Standard Suite
           let targetPages = loadedPages;
           if (currentMode === 'split') targetPages = loadedPages.filter(p => p.isSelected);
           if (currentMode === 'delete') targetPages = loadedPages.filter(p => !p.isSelected);
@@ -1345,8 +1604,44 @@
       }
     });
 
-    // 1. PDF TO WORD (.docx)
+    // 1. MERGE WORD FILES (.docx)
+    async function executeMergeWord() {
+      const docxFiles = uploadedRawFiles.filter(f => f.name.toLowerCase().endsWith('.docx'));
+      if (docxFiles.length < 2) {
+        throw new Error("Please select or drop at least two Microsoft Word (.docx) files to merge.");
+      }
+
+      const baseName = docxFiles[0].name.replace(/\.[^/.]+$/, "");
+      const masterZip = await JSZip.loadAsync(await docxFiles[0].arrayBuffer());
+      let masterDocXml = await masterZip.file("word/document.xml").async("text");
+
+      const bodyEndIndex = masterDocXml.indexOf("</w:body>");
+      if (bodyEndIndex === -1) throw new Error("Invalid master Word document structure.");
+
+      let combinedBodyChildren = '';
+      for (let i = 1; i < docxFiles.length; i++) {
+        const nextZip = await JSZip.loadAsync(await docxFiles[i].arrayBuffer());
+        const nextDocXml = await nextZip.file("word/document.xml").async("text");
+        
+        const nextStart = nextDocXml.indexOf("<w:body>") + 8;
+        const nextEnd = nextDocXml.indexOf("</w:body>");
+        if (nextStart !== -1 && nextEnd !== -1) {
+          let innerXml = nextDocXml.substring(nextStart, nextEnd);
+          innerXml = innerXml.replace(/<w:sectPr>[\s\S]*?<\/w:sectPr>/g, '');
+          combinedBodyChildren += `<w:p><w:r><w:br w:type="page"/></w:r></w:p>` + innerXml;
+        }
+      }
+
+      masterDocXml = masterDocXml.substring(0, bodyEndIndex) + combinedBodyChildren + masterDocXml.substring(bodyEndIndex);
+      masterZip.file("word/document.xml", masterDocXml);
+
+      const mergedBlob = await masterZip.generateAsync({ type: "blob" });
+      downloadBlob(mergedBlob, `${baseName}_merged.docx`);
+    }
+
+    // 2. PDF TO WORD (.docx)
     async function executePdfToWord() {
+      const baseName = getOriginalBaseName('Converted_Document');
       const paragraphs = [];
       for (const item of loadedPages) {
         if (item.type === 'pdf') {
@@ -1374,14 +1669,15 @@
       zip.file("word/document.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${pXml}<w:sectPr/></w:body></w:document>`);
 
       const docxBlob = await zip.generateAsync({ type: "blob" });
-      downloadBlob(docxBlob, "PDFMaster555_Export.docx");
+      downloadBlob(docxBlob, `${baseName}.docx`);
     }
 
-    // 2. WORD TO PDF (.docx -> .pdf)
+    // 3. WORD TO PDF (.docx -> .pdf)
     async function executeWordToPdf() {
       const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.docx')) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload a Microsoft Word (.docx) file.");
 
+      const baseName = file.name.replace(/\.[^/.]+$/, "");
       const arrayBuffer = await file.arrayBuffer();
       let extractedText = '';
       try {
@@ -1412,11 +1708,12 @@
       }
 
       const pdfBytes = await pdfDoc.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_Converted.pdf");
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 3. PDF TO EXCEL (.xlsx)
+    // 4. PDF TO EXCEL (.xlsx)
     async function executePdfToExcel() {
+      const baseName = getOriginalBaseName('Extracted_Spreadsheet');
       const rows = [];
       for (const item of loadedPages) {
         if (item.type === 'pdf') {
@@ -1442,14 +1739,15 @@
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, "Data");
       const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), "PDFMaster555_Data.xlsx");
+      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${baseName}.xlsx`);
     }
 
-    // 4. EXCEL / CSV TO PDF
+    // 5. EXCEL / CSV TO PDF
     async function executeExcelToPdf() {
       const file = uploadedRawFiles.find(f => f.name.match(/\.(xlsx|xls|csv)$/i)) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload an Excel or CSV spreadsheet.");
 
+      const baseName = file.name.replace(/\.[^/.]+$/, "");
       const arrayBuffer = await file.arrayBuffer();
       const workbook = XLSX.read(arrayBuffer, { type: 'array' });
       const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -1459,7 +1757,7 @@
       const pdfDoc = await PDFLib.PDFDocument.create();
       const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
-      let page = pdfDoc.addPage([842, 595]); // Landscape A4
+      let page = pdfDoc.addPage([842, 595]);
       let y = 550;
 
       rows.slice(0, 120).forEach(row => {
@@ -1474,12 +1772,13 @@
       });
 
       const pdfBytes = await pdfDoc.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_Spreadsheet.pdf");
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 5. PDF TO POWERPOINT (.pptx)
+    // 6. PDF TO POWERPOINT (.pptx)
     async function executePdfToPpt() {
       if (typeof window.PptxGenJS === 'undefined') throw new Error("Presentation engine initializing. Please try again.");
+      const baseName = getOriginalBaseName('Presentation');
       const pptx = new window.PptxGenJS();
 
       for (let i = 0; i < loadedPages.length; i++) {
@@ -1487,14 +1786,15 @@
         slide.addImage({ data: loadedPages[i].canvasDataUrl, x: 0, y: 0, w: '100%', h: '100%' });
       }
 
-      await pptx.writeFile({ fileName: "PDFMaster555_Slides.pptx" });
+      await pptx.writeFile({ fileName: `${baseName}.pptx` });
     }
 
-    // 6. POWERPOINT TO PDF (.pptx -> .pdf)
+    // 7. POWERPOINT TO PDF (.pptx -> .pdf)
     async function executePptToPdf() {
       const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.pptx')) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload a PowerPoint (.pptx) file.");
 
+      const baseName = file.name.replace(/\.[^/.]+$/, "");
       const arrayBuffer = await file.arrayBuffer();
       const zip = await JSZip.loadAsync(arrayBuffer);
       const PDFLib = await getPdfLib();
@@ -1517,11 +1817,12 @@
       }
 
       const pdfBytes = await pdfDoc.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_Presentation.pdf");
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 7. PDF TO TEXT
+    // 8. PDF TO TEXT
     async function executePdfToText() {
+      const baseName = getOriginalBaseName('Extracted_Text');
       let fullText = '';
       for (let i = 0; i < loadedPages.length; i++) {
         const item = loadedPages[i];
@@ -1532,11 +1833,12 @@
           fullText += `--- Page ${i + 1} ---\n` + content.items.map(it => it.str).join(' ') + '\n\n';
         }
       }
-      downloadBlob(new Blob([fullText], { type: 'text/plain;charset=utf-8' }), 'PDFMaster555_Export.txt');
+      downloadBlob(new Blob([fullText], { type: 'text/plain;charset=utf-8' }), `${baseName}.txt`);
     }
 
-    // 8. PDF TO JSON
+    // 9. PDF TO JSON
     async function executePdfToJson() {
+      const baseName = getOriginalBaseName('Extracted_Data');
       const output = { generatedAt: new Date().toISOString(), pages: [] };
       for (let i = 0; i < loadedPages.length; i++) {
         const item = loadedPages[i];
@@ -1551,11 +1853,12 @@
           });
         }
       }
-      downloadBlob(new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' }), 'PDFMaster555_Extracted.json');
+      downloadBlob(new Blob([JSON.stringify(output, null, 2)], { type: 'application/json' }), `${baseName}.json`);
     }
 
-    // 9. PDF TO HTML
+    // 10. PDF TO HTML
     async function executePdfToHtml() {
+      const baseName = getOriginalBaseName('Rendered_Document');
       let bodyHtml = '';
       for (let i = 0; i < loadedPages.length; i++) {
         const item = loadedPages[i];
@@ -1567,13 +1870,14 @@
           bodyHtml += `<section style="margin-bottom:2rem; padding:1.2rem; border:1px solid #ccc; border-radius:8px;"><h2>Page ${i + 1}</h2><p style="line-height:1.6;">${pText}</p></section>`;
         }
       }
-      const fullHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>PDF Export</title><style>body{font-family:sans-serif; max-width:800px; margin:2rem auto; padding:0 1rem; color:#111;}</style></head><body><h1>Document Export</h1>${bodyHtml}</body></html>`;
-      downloadBlob(new Blob([fullHtml], { type: 'text/html' }), 'PDFMaster555_Document.html');
+      const fullHtml = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>${baseName}</title><style>body{font-family:sans-serif; max-width:800px; margin:2rem auto; padding:0 1rem; color:#111;}</style></head><body><h1>${baseName}</h1>${bodyHtml}</body></html>`;
+      downloadBlob(new Blob([fullHtml], { type: 'text/html' }), `${baseName}.html`);
     }
 
-    // 10. TEXT / MARKDOWN TO PDF
+    // 11. TEXT / MARKDOWN TO PDF
     async function executeTxtToPdf() {
       const file = uploadedRawFiles.find(f => f.name.match(/\.(txt|md)$/i)) || (loadedPages[0] && loadedPages[0].file);
+      const baseName = file ? file.name.replace(/\.[^/.]+$/, "") : "Document";
       const text = file ? await file.text() : "Standard Document Content";
 
       const PDFLib = await getPdfLib();
@@ -1594,11 +1898,12 @@
       }
 
       const pdfBytes = await pdfDoc.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), "PDFMaster555_Rendered.pdf");
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 11. STANDARD PDF BUILDER (IMAGES, MERGE, SPLIT, ROTATE, WATERMARK, SIGN, MARGINS, ETC.)
+    // 12. STANDARD PDF BUILDER
     async function executeStandardPdfBuild(targetPages) {
+      const baseName = getOriginalBaseName('Document');
       const PDFLib = await getPdfLib();
       const { PDFDocument, degrees } = PDFLib;
       const finalPdf = await PDFDocument.create();
@@ -1630,7 +1935,6 @@
           }
           finalPdf.addPage(copiedPage);
         } else if (item.type === 'image' || item.type === 'office') {
-          // Robust universal image embedding (works with any JPG, PNG, WebP, Camera shot)
           const imgData = await embedImageToPdf(finalPdf, item);
           const page = finalPdf.addPage([imgData.width, imgData.height]);
           page.drawImage(imgData.embedded, { x: 0, y: 0, width: imgData.width, height: imgData.height });
@@ -1642,11 +1946,12 @@
 
       await applyOverlays(finalPdf);
       const pdfBytes = await finalPdf.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${currentMode}.pdf`);
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_${currentMode}.pdf`);
     }
 
-    // 12. COMPRESS PDF
+    // 13. COMPRESS PDF
     async function executeCompressPdf(targetPages) {
+      const baseName = getOriginalBaseName('Compressed_Document');
       const PDFLib = await getPdfLib();
       const { PDFDocument } = PDFLib;
       const compressedPdf = await PDFDocument.create();
@@ -1680,11 +1985,12 @@
       }
 
       const pdfBytes = await compressedPdf.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_compressed.pdf`);
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_compressed.pdf`);
     }
 
-    // 13. FILTERS (GRAYSCALE, INVERT, HIGH-CONTRAST)
+    // 14. FILTERS (GRAYSCALE, INVERT, HIGH-CONTRAST)
     async function executeCanvasFilterBuild(targetPages, filterType) {
+      const baseName = getOriginalBaseName('Document');
       const PDFLib = await getPdfLib();
       const { PDFDocument } = PDFLib;
       const filteredPdf = await PDFDocument.create();
@@ -1727,11 +2033,12 @@
       }
 
       const pdfBytes = await filteredPdf.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${filterType}.pdf`);
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_${filterType}.pdf`);
     }
 
-    // 14. N-UP PRINT (2-UP or 4-UP)
+    // 15. N-UP PRINT (2-UP or 4-UP)
     async function executeNupPdf(pagesPerSheet) {
+      const baseName = getOriginalBaseName('Document');
       const PDFLib = await getPdfLib();
       const { PDFDocument } = PDFLib;
       const nupDoc = await PDFDocument.create();
@@ -1752,7 +2059,7 @@
         }
       }
 
-      const sheetWidth = 842; // A4 Landscape
+      const sheetWidth = 842;
       const sheetHeight = 595;
 
       for (let i = 0; i < renderedImages.length; i += pagesPerSheet) {
@@ -1775,10 +2082,10 @@
       }
 
       const pdfBytes = await nupDoc.save();
-      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `PDFMaster555_${pagesPerSheet}up.pdf`);
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_${pagesPerSheet}up.pdf`);
     }
 
-    // 15. OVERLAYS & METADATA (WATERMARK, SIGNATURE, NUMBERING, REDACT, ETC.)
+    // 16. OVERLAYS & METADATA
     async function applyOverlays(pdfDoc) {
       const PDFLib = await getPdfLib();
       const { rgb, degrees } = PDFLib;
@@ -1807,22 +2114,6 @@
         pdfDoc.getPages().forEach(p => {
           const { width } = p.getSize();
           p.drawImage(sigImg, { x: width - 170, y: 30, width: 140, height: 50 });
-        });
-      }
-
-      // Redact Region
-      if (currentMode === 'redact') {
-        const areaSelect = document.getElementById('redactAreaSelect');
-        const mode = areaSelect ? areaSelect.value : 'top';
-        pdfDoc.getPages().forEach(p => {
-          const { width, height } = p.getSize();
-          if (mode === 'top') {
-            p.drawRectangle({ x: 30, y: height - 70, width: width - 60, height: 40, color: rgb(0, 0, 0) });
-          } else if (mode === 'bottom') {
-            p.drawRectangle({ x: 30, y: 30, width: width - 60, height: 40, color: rgb(0, 0, 0) });
-          } else {
-            p.drawRectangle({ x: width * 0.25, y: height * 0.45, width: width * 0.5, height: 60, color: rgb(0, 0, 0) });
-          }
         });
       }
 
@@ -1862,13 +2153,14 @@
       }
     }
 
-    // 16. EXPORT IMAGES (SINGLE OR ZIP)
+    // 17. EXPORT IMAGES (SINGLE OR ZIP)
     async function executeDownloadImages(format = 'jpeg') {
+      const baseName = getOriginalBaseName('Export');
       const selected = loadedPages.filter(p => p.isSelected);
       if (selected.length === 1) {
         const a = document.createElement('a');
         a.href = selected[0].canvasDataUrl;
-        a.download = `PDFMaster555_page_1.${format === 'png' ? 'png' : 'jpg'}`;
+        a.download = `${baseName}_page_1.${format === 'png' ? 'png' : 'jpg'}`;
         a.click();
         return;
       }
@@ -1878,11 +2170,12 @@
         zip.file(`page_${i + 1}.${format === 'png' ? 'png' : 'jpg'}`, bytes);
       }
       const zipContent = await zip.generateAsync({ type: 'blob' });
-      downloadBlob(zipContent, `PDFMaster555_${format}_images.zip`);
+      downloadBlob(zipContent, `${baseName}_${format}_images.zip`);
     }
 
-    // 17. EXTRACT EMBEDDED IMAGES
+    // 18. EXTRACT EMBEDDED IMAGES
     async function executeExtractEmbeddedImages() {
+      const baseName = getOriginalBaseName('Extracted_Assets');
       const zip = new JSZip();
       let count = 0;
       for (let i = 0; i < loadedPages.length; i++) {
@@ -1892,7 +2185,7 @@
       }
       if (count === 0) throw new Error("No embedded figures discovered.");
       const zipContent = await zip.generateAsync({ type: 'blob' });
-      downloadBlob(zipContent, 'PDFMaster555_Extracted_Assets.zip');
+      downloadBlob(zipContent, `${baseName}.zip`);
     }
 
     // DOWNLOAD HELPER
