@@ -4,17 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>PDFMaster555 — Professional High-Fidelity Document Suite</title>
-
+  <title>PDFMaster555 — Professional Lossless Document Suite</title>
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"> 
   <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  
-  <!-- High-Precision Client-Side Document Engines -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />  
+  <!-- Client-Side Document Engines -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -98,67 +95,68 @@
     }
 
     /* HERO */
-    .hero { text-align: center; padding: 2.8rem 1rem 1.8rem 1rem; max-width: 900px; margin: 0 auto; }
+    .hero { text-align: center; padding: 2.2rem 1rem 1.4rem 1rem; max-width: 950px; margin: 0 auto; }
     .hero-badge-pill {
       display: inline-flex; align-items: center; gap: 8px;
       background: #e0f2fe; color: #0284c7; font-weight: 700; font-size: 0.78rem;
-      padding: 5px 13px; border-radius: 50px; margin-bottom: 1rem;
+      padding: 5px 13px; border-radius: 50px; margin-bottom: 0.8rem;
       border: 1px solid #bae6fd;
     }
-    .hero h1 { font-size: 2.4rem; font-weight: 900; color: #0f172a; margin-bottom: 0.8rem; letter-spacing: -1px; line-height: 1.25; }
+    .hero h1 { font-size: 2.2rem; font-weight: 900; color: #0f172a; margin-bottom: 0.6rem; letter-spacing: -1px; line-height: 1.25; }
     .hero h1 span { background: linear-gradient(135deg, #0284c7, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .hero p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.55; max-width: 700px; margin: 0 auto; }
-    .hero-features-bar { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 1.3rem; font-size: 0.84rem; font-weight: 600; color: #334155; }
-    .hero-features-bar span { display: inline-flex; align-items: center; gap: 6px; }
-    .hero-features-bar i { color: #16a34a; }
+    .hero p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; max-width: 720px; margin: 0 auto; }
 
     /* WORKSPACE */
-    .workspace-container { max-width: 1300px; margin: 1rem auto 3rem auto; width: 94%; }
+    .workspace-container { max-width: 1340px; margin: 0.8rem auto 3rem auto; width: 94%; }
     .tool-tabs-bar {
       display: flex; gap: 6px; overflow-x: auto; padding: 8px;
       background: #ffffff; border: 1px solid var(--border-color);
-      border-radius: var(--radius-md); margin-bottom: 1.3rem;
+      border-radius: var(--radius-md); margin-bottom: 1.2rem;
       box-shadow: var(--shadow-subtle); -webkit-overflow-scrolling: touch;
       scrollbar-width: thin;
     }
-    .tool-tabs-bar::-webkit-scrollbar { height: 4px; }
+    .tool-tabs-bar::-webkit-scrollbar { height: 5px; }
     .tool-tabs-bar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
 
     .tool-tab-btn {
-      padding: 8px 14px; border: 1px solid transparent; background: transparent;
-      color: var(--text-muted); font-size: 0.84rem; font-weight: 700; border-radius: 8px;
-      cursor: pointer; white-space: nowrap; transition: 0.2s; display: inline-flex; align-items: center; gap: 7px;
+      padding: 8px 13px; border: 1px solid transparent; background: transparent;
+      color: var(--text-muted); font-size: 0.82rem; font-weight: 700; border-radius: 8px;
+      cursor: pointer; white-space: nowrap; transition: 0.2s; display: inline-flex; align-items: center; gap: 6px;
       flex-shrink: 0;
     }
     .tool-tab-btn:hover { background: #f8fafc; color: var(--text-main); }
     .tool-tab-btn.active { background: #090d16; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3); }
 
-    .workspace-layout { display: grid; grid-template-columns: 1fr 380px; gap: 20px; align-items: start; }
+    .workspace-layout { display: grid; grid-template-columns: 1fr 390px; gap: 20px; align-items: start; }
 
     /* DROPZONE CARD */
     .dropzone-card {
       background: #ffffff; border: 2px dashed #93c5fd;
-      border-radius: var(--radius-lg); padding: 2.2rem 1.4rem; text-align: center; cursor: pointer;
+      border-radius: var(--radius-lg); padding: 1.8rem 1.4rem; text-align: center; cursor: pointer;
       transition: all 0.25s; margin-bottom: 1.2rem; box-shadow: var(--shadow-subtle);
     }
     .dropzone-card:hover, .dropzone-card.dragover { border-color: var(--primary); background: #f0f9ff; }
-    .dropzone-card i.upload-icon { font-size: 2.6rem; color: var(--primary); margin-bottom: 0.65rem; }
-    .dropzone-card h3 { font-size: 1.25rem; font-weight: 800; color: #0f172a; word-break: break-word; }
+    .dropzone-card i.upload-icon { font-size: 2.4rem; color: var(--primary); margin-bottom: 0.5rem; }
+    .dropzone-card h3 { font-size: 1.2rem; font-weight: 800; color: #0f172a; word-break: break-word; }
     
-    .upload-btn-group { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 14px; flex-wrap: wrap; }
+    .upload-btn-group { display: flex; gap: 10px; justify-content: center; align-items: center; margin-top: 12px; flex-wrap: wrap; }
     .btn-select-file, .btn-select-folder {
-      display: inline-flex; align-items: center; gap: 6px; padding: 0.65rem 1.4rem;
+      display: inline-flex; align-items: center; gap: 6px; padding: 0.6rem 1.2rem;
       background: var(--dark-navy); color: #fff; font-weight: 700;
-      font-size: 0.88rem; border: none; border-radius: var(--radius-sm); cursor: pointer;
+      font-size: 0.86rem; border: none; border-radius: var(--radius-sm); cursor: pointer;
       transition: 0.2s; box-shadow: 0 4px 10px rgba(0,0,0,0.12);
     }
     .btn-select-file:hover, .btn-select-folder:hover { background: #1e293b; color: #38bdf8; }
 
+    .multi-folder-box {
+      display: inline-flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #334155; margin-top: 10px; font-weight: 600;
+    }
+
     .cards-wrapper {
       border: 1px solid var(--border-color); border-radius: var(--radius-lg);
-      background: #ffffff; padding: 1.4rem; min-height: 280px; box-shadow: var(--shadow-subtle);
+      background: #ffffff; padding: 1.2rem; min-height: 280px; box-shadow: var(--shadow-subtle);
     }
-    .cards-instruction { text-align: center; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
+    .cards-instruction { text-align: center; font-size: 0.88rem; color: var(--text-muted); margin-bottom: 1rem; line-height: 1.5; }
 
     /* SIDEBAR */
     .workspace-sidebar {
@@ -183,14 +181,15 @@
     .stats-card-box div { display: flex; justify-content: space-between; margin-bottom: 4px; color: var(--text-muted); }
     .stats-card-box strong { color: var(--text-main); }
 
-    .sidebar-field-group { margin-bottom: 1.1rem; }
+    .sidebar-field-group { margin-bottom: 1rem; }
     .sidebar-field-group label { display: block; font-size: 0.82rem; font-weight: 700; color: #334155; margin-bottom: 5px; }
-    .sidebar-input, .sidebar-select {
-      width: 100%; padding: 0.68rem 0.8rem; background: #ffffff;
+    .sidebar-input, .sidebar-select, .sidebar-textarea {
+      width: 100%; padding: 0.65rem 0.8rem; background: #ffffff;
       border: 1.5px solid var(--border-color); border-radius: var(--radius-sm); color: #0f172a;
       font-size: 0.86rem; outline: none; transition: 0.2s;
     }
-    .sidebar-input:focus, .sidebar-select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+    .sidebar-textarea { min-height: 65px; resize: vertical; }
+    .sidebar-input:focus, .sidebar-select:focus, .sidebar-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
     .field-hint { font-size: 0.73rem; color: var(--text-muted); margin-top: 5px; display: block; line-height: 1.4; }
 
     .range-inputs-dual { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
@@ -231,12 +230,12 @@
     .card-preview-box {
       width: 100%; height: 260px; background: #f8fafc; border-radius: 8px;
       display: flex; align-items: center; justify-content: center; overflow: hidden;
-      border: 1px solid #e2e8f0; position: relative;
+      border: 1px solid #e2e8f0; position: relative; cursor: pointer;
     }
     .card-preview-box img.page-render-img { max-width: 100%; max-height: 100%; object-fit: contain; pointer-events: none; }
     
-    /* DRAGGABLE SIGNATURE OVERLAY IN PREVIEW */
-    .sig-draggable-overlay {
+    /* DRAGGABLE SIGNATURE & TEXT OVERLAY */
+    .draggable-stamp-box {
       position: absolute;
       border: 2px dashed #0284c7;
       background: rgba(2, 132, 199, 0.12);
@@ -247,11 +246,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 4px;
+      box-sizing: border-box;
+      overflow: hidden;
     }
-    .sig-draggable-overlay img {
-      width: 100%; height: 100%; object-fit: contain; pointer-events: none;
-    }
-    .sig-resize-handle {
+    .draggable-stamp-box img { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+    .stamp-resize-handle {
       position: absolute; bottom: -4px; right: -4px; width: 14px; height: 14px;
       background: #0284c7; border-radius: 50%; cursor: se-resize;
     }
@@ -318,7 +318,6 @@
       box-shadow: var(--shadow-subtle);
     }
     .tool-card:hover { transform: translateY(-4px); border-color: #7dd3fc; box-shadow: var(--shadow-hover); }
-
     .tool-header-row { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-bottom: 0.9rem; }
     .tool-tag { font-size: 0.66rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.6px; padding: 3px 7px; border-radius: 6px; }
     .tool-star { color: #cbd5e1; font-size: 0.9rem; }
@@ -327,7 +326,6 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 1.35rem; margin-bottom: 0.85rem;
     }
-
     .theme-word { background: #eff6ff; color: #2563eb; border: 1px solid #bfdbfe; }
     .theme-excel { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
     .theme-ppt { background: #fff7ed; color: #ea580c; border: 1px solid #fed7aa; }
@@ -335,12 +333,10 @@
     .theme-opt { background: #faf5ff; color: #7c3aed; border: 1px solid #e9d5ff; }
     .theme-sec { background: #fef2f2; color: #dc2626; border: 1px solid #fecaca; }
     .theme-cad { background: #fefce8; color: #ca8a04; border: 1px solid #fef08a; }
-
     .tool-card h4 { font-size: 1.02rem; font-weight: 800; color: #0f172a; margin-bottom: 0.35rem; letter-spacing: -0.3px; display: flex; align-items: center; gap: 6px; }
     .tool-card h4 span.highlight-format { color: #0284c7; }
     .tool-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; flex-grow: 1; }
     .tool-action-cta { margin-top: 0.9rem; font-size: 0.8rem; font-weight: 700; color: #0284c7; display: flex; align-items: center; gap: 5px; }
-
     /* MODAL */
     .file-info-modal {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -362,7 +358,6 @@
     .modal-row strong { display: block; font-size: 0.78rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 2px; }
     .modal-row span { font-size: 0.92rem; color: var(--text-main); word-break: break-all; font-weight: 600; }
 
-    /* PRECISE OFFLOAD RENDER CONTAINER */
     #hiddenTemplateContainer {
       position: fixed; left: -9999px; top: 0;
       width: 1024px; background: #ffffff;
@@ -394,7 +389,6 @@
   </style>
 </head>
 <body>
-
   <!-- HEADER -->
   <header class="top-ribbon">
     <a href="#" class="brand-logo-unit">
@@ -405,7 +399,6 @@
         <span class="brand-badge-555">555</span>
       </div>
     </a>
-
     <button type="button" class="nav-toggle-btn" id="mobileNavToggle" aria-label="Toggle Navigation">
       <i class="fa-solid fa-bars"></i>
     </button>
@@ -423,15 +416,8 @@
     <div class="hero-badge-pill">
       <i class="fa-solid fa-shield-halved"></i> 100% Client-Side Private Document Engine
     </div>
-    <h1>Lossless Document & <span>PDF Architecture</span></h1>
-    <p>Zero quality degradation. Full layout, vector styling, table structures, and formatting are strictly preserved in your browser memory.</p>
-    
-    <div class="hero-features-bar">
-      <span><i class="fa-solid fa-circle-check"></i> Zero File Uploads</span>
-      <span><i class="fa-solid fa-bolt"></i> High-Fidelity Office Conversions</span>
-      <span><i class="fa-solid fa-signature"></i> Precision Drag & Drop Sign</span>
-      <span><i class="fa-solid fa-layer-group"></i> Word, Excel, PPT & CAD Engines</span>
-    </div>
+    <h1>Precision Document & <span>PDF Architecture</span></h1>
+    <p>Zero quality degradation. Intelligent coordinate-based table reconstruction, layout preservation, drag & drop text/signing, and multi-folder batch support.</p>
   </section>
 
   <!-- WORKSPACE -->
@@ -440,19 +426,21 @@
     <!-- TOOL SELECT TABS -->
     <div class="tool-tabs-bar" id="toolTabsBar">
       <button class="tool-tab-btn active" onclick="activateTool('merge')"><i class="fa-solid fa-object-group"></i> Merge PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('insert-blank')"><i class="fa-solid fa-file-circle-plus" style="color:#0284c7;"></i> Insert Blank Page</button>
+      <button class="tool-tab-btn" onclick="activateTool('insert-text')"><i class="fa-solid fa-font" style="color:#059669;"></i> Insert Text Box</button>
       <button class="tool-tab-btn" onclick="activateTool('sign-pdf')"><i class="fa-solid fa-signature" style="color:#dc2626;"></i> Sign PDF (Drag)</button>
+      <button class="tool-tab-btn" onclick="activateTool('pdf2excel')"><i class="fa-solid fa-file-excel" style="color:#059669;"></i> PDF to Excel (Smart)</button>
       <button class="tool-tab-btn" onclick="activateTool('word2pdf')"><i class="fa-solid fa-file-pdf" style="color:#dc2626;"></i> Word to PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('pdf2word')"><i class="fa-solid fa-file-word" style="color:#2563eb;"></i> PDF to Word</button>
       <button class="tool-tab-btn" onclick="activateTool('excel2pdf')"><i class="fa-solid fa-file-lines" style="color:#059669;"></i> Excel to PDF</button>
-      <button class="tool-tab-btn" onclick="activateTool('pdf2excel')"><i class="fa-solid fa-file-excel" style="color:#059669;"></i> PDF to Excel</button>
       <button class="tool-tab-btn" onclick="activateTool('ppt2pdf')"><i class="fa-solid fa-chalkboard-user" style="color:#ea580c;"></i> PPT to PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('pdf2ppt')"><i class="fa-solid fa-file-powerpoint" style="color:#ea580c;"></i> PDF to PPT</button>
       <button class="tool-tab-btn" onclick="activateTool('word2excel')"><i class="fa-solid fa-table" style="color:#059669;"></i> Word to Excel</button>
       <button class="tool-tab-btn" onclick="activateTool('excel2word')"><i class="fa-solid fa-file-word" style="color:#2563eb;"></i> Excel to Word</button>
       <button class="tool-tab-btn" onclick="activateTool('merge-word')"><i class="fa-solid fa-file-word" style="color:#2563eb;"></i> Merge Word</button>
-      <button class="tool-tab-btn" onclick="activateTool('pdf2cad')"><i class="fa-solid fa-compass-drafting" style="color:#ca8a04;"></i> PDF to CAD</button>
-      <button class="tool-tab-btn" onclick="activateTool('cad2pdf')"><i class="fa-solid fa-vector-square" style="color:#ca8a04;"></i> CAD to PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('protect-pdf')"><i class="fa-solid fa-lock" style="color:#dc2626;"></i> Protect PDF</button>
+      <button class="tool-tab-btn" onclick="activateTool('pdf2cad')"><i class="fa-solid fa-compass-drafting" style="color:#ca8a04;"></i> PDF to CAD (.dxf)</button>
+      <button class="tool-tab-btn" onclick="activateTool('cad2pdf')"><i class="fa-solid fa-vector-square" style="color:#ca8a04;"></i> CAD to PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('pdf2html')"><i class="fa-solid fa-code" style="color:#0284c7;"></i> PDF to HTML</button>
       <button class="tool-tab-btn" onclick="activateTool('csv2pdf')"><i class="fa-solid fa-table-cells" style="color:#059669;"></i> CSV to PDF</button>
       <button class="tool-tab-btn" onclick="activateTool('pdf2csv')"><i class="fa-solid fa-file-csv" style="color:#059669;"></i> PDF to CSV</button>
@@ -468,16 +456,22 @@
       <div>
         <div class="dropzone-card" id="dropzone">
           <i class="fa-solid fa-cloud-arrow-up upload-icon" id="dropzoneIcon"></i>
-          <h3 id="dropzoneTitle">Select Document</h3>
-          <p id="dropzoneSubtitle" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;">Drag & drop individual files OR entire folders here</p>
+          <h3 id="dropzoneTitle">Select Documents or Folders</h3>
+          <p id="dropzoneSubtitle" style="color:var(--text-muted); font-size:0.88rem; margin-top:4px;">Drag & drop hundreds of files or multiple folders here</p>
           
           <div class="upload-btn-group">
             <button type="button" class="btn-select-file" id="chooseFilesBtn">
-              <i class="fa-solid fa-folder-open"></i> Browse Files
+              <i class="fa-solid fa-folder-open"></i> Browse Multiple Files
             </button>
             <button type="button" class="btn-select-folder" id="chooseFolderBtn">
-              <i class="fa-solid fa-folder-tree"></i> Choose Folder
+              <i class="fa-solid fa-folder-tree"></i> Add Entire Folder
             </button>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <label class="multi-folder-box" onclick="event.stopPropagation()">
+              <input type="checkbox" id="keepExistingFilesToggle" checked style="accent-color:var(--primary);" /> Keep existing files when adding more folders/files (Append mode)
+            </label>
           </div>
 
           <input type="file" id="fileInput" multiple style="display:none;" />
@@ -491,7 +485,6 @@
           <div class="files-grid" id="filesGrid"></div>
         </div>
       </div>
-
       <!-- RIGHT: CONTROLS SIDEBAR -->
       <aside class="workspace-sidebar">
         <div class="sidebar-header">
@@ -574,7 +567,7 @@
 
       <div class="search-box">
         <i class="fa-solid fa-magnifying-glass"></i>
-        <input type="text" id="toolSearchInput" placeholder="Search: cad, word, excel, ppt, signature, protection..." />
+        <input type="text" id="toolSearchInput" placeholder="Search: excel, blank page, text box, signature, word, cad..." />
       </div>
 
       <div class="filter-tabs" id="filterTabs">
@@ -589,7 +582,6 @@
     <div class="tools-grid" id="toolsGrid"></div>
   </section>
 
-  <!-- PRECISE OFFLOAD RENDER CONTAINER -->
   <div id="hiddenTemplateContainer"></div>
 
   <!-- FOOTER -->
@@ -618,7 +610,7 @@
           'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js'
         ];
         function tryNext(i) {
-          if (i >= cdnList.length) return reject(new Error("PDF-Lib failed to load."));
+          if (i >= cdnList.length) return reject(new Error("PDF-Lib engine failed to initialize."));
           const s = document.createElement('script');
           s.src = cdnList[i];
           s.onload = () => (window.PDFLib ? resolve(window.PDFLib) : tryNext(i + 1));
@@ -631,19 +623,21 @@
 
     const TOOLS_CONFIG = [
       { id: 'merge', name: 'Merge <span class="highlight-format">PDF</span>', rawName: 'Merge PDF', cat: 'organize', theme: 'theme-pdf', tag: 'JOIN FILES', icon: 'fa-object-group', desc: 'Combine multiple individual PDFs and sheets into one ordered document.' },
+      { id: 'insert-blank', name: 'Insert <span class="highlight-format">Blank Page</span>', rawName: 'Insert Blank Page', cat: 'organize', theme: 'theme-pdf', tag: 'BLANK PAGE', icon: 'fa-file-circle-plus', desc: 'Add clean blank A4, Letter, or A3 pages anywhere in your document.' },
+      { id: 'insert-text', name: 'Insert <span class="highlight-format">Text Box</span>', rawName: 'Insert Text Box', cat: 'security', theme: 'theme-sec', tag: 'DRAG TEXT', icon: 'fa-font', desc: 'Add customizable text boxes and drag them anywhere with exact pixel positioning.' },
       { id: 'sign-pdf', name: 'Drag & Drop <span class="highlight-format">Signature</span>', rawName: 'Sign PDF', cat: 'security', theme: 'theme-sec', tag: 'DRAG SIGN', icon: 'fa-signature', desc: 'Draw signature & place it precisely anywhere by dragging directly onto the page.' },
+      { id: 'pdf2excel', name: 'PDF <span class="highlight-format">to Excel</span>', rawName: 'PDF to Excel', cat: 'convert-from', theme: 'theme-excel', tag: 'SMART SPREADSHEET', icon: 'fa-file-excel', desc: 'Extract complex insurance/billing tables into cleanly structured Excel columns without cutoffs.' },
       { id: 'word2pdf', name: 'Word <span class="highlight-format">to PDF</span>', rawName: 'Word to PDF', cat: 'convert-to', theme: 'theme-word', tag: 'DOCX TO PDF', icon: 'fa-file-lines', desc: 'Convert DOCX documents into PDF keeping original layout, tables, fonts & colors intact.' },
       { id: 'pdf2word', name: 'PDF <span class="highlight-format">to Word</span>', rawName: 'PDF to Word', cat: 'convert-from', theme: 'theme-word', tag: 'OFFICE DOCX', icon: 'fa-file-word', desc: 'Extract content into DOCX preserving original page templates, background & text alignment.' },
       { id: 'excel2pdf', name: 'Excel <span class="highlight-format">to PDF</span>', rawName: 'Excel to PDF', cat: 'convert-to', theme: 'theme-excel', tag: 'XLSX TO PDF', icon: 'fa-table', desc: 'Transform spreadsheets into clean printable PDF tables with gridlines, fonts & colors intact.' },
-      { id: 'pdf2excel', name: 'PDF <span class="highlight-format">to Excel</span>', rawName: 'PDF to Excel', cat: 'convert-from', theme: 'theme-excel', tag: 'SPREADSHEET', icon: 'fa-file-excel', desc: 'Extract PDF tables into structured XLSX spreadsheets with high-precision coordinate column mapping.' },
       { id: 'ppt2pdf', name: 'PowerPoint <span class="highlight-format">to PDF</span>', rawName: 'PowerPoint to PDF', cat: 'convert-to', theme: 'theme-ppt', tag: 'PPTX TO PDF', icon: 'fa-chalkboard-user', desc: 'Convert presentation slides (.pptx) into standard presentation PDF preserving graphics.' },
       { id: 'pdf2ppt', name: 'PDF <span class="highlight-format">to PowerPoint</span>', rawName: 'PDF to PowerPoint', cat: 'convert-from', theme: 'theme-ppt', tag: 'SLIDES PPTX', icon: 'fa-file-powerpoint', desc: 'Convert PDF slides directly into presentation decks (.pptx) with exact template fidelity.' },
       { id: 'word2excel', name: 'Word <span class="highlight-format">to Excel</span>', rawName: 'Word to Excel', cat: 'convert-to', theme: 'theme-excel', tag: 'DOCX TO XLSX', icon: 'fa-table-columns', desc: 'Extract tables from Word document directly into cleanly structured Excel worksheets.' },
       { id: 'excel2word', name: 'Excel <span class="highlight-format">to Word</span>', rawName: 'Excel to Word', cat: 'convert-to', theme: 'theme-word', tag: 'XLSX TO DOCX', icon: 'fa-file-word', desc: 'Transform Excel spreadsheets into professionally styled Word documents with tables.' },
       { id: 'merge-word', name: 'Merge <span class="highlight-format">Word (.docx)</span>', rawName: 'Merge Word', cat: 'organize', theme: 'theme-word', tag: 'JOIN DOCX', icon: 'fa-file-word', desc: 'Combine multiple Microsoft Word documents into one master Word file with styles intact.' },
+      { id: 'protect-pdf', name: 'Protect <span class="highlight-format">PDF</span>', rawName: 'Protect PDF', cat: 'security', theme: 'theme-sec', tag: 'SECURITY', icon: 'fa-lock', desc: 'Lock and secure PDF with password protection and enterprise permission flags.' },
       { id: 'pdf2cad', name: 'PDF <span class="highlight-format">to CAD (.dxf)</span>', rawName: 'PDF to CAD', cat: 'convert-from', theme: 'theme-cad', tag: 'AUTOCAD DXF', icon: 'fa-compass-drafting', desc: 'Convert vector PDF blueprints and schematics into AutoCAD-compatible DXF format.' },
       { id: 'cad2pdf', name: 'CAD <span class="highlight-format">to PDF</span>', rawName: 'CAD to PDF', cat: 'convert-to', theme: 'theme-cad', tag: 'DXF TO PDF', icon: 'fa-vector-square', desc: 'Transform AutoCAD DXF blueprint files into standard high-resolution PDF drawings.' },
-      { id: 'protect-pdf', name: 'Protect <span class="highlight-format">PDF</span>', rawName: 'Protect PDF', cat: 'security', theme: 'theme-sec', tag: 'SECURITY', icon: 'fa-lock', desc: 'Lock and secure PDF with password protection and enterprise permission flags.' },
       { id: 'pdf2html', name: 'PDF <span class="highlight-format">to HTML</span>', rawName: 'PDF to HTML', cat: 'convert-from', theme: 'theme-pdf', tag: 'WEB HTML', icon: 'fa-code', desc: 'Convert PDF pages into standalone HTML document preserving typography and assets.' },
       { id: 'csv2pdf', name: 'CSV <span class="highlight-format">to PDF</span>', rawName: 'CSV to PDF', cat: 'convert-to', theme: 'theme-excel', tag: 'TABLE PDF', icon: 'fa-table-cells', desc: 'Convert raw CSV data sheets into beautifully styled PDF reports with clean borders.' },
       { id: 'pdf2csv', name: 'PDF <span class="highlight-format">to CSV</span>', rawName: 'PDF to CSV', cat: 'convert-from', theme: 'theme-excel', tag: 'DATA CSV', icon: 'fa-file-csv', desc: 'Extract structured PDF financial figures and tables into clean CSV comma-separated data.' },
@@ -657,17 +651,25 @@
     let loadedPages = [];
     let uploadedRawFiles = [];
     
-    // Drag-Signature State
+    // Drag Signature State
     let signatureCanvas = null;
     let signatureCtx = null;
     let isDrawingSig = false;
     let sigDataUrl = null;
-    let sigPlacement = {
+    let sigPlacement = { targetIndex: 0, xPercent: 65, yPercent: 75, widthPercent: 28, heightPercent: 14 };
+
+    // Drag Text Box State
+    let textBoxData = {
+      text: 'CONFIRMED & APPROVED',
+      fontSize: 14,
+      fontColor: '#000000',
+      bgColor: 'transparent',
+      hasBorder: true,
       targetIndex: 0,
-      xPercent: 65,
-      yPercent: 75,
-      widthPercent: 28,
-      heightPercent: 14
+      xPercent: 20,
+      yPercent: 20,
+      widthPercent: 45,
+      heightPercent: 12
     };
 
     const mobileNavToggle = document.getElementById('mobileNavToggle');
@@ -751,11 +753,14 @@
       const matched = TOOLS_CONFIG.find(t => t.id === toolId);
       const name = toolName || (matched ? matched.rawName : toolId.toUpperCase());
 
-      loadedPages = [];
-      uploadedRawFiles = [];
-      document.getElementById('rangeFromInput').value = '';
-      document.getElementById('rangeToInput').value = '';
-      document.getElementById('customRangeInput').value = '';
+      // If user is switching to insert blank or text, don't clear already loaded documents
+      if (toolId !== 'insert-blank' && toolId !== 'insert-text' && toolId !== 'sign-pdf') {
+        const keep = document.getElementById('keepExistingFilesToggle').checked;
+        if (!keep) {
+          loadedPages = [];
+          uploadedRawFiles = [];
+        }
+      }
 
       document.getElementById('activeToolBadge').innerText = toolId.toUpperCase().replace('-', ' ');
       document.getElementById('dropzoneTitle').innerText = `Select for ${name}`;
@@ -782,7 +787,7 @@
         document.getElementById('dropzoneSubtitle').innerText = 'Select TIFF archival image files';
       } else {
         fInput.accept = '.pdf,.docx,.xlsx,.xls,.pptx,.csv,.dxf,.tiff,.tif,.jpg,.png';
-        document.getElementById('dropzoneSubtitle').innerText = 'Drag & drop files or folders here';
+        document.getElementById('dropzoneSubtitle').innerText = 'Drag & drop multiple files or entire folders here';
       }
 
       document.querySelectorAll('.tool-tab-btn').forEach(btn => {
@@ -796,7 +801,57 @@
       const dynamicOpts = document.getElementById('dynamicToolOptions');
       dynamicOpts.innerHTML = '';
 
-      if (toolId === 'sign-pdf') {
+      if (toolId === 'insert-blank') {
+        dynamicOpts.innerHTML = `
+          <div class="sidebar-field-group">
+            <label><i class="fa-solid fa-map-pin"></i> Insert Position:</label>
+            <select id="blankInsertPos" class="sidebar-select">
+              <option value="end">At Document End</option>
+              <option value="start">At Document Beginning</option>
+              <option value="after-selected">After Currently Selected Page</option>
+            </select>
+          </div>
+          <div class="sidebar-field-group">
+            <label><i class="fa-solid fa-expand"></i> Page Dimension & Orientation:</label>
+            <select id="blankPageSize" class="sidebar-select">
+              <option value="a4-portrait">A4 (Portrait: 595 x 842)</option>
+              <option value="a4-landscape">A4 (Landscape: 842 x 595)</option>
+              <option value="letter">US Letter (8.5 x 11 in)</option>
+              <option value="a3">A3 Presentation Sheet</option>
+            </select>
+          </div>
+          <button type="button" class="action-btn" style="background:#0284c7; margin-bottom:12px;" onclick="insertBlankPageNow()">
+            <i class="fa-solid fa-plus-circle"></i> Insert Blank Page Now
+          </button>
+        `;
+      } else if (toolId === 'insert-text') {
+        dynamicOpts.innerHTML = `
+          <div class="sidebar-field-group">
+            <label><i class="fa-solid fa-pen-to-square"></i> Text Content:</label>
+            <textarea id="customTextInput" class="sidebar-textarea" oninput="updateCustomTextBoxParams()">${textBoxData.text}</textarea>
+          </div>
+          <div class="range-inputs-dual">
+            <div>
+              <label><i class="fa-solid fa-text-height"></i> Size (pt):</label>
+              <input type="number" id="textFontSize" class="sidebar-input" value="${textBoxData.fontSize}" min="8" max="72" onchange="updateCustomTextBoxParams()" />
+            </div>
+            <div>
+              <label><i class="fa-solid fa-palette"></i> Color:</label>
+              <input type="color" id="textColorPick" class="sidebar-input" style="height:38px; padding:2px;" value="${textBoxData.fontColor}" onchange="updateCustomTextBoxParams()" />
+            </div>
+          </div>
+          <div class="sidebar-field-group">
+            <label><i class="fa-solid fa-border-all"></i> Text Box Style:</label>
+            <select id="textBoxStyleSelect" class="sidebar-select" onchange="updateCustomTextBoxParams()">
+              <option value="border-white">White Background + Border Box</option>
+              <option value="transparent">Transparent Background + Border</option>
+              <option value="highlight">Yellow Highlight Fill</option>
+              <option value="clean">Pure Text Only (No Border)</option>
+            </select>
+          </div>
+          <span class="field-hint"><i class="fa-solid fa-hand-pointer"></i> Drag and resize the text box anywhere directly over the target page preview below.</span>
+        `;
+      } else if (toolId === 'sign-pdf') {
         dynamicOpts.innerHTML = `
           <div class="sidebar-field-group">
             <label><i class="fa-solid fa-pen-nib"></i> Draw Your Signature:</label>
@@ -843,6 +898,89 @@
       updateActionState();
     }
 
+    // 1. INSERT BLANK PAGE ENGINE
+    window.insertBlankPageNow = function() {
+      const pos = document.getElementById('blankInsertPos').value;
+      const sizeOpt = document.getElementById('blankPageSize').value;
+
+      let w = 595, h = 842; // A4 Portrait default
+      if (sizeOpt === 'a4-landscape') { w = 842; h = 595; }
+      else if (sizeOpt === 'letter') { w = 612; h = 792; }
+      else if (sizeOpt === 'a3') { w = 842; h = 1191; }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 240;
+      canvas.height = Math.round(240 * (h / w));
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.strokeStyle = '#cbd5e1';
+      ctx.strokeRect(2, 2, canvas.width - 4, canvas.height - 4);
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = 'bold 13px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('[ Blank Inserted Page ]', canvas.width / 2, canvas.height / 2);
+
+      const blankPageObj = {
+        id: 'blank_' + Math.random().toString(36).substr(2, 9),
+        file: { name: 'Blank_Page.pdf', size: 0, type: 'application/pdf' },
+        fileBytes: null,
+        type: 'blank',
+        docWidth: w,
+        docHeight: h,
+        docPageNum: 1,
+        totalDocPages: 1,
+        canvasDataUrl: canvas.toDataURL('image/jpeg'),
+        isSelected: true
+      };
+
+      if (pos === 'start') {
+        loadedPages.unshift(blankPageObj);
+      } else if (pos === 'after-selected') {
+        const selIdx = loadedPages.findIndex(p => p.isSelected);
+        if (selIdx !== -1) {
+          loadedPages.splice(selIdx + 1, 0, blankPageObj);
+        } else {
+          loadedPages.push(blankPageObj);
+        }
+      } else {
+        loadedPages.push(blankPageObj);
+      }
+
+      renderCardsUI();
+      updateStats();
+      syncRangeInputFromSelection();
+      updateActionState();
+    };
+
+    // 2. TEXT BOX DRAG CONTROLS
+    function updateCustomTextBoxParams() {
+      const text = document.getElementById('customTextInput').value;
+      const size = parseInt(document.getElementById('textFontSize').value, 10) || 14;
+      const color = document.getElementById('textColorPick').value;
+      const style = document.getElementById('textBoxStyleSelect').value;
+
+      textBoxData.text = text;
+      textBoxData.fontSize = size;
+      textBoxData.fontColor = color;
+      
+      if (style === 'transparent') {
+        textBoxData.bgColor = 'rgba(255,255,255,0.2)';
+        textBoxData.hasBorder = true;
+      } else if (style === 'highlight') {
+        textBoxData.bgColor = 'rgba(254, 240, 138, 0.85)';
+        textBoxData.hasBorder = false;
+      } else if (style === 'clean') {
+        textBoxData.bgColor = 'transparent';
+        textBoxData.hasBorder = false;
+      } else {
+        textBoxData.bgColor = '#ffffff';
+        textBoxData.hasBorder = true;
+      }
+      renderCardsUI();
+    }
+
+    // SIGNATURE CANVAS
     function initSignatureCanvas() {
       setTimeout(() => {
         signatureCanvas = document.getElementById('sigCanvas');
@@ -905,6 +1043,7 @@
       renderCardsUI();
     };
 
+    // FILE & FOLDER INPUTS (MULTIPLE FOLDERS SUPPORT)
     const fileInput = document.getElementById('fileInput');
     const folderInput = document.getElementById('folderInput');
     const dropzone = document.getElementById('dropzone');
@@ -954,6 +1093,12 @@
     });
 
     async function handleIncomingFiles(files) {
+      const keep = document.getElementById('keepExistingFilesToggle').checked;
+      if (!keep) {
+        loadedPages = [];
+        uploadedRawFiles = [];
+      }
+
       for (const file of Array.from(files)) {
         uploadedRawFiles.push(file);
         const name = file.name.toLowerCase();
@@ -970,6 +1115,8 @@
           renderCadThumbnail(file);
         } else if (name.match(/\.(tiff|tif)$/i)) {
           await renderTiffThumbnail(file);
+        } else if (name.match(/\.(html|htm)$/i)) {
+          await renderHtmlThumbnail(file);
         } else if (file.type.startsWith('image/') || name.match(/\.(jpg|jpeg|png|webp|gif|bmp)$/i)) {
           await renderImagePage(file);
         } else {
@@ -1111,7 +1258,6 @@
       const ctx = canvas.getContext('2d');
       ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, 240, 300);
       ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 1.5;
-      
       ctx.strokeRect(20, 20, 200, 260);
       ctx.beginPath();
       ctx.moveTo(30, 80); ctx.lineTo(210, 80);
@@ -1150,6 +1296,33 @@
         file: file,
         fileBytes: await file.arrayBuffer(),
         type: 'tiff',
+        docPageNum: 1,
+        totalDocPages: 1,
+        canvasDataUrl: canvas.toDataURL('image/jpeg'),
+        isSelected: true
+      });
+    }
+
+    async function renderHtmlThumbnail(file) {
+      const text = await file.text();
+      const canvas = document.createElement('canvas');
+      canvas.width = 240; canvas.height = 300;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, 240, 300);
+      ctx.fillStyle = '#0284c7'; ctx.fillRect(0, 0, 240, 26);
+      ctx.fillStyle = '#ffffff'; ctx.font = 'bold 12px sans-serif'; ctx.fillText('HTML DOCUMENT', 12, 18);
+
+      ctx.fillStyle = '#334155'; ctx.font = '11px monospace';
+      const clean = text.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim().slice(0, 150);
+      ctx.fillText(clean.slice(0, 25), 15, 60);
+      ctx.fillText(clean.slice(25, 50), 15, 80);
+      ctx.fillText(clean.slice(50, 75), 15, 100);
+
+      loadedPages.push({
+        id: 'p_' + Math.random().toString(36).substr(2, 9),
+        file: file,
+        fileBytes: text,
+        type: 'html',
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1229,7 +1402,7 @@
       });
     }
 
-    // CARDS RENDERING + DRAGGABLE SIGNATURE MOUNTING
+    // CARDS RENDERING + DRAGGABLE SIGNATURE & TEXT MOUNTING
     function renderCardsUI() {
       const grid = document.getElementById('filesGrid');
       grid.innerHTML = '';
@@ -1248,15 +1421,25 @@
         let overlayHtml = '';
         if (currentMode === 'sign-pdf' && sigDataUrl && sigPlacement.targetIndex === index) {
           overlayHtml = `
-            <div class="sig-draggable-overlay" id="dragSigElement" style="left:${sigPlacement.xPercent}%; top:${sigPlacement.yPercent}%; width:${sigPlacement.widthPercent}%; height:${sigPlacement.heightPercent}%;">
+            <div class="draggable-stamp-box" id="activeInteractiveStamp" style="left:${sigPlacement.xPercent}%; top:${sigPlacement.yPercent}%; width:${sigPlacement.widthPercent}%; height:${sigPlacement.heightPercent}%;">
               <img src="${sigDataUrl}" alt="Signature" />
-              <div class="sig-resize-handle" id="sigResizeHandle"></div>
+              <div class="stamp-resize-handle" id="stampResizeHandle"></div>
+            </div>
+          `;
+        } else if (currentMode === 'insert-text' && textBoxData.targetIndex === index) {
+          const borderStyle = textBoxData.hasBorder ? 'border: 1.5px dashed #0284c7;' : 'border: 1.5px dotted transparent;';
+          overlayHtml = `
+            <div class="draggable-stamp-box" id="activeInteractiveStamp" style="left:${textBoxData.xPercent}%; top:${textBoxData.yPercent}%; width:${textBoxData.widthPercent}%; height:${textBoxData.heightPercent}%; background:${textBoxData.bgColor}; ${borderStyle}">
+              <div style="width:100%; height:100%; overflow:hidden; font-size:${Math.max(9, Math.round(textBoxData.fontSize * 0.7))}px; color:${textBoxData.fontColor}; font-weight:700; display:flex; align-items:center; justify-content:center; text-align:center;">
+                ${textBoxData.text.replace(/\n/g, '<br/>')}
+              </div>
+              <div class="stamp-resize-handle" id="stampResizeHandle"></div>
             </div>
           `;
         }
 
         card.innerHTML = `
-          <div class="card-preview-box" id="previewBox_${index}" onclick="switchSignatureTargetPage(${index})">
+          <div class="card-preview-box" id="previewBox_${index}" onclick="switchInteractiveTargetPage(${index})">
             <img class="page-render-img" src="${p.canvasDataUrl}" alt="Page Preview" />
             ${overlayHtml}
           </div>
@@ -1283,8 +1466,8 @@
       addMoreCard.addEventListener('click', () => fileInput.click());
       grid.appendChild(addMoreCard);
 
-      if (currentMode === 'sign-pdf') {
-        mountDraggableSignature();
+      if (currentMode === 'sign-pdf' || currentMode === 'insert-text') {
+        mountInteractiveOverlay();
       } else {
         if (window.pageSortable) window.pageSortable.destroy();
         if (typeof Sortable !== 'undefined') {
@@ -1301,15 +1484,18 @@
       }
     }
 
-    function switchSignatureTargetPage(index) {
-      if (currentMode === 'sign-pdf' && sigDataUrl && sigPlacement.targetIndex !== index) {
+    function switchInteractiveTargetPage(index) {
+      if (currentMode === 'sign-pdf') {
         sigPlacement.targetIndex = index;
+        renderCardsUI();
+      } else if (currentMode === 'insert-text') {
+        textBoxData.targetIndex = index;
         renderCardsUI();
       }
     }
 
-    function mountDraggableSignature() {
-      const el = document.getElementById('dragSigElement');
+    function mountInteractiveOverlay() {
+      const el = document.getElementById('activeInteractiveStamp');
       if (!el) return;
       const parent = el.parentElement;
       let isDragging = false;
@@ -1318,7 +1504,7 @@
       let startLeft = 0, startTop = 0;
       let startWidth = 0, startHeight = 0;
 
-      const resizeHandle = document.getElementById('sigResizeHandle');
+      const resizeHandle = document.getElementById('stampResizeHandle');
       if (resizeHandle) {
         resizeHandle.addEventListener('mousedown', (e) => {
           isResizing = true;
@@ -1331,7 +1517,7 @@
       }
 
       el.addEventListener('mousedown', (e) => {
-        if (e.target.id === 'sigResizeHandle') return;
+        if (e.target.id === 'stampResizeHandle') return;
         isDragging = true;
         startX = e.clientX;
         startY = e.clientY;
@@ -1351,8 +1537,16 @@
           el.style.left = `${newX}px`;
           el.style.top = `${newY}px`;
 
-          sigPlacement.xPercent = (newX / parentRect.width) * 100;
-          sigPlacement.yPercent = (newY / parentRect.height) * 100;
+          const xPct = (newX / parentRect.width) * 100;
+          const yPct = (newY / parentRect.height) * 100;
+
+          if (currentMode === 'sign-pdf') {
+            sigPlacement.xPercent = xPct;
+            sigPlacement.yPercent = yPct;
+          } else {
+            textBoxData.xPercent = xPct;
+            textBoxData.yPercent = yPct;
+          }
         } else if (isResizing) {
           const dx = e.clientX - startX;
           const dy = e.clientY - startY;
@@ -1362,8 +1556,16 @@
           el.style.width = `${newW}px`;
           el.style.height = `${newH}px`;
 
-          sigPlacement.widthPercent = (newW / parentRect.width) * 100;
-          sigPlacement.heightPercent = (newH / parentRect.height) * 100;
+          const wPct = (newW / parentRect.width) * 100;
+          const hPct = (newH / parentRect.height) * 100;
+
+          if (currentMode === 'sign-pdf') {
+            sigPlacement.widthPercent = wPct;
+            sigPlacement.heightPercent = hPct;
+          } else {
+            textBoxData.widthPercent = wPct;
+            textBoxData.heightPercent = hPct;
+          }
         }
       });
 
@@ -1372,22 +1574,18 @@
         isResizing = false; 
       });
 
-      // Touch drag & resize
+      // Touch Events for Mobile / Tablet Drag
       el.addEventListener('touchstart', (e) => {
-        if (e.target.id === 'sigResizeHandle') {
+        if (e.target.id === 'stampResizeHandle') {
           isResizing = true;
           const t = e.touches[0];
-          startX = t.clientX;
-          startY = t.clientY;
-          startWidth = el.offsetWidth;
-          startHeight = el.offsetHeight;
+          startX = t.clientX; startY = t.clientY;
+          startWidth = el.offsetWidth; startHeight = el.offsetHeight;
         } else {
           isDragging = true;
           const t = e.touches[0];
-          startX = t.clientX;
-          startY = t.clientY;
-          startLeft = el.offsetLeft;
-          startTop = el.offsetTop;
+          startX = t.clientX; startY = t.clientY;
+          startLeft = el.offsetLeft; startTop = el.offsetTop;
         }
       }, { passive: false });
 
@@ -1405,8 +1603,10 @@
           el.style.left = `${newX}px`;
           el.style.top = `${newY}px`;
 
-          sigPlacement.xPercent = (newX / parentRect.width) * 100;
-          sigPlacement.yPercent = (newY / parentRect.height) * 100;
+          const xPct = (newX / parentRect.width) * 100;
+          const yPct = (newY / parentRect.height) * 100;
+          if (currentMode === 'sign-pdf') { sigPlacement.xPercent = xPct; sigPlacement.yPercent = yPct; }
+          else { textBoxData.xPercent = xPct; textBoxData.yPercent = yPct; }
         } else if (isResizing) {
           const dx = t.clientX - startX;
           const dy = t.clientY - startY;
@@ -1416,15 +1616,14 @@
           el.style.width = `${newW}px`;
           el.style.height = `${newH}px`;
 
-          sigPlacement.widthPercent = (newW / parentRect.width) * 100;
-          sigPlacement.heightPercent = (newH / parentRect.height) * 100;
+          const wPct = (newW / parentRect.width) * 100;
+          const hPct = (newH / parentRect.height) * 100;
+          if (currentMode === 'sign-pdf') { sigPlacement.widthPercent = wPct; sigPlacement.heightPercent = hPct; }
+          else { textBoxData.widthPercent = wPct; textBoxData.heightPercent = hPct; }
         }
       }, { passive: false });
 
-      window.addEventListener('touchend', () => { 
-        isDragging = false; 
-        isResizing = false; 
-      });
+      window.addEventListener('touchend', () => { isDragging = false; isResizing = false; });
     }
 
     window.showFileInfoModal = function(index) {
@@ -1549,7 +1748,7 @@
     }
 
     // ==========================================
-    // ZERO-LOSS CONVERSION EXECUTOR ENGINES
+    // EXECUTION ROUTER
     // ==========================================
     document.getElementById('actionBtn').addEventListener('click', async () => {
       const btn = document.getElementById('actionBtn');
@@ -1557,14 +1756,20 @@
       btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Processing Document...`;
 
       try {
-        if (currentMode === 'word2pdf') {
+        if (currentMode === 'pdf2excel') {
+          await executePdfToExcelStrict();
+        } else if (currentMode === 'insert-text') {
+          await executeInsertTextBoxIntoPdf();
+        } else if (currentMode === 'insert-blank') {
+          let targetPages = loadedPages.filter(p => p.isSelected);
+          if (targetPages.length === 0) targetPages = loadedPages;
+          await executeMergeOrSplitPdf(targetPages);
+        } else if (currentMode === 'word2pdf') {
           await executeWordToPdfStrict();
         } else if (currentMode === 'pdf2word') {
           await executePdfToWordStrict();
         } else if (currentMode === 'excel2pdf') {
           await executeExcelToPdfStrict();
-        } else if (currentMode === 'pdf2excel') {
-          await executePdfToExcelStrict();
         } else if (currentMode === 'word2excel') {
           await executeWordToExcel();
         } else if (currentMode === 'excel2word') {
@@ -1609,14 +1814,251 @@
       }
     });
 
-    // 1. SIGN PDF WITH DRAG & DROP COORDINATE MAPPING
+    // ==========================================
+    // 1. HIGH-PRECISION PDF TO EXCEL (iLovePDF Style Column Alignment)
+    // ==========================================
+    async function extractPdfTableMatrix() {
+      const allRows = [];
+      const colWidths = [];
+
+      for (const item of loadedPages) {
+        if (item.type === 'pdf') {
+          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
+          const page = await pdf.getPage(item.docPageNum);
+          const content = await page.getTextContent();
+
+          // 1. Extract raw items with position
+          const rawItems = content.items.map(it => ({
+            str: it.str,
+            x: it.transform[4],
+            y: it.transform[5],
+            w: it.width || (it.str.length * 6),
+            h: it.height || 10
+          })).filter(it => it.str && it.str.trim().length > 0);
+
+          if (rawItems.length === 0) continue;
+
+          // 2. Group into vertical rows (tolerance 3.8pt)
+          rawItems.sort((a, b) => b.y - a.y || a.x - b.x);
+
+          const lines = [];
+          let currentLine = [];
+          let currentY = null;
+
+          for (const it of rawItems) {
+            if (currentY === null || Math.abs(it.y - currentY) <= 3.8) {
+              currentLine.push(it);
+              if (currentY === null) currentY = it.y;
+            } else {
+              lines.push(currentLine);
+              currentLine = [it];
+              currentY = it.y;
+            }
+          }
+          if (currentLine.length > 0) lines.push(currentLine);
+
+          // 3. Horizontal Phrase Reconciliation:
+          // Merge text chunks that belong to the same cell phrase (e.g. "Insured" + "Name")
+          const processedLines = lines.map(line => {
+            line.sort((a, b) => a.x - b.x);
+            const merged = [];
+            let curr = null;
+            for (const token of line) {
+              if (!curr) {
+                curr = { ...token };
+              } else {
+                const expectedNextX = curr.x + curr.w;
+                const gap = token.x - expectedNextX;
+                // If gap is small (under 8.5pt), merge into single cell text!
+                if (gap < 8.5 && gap >= -4) {
+                  curr.str += (gap > 1.2 ? ' ' : '') + token.str;
+                  curr.w = (token.x + token.w) - curr.x;
+                } else {
+                  merged.push(curr);
+                  curr = { ...token };
+                }
+              }
+            }
+            if (curr) merged.push(curr);
+            return merged;
+          });
+
+          // 4. Discover Column Boundary Anchors (Histogram-based Clustering)
+          const allX = [];
+          processedLines.forEach(line => {
+            line.forEach(cell => {
+              allX.push(cell.x);
+            });
+          });
+
+          allX.sort((a, b) => a - b);
+          const colAnchors = [];
+          for (const x of allX) {
+            const match = colAnchors.find(anchor => Math.abs(anchor.avg - x) <= 18);
+            if (match) {
+              match.points.push(x);
+              match.avg = match.points.reduce((s, p) => s + p, 0) / match.points.length;
+            } else {
+              colAnchors.push({ avg: x, points: [x] });
+            }
+          }
+          colAnchors.sort((a, b) => a.avg - b.avg);
+
+          // 5. Structure Rows into Structured Multi-Column Array
+          for (const line of processedLines) {
+            if (line.length === 1 && (line[0].str.length > 30 || line[0].str.toUpperCase() === line[0].str)) {
+              allRows.push([line[0].str.trim()]);
+              continue;
+            }
+
+            const rowArray = [];
+            let lastColIdx = -1;
+
+            for (const cell of line) {
+              let bestIdx = 0;
+              let minDiff = 999999;
+              colAnchors.forEach((anc, cIdx) => {
+                const diff = Math.abs(anc.avg - cell.x);
+                if (diff < minDiff) {
+                  minDiff = diff;
+                  bestIdx = cIdx;
+                }
+              });
+
+              if (bestIdx <= lastColIdx) bestIdx = lastColIdx + 1;
+
+              while (rowArray.length < bestIdx) {
+                rowArray.push('');
+              }
+              rowArray[bestIdx] = cell.str.trim();
+              lastColIdx = bestIdx;
+            }
+            allRows.push(rowArray);
+          }
+        }
+      }
+
+      // Calculate auto-fit column widths so no text cuts off
+      allRows.forEach(row => {
+        row.forEach((val, cIdx) => {
+          const len = String(val || '').length;
+          colWidths[cIdx] = Math.max(colWidths[cIdx] || 12, Math.min(len + 4, 65));
+        });
+      });
+
+      return { rows: allRows.length > 0 ? allRows : [["No Tabular Data Found"]], colWidths };
+    }
+
+    async function executePdfToExcelStrict() {
+      const baseName = getOriginalBaseName('Converted_Spreadsheet');
+      const { rows, colWidths } = await extractPdfTableMatrix();
+
+      const ws = XLSX.utils.aoa_to_sheet(rows);
+      ws['!cols'] = colWidths.map(w => ({ wch: w }));
+
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Insurance_Data");
+      const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
+      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${baseName}_perfect.xlsx`);
+    }
+
+    async function executePdfToCsv() {
+      const baseName = getOriginalBaseName('Extracted_Data');
+      const { rows } = await extractPdfTableMatrix();
+      const csvStr = rows.map(r => r.map(c => `"${String(c).replace(/"/g, '""')}"`).join(",")).join("\n");
+      downloadBlob(new Blob([csvStr], { type: 'text/csv;charset=utf-8;' }), `${baseName}.csv`);
+    }
+
+    // ==========================================
+    // 2. INSERT DRAG & DROP TEXT BOX INTO PDF
+    // ==========================================
+    async function executeInsertTextBoxIntoPdf() {
+      if (!textBoxData.text.trim()) throw new Error("Please enter text content for the text box.");
+      const baseName = getOriginalBaseName('Text_Stamped_Document');
+      const PDFLib = await getPdfLib();
+      const finalPdf = await PDFLib.PDFDocument.create();
+      const docCache = new Map();
+
+      for (let i = 0; i < loadedPages.length; i++) {
+        const item = loadedPages[i];
+        let p;
+        if (item.type === 'pdf') {
+          let srcDoc = docCache.get(item.file);
+          if (!srcDoc) {
+            srcDoc = await PDFLib.PDFDocument.load(item.fileBytes.slice(), { ignoreEncryption: true });
+            docCache.set(item.file, srcDoc);
+          }
+          const [copied] = await finalPdf.copyPages(srcDoc, [item.docPageNum - 1]);
+          p = finalPdf.addPage(copied);
+        } else if (item.type === 'blank') {
+          p = finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
+        } else {
+          const imgBytes = dataUrlToBytes(item.canvasDataUrl);
+          const embedded = await finalPdf.embedJpg(imgBytes);
+          p = finalPdf.addPage([595, 842]);
+          p.drawImage(embedded, { x: 0, y: 0, width: 595, height: 842 });
+        }
+
+        if (i === textBoxData.targetIndex) {
+          const { width, height } = p.getSize();
+          const targetW = (width * textBoxData.widthPercent) / 100;
+          const targetH = (height * textBoxData.heightPercent) / 100;
+          const targetX = (width * textBoxData.xPercent) / 100;
+          const targetY = height - ((height * textBoxData.yPercent) / 100) - targetH;
+
+          const offCanvas = document.createElement('canvas');
+          offCanvas.width = Math.round(targetW * 2.5);
+          offCanvas.height = Math.round(targetH * 2.5);
+          const oCtx = offCanvas.getContext('2d');
+
+          if (textBoxData.bgColor !== 'transparent') {
+            oCtx.fillStyle = textBoxData.bgColor;
+            oCtx.fillRect(0, 0, offCanvas.width, offCanvas.height);
+          }
+          if (textBoxData.hasBorder) {
+            oCtx.strokeStyle = '#0284c7';
+            oCtx.lineWidth = 4;
+            oCtx.strokeRect(2, 2, offCanvas.width - 4, offCanvas.height - 4);
+          }
+
+          oCtx.fillStyle = textBoxData.fontColor;
+          oCtx.font = `bold ${Math.round(textBoxData.fontSize * 2.2)}px sans-serif`;
+          oCtx.textAlign = 'center';
+          oCtx.textBaseline = 'middle';
+
+          const lines = textBoxData.text.split('\n');
+          const lineH = Math.round(textBoxData.fontSize * 2.6);
+          const startTextY = (offCanvas.height / 2) - ((lines.length - 1) * (lineH / 2));
+
+          lines.forEach((l, lIdx) => {
+            oCtx.fillText(l, offCanvas.width / 2, startTextY + (lIdx * lineH));
+          });
+
+          const boxBytes = dataUrlToBytes(offCanvas.toDataURL('image/png'));
+          const embeddedBox = await finalPdf.embedPng(boxBytes);
+
+          p.drawImage(embeddedBox, {
+            x: Math.max(0, targetX),
+            y: Math.max(0, targetY),
+            width: targetW,
+            height: targetH
+          });
+        }
+      }
+
+      const pdfBytes = await finalPdf.save();
+      downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_with_text.pdf`);
+    }
+
+    // ==========================================
+    // 3. SIGN PDF WITH DRAG & DROP
+    // ==========================================
     async function executeSignPdfWithDrag() {
       if (!sigDataUrl) throw new Error("Please draw signature and click 'Place on Preview' first.");
       const baseName = getOriginalBaseName('Signed_Document');
       const PDFLib = await getPdfLib();
       const finalPdf = await PDFLib.PDFDocument.create();
       const docCache = new Map();
-
       const sigBytes = dataUrlToBytes(sigDataUrl);
 
       for (let i = 0; i < loadedPages.length; i++) {
@@ -1630,6 +2072,8 @@
           }
           const [copied] = await finalPdf.copyPages(srcDoc, [item.docPageNum - 1]);
           p = finalPdf.addPage(copied);
+        } else if (item.type === 'blank') {
+          p = finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
         } else {
           const imgBytes = dataUrlToBytes(item.canvasDataUrl);
           const embedded = await finalPdf.embedJpg(imgBytes);
@@ -1659,7 +2103,9 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_signed.pdf`);
     }
 
-    // 2. WORD TO PDF (PRESERVES EXACT STYLES, TABLES & SPACING)
+    // ==========================================
+    // 4. OFFICE CONVERSIONS (WORD, EXCEL, PPT, CAD, TIFF, HTML)
+    // ==========================================
     async function executeWordToPdfStrict() {
       const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.docx')) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload a Microsoft Word (.docx) file.");
@@ -1702,7 +2148,6 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 3. EXCEL TO PDF (EXACT GRIDLINES, CELL WIDTHS & TYPOGRAPHY)
     async function executeExcelToPdfStrict() {
       const file = uploadedRawFiles.find(f => f.name.match(/\.(xlsx|xls)$/i)) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload an Excel spreadsheet.");
@@ -1748,7 +2193,6 @@
       await executeExcelToPdfStrict();
     }
 
-    // 4. PDF TO WORD (PRESERVES EXACT ORIGINAL DESIGN + FULL BACKGROUND TEMPLATE)
     async function executePdfToWordStrict() {
       const baseName = getOriginalBaseName('Converted_Document');
       const zip = new JSZip();
@@ -1812,56 +2256,6 @@
       downloadBlob(docxBlob, `${baseName}.docx`);
     }
 
-    // 5. PDF TO EXCEL & PDF TO CSV (PRECISE COORDINATE CLUSTERING)
-    async function extractPdfTableMatrix() {
-      const rows = [];
-      for (const item of loadedPages) {
-        if (item.type === 'pdf') {
-          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
-          const page = await pdf.getPage(item.docPageNum);
-          const content = await page.getTextContent();
-
-          const rowMap = new Map();
-          content.items.forEach(it => {
-            const y = Math.round(it.transform[5]);
-            let foundY = null;
-            for (const key of rowMap.keys()) {
-              if (Math.abs(key - y) <= 4) { foundY = key; break; }
-            }
-            const useY = foundY !== null ? foundY : y;
-            if (!rowMap.has(useY)) rowMap.set(useY, []);
-            rowMap.get(useY).push({ x: it.transform[4], str: it.str.trim() });
-          });
-
-          const sortedYs = Array.from(rowMap.keys()).sort((a, b) => b - a);
-          for (const y of sortedYs) {
-            const rowItems = rowMap.get(y).sort((a, b) => a.x - b.x);
-            const line = rowItems.map(i => i.str).filter(s => s.length > 0);
-            if (line.length > 0) rows.push(line);
-          }
-        }
-      }
-      return rows.length > 0 ? rows : [["No Tabular Data Found"]];
-    }
-
-    async function executePdfToExcelStrict() {
-      const baseName = getOriginalBaseName('Extracted_Spreadsheet');
-      const rows = await extractPdfTableMatrix();
-      const ws = XLSX.utils.aoa_to_sheet(rows);
-      const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-      const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${baseName}.xlsx`);
-    }
-
-    async function executePdfToCsv() {
-      const baseName = getOriginalBaseName('Extracted_Data');
-      const rows = await extractPdfTableMatrix();
-      const csvStr = rows.map(r => r.map(c => `"${c.replace(/"/g, '""')}"`).join(",")).join("\n");
-      downloadBlob(new Blob([csvStr], { type: 'text/csv;charset=utf-8;' }), `${baseName}.csv`);
-    }
-
-    // 6. WORD TO EXCEL & EXCEL TO WORD
     async function executeWordToExcel() {
       const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.docx')) || (loadedPages[0] && loadedPages[0].file);
       if (!file) throw new Error("Please upload a Microsoft Word (.docx) file.");
@@ -1923,7 +2317,6 @@
       downloadBlob(docxBlob, `${baseName}.docx`);
     }
 
-    // 7. PDF TO PPT & PPT TO PDF
     async function executePdfToPptStrict() {
       if (typeof window.PptxGenJS === 'undefined') throw new Error("Presentation Engine is initializing. Please click again.");
       const baseName = getOriginalBaseName('Presentation');
@@ -1968,7 +2361,6 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_presentation.pdf`);
     }
 
-    // 8. MERGE WORD (CLEAN XML BODY MERGE)
     async function executeMergeWordStrict() {
       const docxFiles = uploadedRawFiles.filter(f => f.name.toLowerCase().endsWith('.docx'));
       if (docxFiles.length < 2) throw new Error("Please select at least two Microsoft Word (.docx) files to merge.");
@@ -1998,7 +2390,7 @@
       downloadBlob(mergedBlob, `${baseName}_merged.docx`);
     }
 
-    // 9. PDF TO CAD (.DXF) & CAD (.DXF) TO PDF
+    // CAD (.DXF) AND PDF
     async function executePdfToCad() {
       const baseName = getOriginalBaseName('CAD_Blueprint');
       let dxfContent = "0\nSECTION\n2\nENTITIES\n";
@@ -2048,7 +2440,7 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_blueprint.pdf`);
     }
 
-    // 10. PROTECT PDF (PASSWORD SECURITY)
+    // PROTECT PDF
     async function executeProtectPdf() {
       const pass = (document.getElementById('protectPasswordInput') || {}).value;
       if (!pass) throw new Error("Please enter a password to protect the PDF.");
@@ -2077,7 +2469,7 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_protected.pdf`);
     }
 
-    // 11. PDF TO HTML
+    // PDF TO HTML
     async function executePdfToHtml() {
       const baseName = getOriginalBaseName('Document');
       let htmlBody = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${baseName}</title><style>body{background:#f1f5f9;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;font-family:sans-serif;}.page{background:#fff;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.1);max-width:800px;width:100%;padding:40px;box-sizing:border-box;line-height:1.6;}</style></head><body>`;
@@ -2097,7 +2489,7 @@
       downloadBlob(new Blob([htmlBody], { type: 'text/html' }), `${baseName}.html`);
     }
 
-    // 12. PDF TO TIFF & TIFF TO PDF
+    // PDF TO TIFF & TIFF TO PDF
     async function executePdfToTiff() {
       const baseName = getOriginalBaseName('Archival_Document');
       const zip = new JSZip();
@@ -2125,7 +2517,7 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}.pdf`);
     }
 
-    // 13. COMPRESS & MERGE/SPLIT
+    // COMPRESS & MERGE/SPLIT
     async function executeCompressPdf() {
       const baseName = getOriginalBaseName('Compressed');
       const quality = parseFloat((document.getElementById('compressQuality') || {}).value || 0.80);
@@ -2168,6 +2560,8 @@
           }
           const [copied] = await finalPdf.copyPages(srcDoc, [item.docPageNum - 1]);
           finalPdf.addPage(copied);
+        } else if (item.type === 'blank') {
+          finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
         } else {
           const imgBytes = dataUrlToBytes(item.canvasDataUrl);
           const embedded = await finalPdf.embedJpg(imgBytes);
@@ -2192,7 +2586,6 @@
         URL.revokeObjectURL(url);
       }, 600);
     }
-
     renderToolsGrid(TOOLS_CONFIG);
     activateTool('merge');
   </script>
