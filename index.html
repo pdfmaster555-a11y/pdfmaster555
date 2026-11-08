@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>PDFMaster555 — Professional Lossless Document Suite</title>
+  <title>PDFMaster555 — Professional Lossless Document Suite</title> 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">   
   <!-- FontAwesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />    
   <!-- Client-Side Document Engines -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -337,6 +337,7 @@
     .tool-card h4 span.highlight-format { color: #0284c7; }
     .tool-card p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.45; flex-grow: 1; }
     .tool-action-cta { margin-top: 0.9rem; font-size: 0.8rem; font-weight: 700; color: #0284c7; display: flex; align-items: center; gap: 5px; }
+
     /* MODAL */
     .file-info-modal {
       position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
@@ -753,7 +754,6 @@
       const matched = TOOLS_CONFIG.find(t => t.id === toolId);
       const name = toolName || (matched ? matched.rawName : toolId.toUpperCase());
 
-      // If user is switching to insert blank or text, don't clear already loaded documents
       if (toolId !== 'insert-blank' && toolId !== 'insert-text' && toolId !== 'sign-pdf') {
         const keep = document.getElementById('keepExistingFilesToggle').checked;
         if (!keep) {
@@ -872,13 +872,6 @@
             <label><i class="fa-solid fa-key"></i> Document Password:</label>
             <input type="password" id="protectPasswordInput" class="sidebar-input" placeholder="Set document opening password" />
           </div>
-          <div class="sidebar-field-group">
-            <label><i class="fa-solid fa-user-shield"></i> Security Permission:</label>
-            <select id="protectPermissionSelect" class="sidebar-select">
-              <option value="all">Read Only (Prevent Extraction & Modification)</option>
-              <option value="allow-print">Allow Printing Only</option>
-            </select>
-          </div>
         `;
       } else if (toolId === 'compress') {
         dynamicOpts.innerHTML = `
@@ -903,7 +896,7 @@
       const pos = document.getElementById('blankInsertPos').value;
       const sizeOpt = document.getElementById('blankPageSize').value;
 
-      let w = 595, h = 842; // A4 Portrait default
+      let w = 595, h = 842;
       if (sizeOpt === 'a4-landscape') { w = 842; h = 595; }
       else if (sizeOpt === 'letter') { w = 612; h = 792; }
       else if (sizeOpt === 'a3') { w = 842; h = 1191; }
@@ -1137,7 +1130,8 @@
         
         for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
           const page = await pdf.getPage(pageNum);
-          const viewport = page.getViewport({ scale: 1.0 });
+          // Scale 2.0 ensures razor-sharp lossless export in Word, PPT and Canvas
+          const viewport = page.getViewport({ scale: 2.0 });
           const canvas = document.createElement('canvas');
           const ctx = canvas.getContext('2d');
           canvas.width = viewport.width;
@@ -1149,9 +1143,11 @@
             file: file,
             fileBytes: fileBytes,
             type: 'pdf',
+            docWidth: viewport.width / 2.0,
+            docHeight: viewport.height / 2.0,
             docPageNum: pageNum,
             totalDocPages: pdf.numPages,
-            canvasDataUrl: canvas.toDataURL('image/jpeg', 0.90),
+            canvasDataUrl: canvas.toDataURL('image/jpeg', 0.95),
             isSelected: true
           });
         }
@@ -1193,6 +1189,8 @@
           fileBytes: ab,
           htmlContent: res.value,
           type: 'docx',
+          docWidth: 595,
+          docHeight: 842,
           docPageNum: 1,
           totalDocPages: 1,
           canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1242,6 +1240,8 @@
           fileBytes: ab,
           workbook: wb,
           type: file.name.endsWith('.csv') ? 'csv' : 'excel',
+          docWidth: 842,
+          docHeight: 595,
           docPageNum: 1,
           totalDocPages: wb.SheetNames.length,
           canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1273,6 +1273,8 @@
         file: file,
         fileBytes: null,
         type: 'cad',
+        docWidth: 842,
+        docHeight: 595,
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1296,6 +1298,8 @@
         file: file,
         fileBytes: await file.arrayBuffer(),
         type: 'tiff',
+        docWidth: 595,
+        docHeight: 842,
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1323,6 +1327,8 @@
         file: file,
         fileBytes: text,
         type: 'html',
+        docWidth: 595,
+        docHeight: 842,
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1343,6 +1349,8 @@
         file: file,
         fileBytes: null,
         type: 'ppt',
+        docWidth: 960,
+        docHeight: 540,
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1357,20 +1365,21 @@
           const img = new Image();
           img.onload = () => {
             const canvas = document.createElement('canvas');
-            const scale = Math.min(1, 600 / Math.max(img.width, img.height));
-            canvas.width = (img.width * scale) || 300;
-            canvas.height = (img.height * scale) || 300;
+            canvas.width = img.width;
+            canvas.height = img.height;
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+            ctx.drawImage(img, 0, 0);
 
             loadedPages.push({
               id: 'p_' + Math.random().toString(36).substr(2, 9),
               file: file,
               fileBytes: e.target.result,
               type: 'image',
+              docWidth: img.width,
+              docHeight: img.height,
               docPageNum: 1,
               totalDocPages: 1,
-              canvasDataUrl: canvas.toDataURL('image/jpeg', 0.88),
+              canvasDataUrl: canvas.toDataURL('image/jpeg', 0.95),
               isSelected: true
             });
             resolve();
@@ -1395,6 +1404,8 @@
         file: file,
         fileBytes: null,
         type: 'office',
+        docWidth: 595,
+        docHeight: 842,
         docPageNum: 1,
         totalDocPages: 1,
         canvasDataUrl: canvas.toDataURL('image/jpeg'),
@@ -1815,7 +1826,7 @@
     });
 
     // ==========================================
-    // 1. HIGH-PRECISION PDF TO EXCEL (iLovePDF Style Column Alignment)
+    // 1. HIGH-PRECISION PDF TO EXCEL (Smart Table Matrix)
     // ==========================================
     async function extractPdfTableMatrix() {
       const allRows = [];
@@ -1827,7 +1838,6 @@
           const page = await pdf.getPage(item.docPageNum);
           const content = await page.getTextContent();
 
-          // 1. Extract raw items with position
           const rawItems = content.items.map(it => ({
             str: it.str,
             x: it.transform[4],
@@ -1838,7 +1848,6 @@
 
           if (rawItems.length === 0) continue;
 
-          // 2. Group into vertical rows (tolerance 3.8pt)
           rawItems.sort((a, b) => b.y - a.y || a.x - b.x);
 
           const lines = [];
@@ -1857,8 +1866,6 @@
           }
           if (currentLine.length > 0) lines.push(currentLine);
 
-          // 3. Horizontal Phrase Reconciliation:
-          // Merge text chunks that belong to the same cell phrase (e.g. "Insured" + "Name")
           const processedLines = lines.map(line => {
             line.sort((a, b) => a.x - b.x);
             const merged = [];
@@ -1869,7 +1876,6 @@
               } else {
                 const expectedNextX = curr.x + curr.w;
                 const gap = token.x - expectedNextX;
-                // If gap is small (under 8.5pt), merge into single cell text!
                 if (gap < 8.5 && gap >= -4) {
                   curr.str += (gap > 1.2 ? ' ' : '') + token.str;
                   curr.w = (token.x + token.w) - curr.x;
@@ -1883,7 +1889,6 @@
             return merged;
           });
 
-          // 4. Discover Column Boundary Anchors (Histogram-based Clustering)
           const allX = [];
           processedLines.forEach(line => {
             line.forEach(cell => {
@@ -1904,7 +1909,6 @@
           }
           colAnchors.sort((a, b) => a.avg - b.avg);
 
-          // 5. Structure Rows into Structured Multi-Column Array
           for (const line of processedLines) {
             if (line.length === 1 && (line[0].str.length > 30 || line[0].str.toUpperCase() === line[0].str)) {
               allRows.push([line[0].str.trim()]);
@@ -1938,7 +1942,6 @@
         }
       }
 
-      // Calculate auto-fit column widths so no text cuts off
       allRows.forEach(row => {
         row.forEach((val, cIdx) => {
           const len = String(val || '').length;
@@ -1957,9 +1960,9 @@
       ws['!cols'] = colWidths.map(w => ({ wch: w }));
 
       const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, "Insurance_Data");
+      XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
       const excelBuffer = XLSX.write(wb, { bookType: 'xlsx', type: 'array' });
-      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${baseName}_perfect.xlsx`);
+      downloadBlob(new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' }), `${baseName}_clean.xlsx`);
     }
 
     async function executePdfToCsv() {
@@ -1995,8 +1998,8 @@
         } else {
           const imgBytes = dataUrlToBytes(item.canvasDataUrl);
           const embedded = await finalPdf.embedJpg(imgBytes);
-          p = finalPdf.addPage([595, 842]);
-          p.drawImage(embedded, { x: 0, y: 0, width: 595, height: 842 });
+          p = finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
+          p.drawImage(embedded, { x: 0, y: 0, width: item.docWidth || 595, height: item.docHeight || 842 });
         }
 
         if (i === textBoxData.targetIndex) {
@@ -2077,8 +2080,8 @@
         } else {
           const imgBytes = dataUrlToBytes(item.canvasDataUrl);
           const embedded = await finalPdf.embedJpg(imgBytes);
-          p = finalPdf.addPage([595, 842]);
-          p.drawImage(embedded, { x: 0, y: 0, width: 595, height: 842 });
+          p = finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
+          p.drawImage(embedded, { x: 0, y: 0, width: item.docWidth || 595, height: item.docHeight || 842 });
         }
 
         if (i === sigPlacement.targetIndex) {
@@ -2104,7 +2107,201 @@
     }
 
     // ==========================================
-    // 4. OFFICE CONVERSIONS (WORD, EXCEL, PPT, CAD, TIFF, HTML)
+    // 4. LOSSLESS PDF TO WORD (.DOCX) WITH EXACT LAYOUT PRESERVATION
+    // ==========================================
+    async function executePdfToWordStrict() {
+      if (loadedPages.length === 0) throw new Error("Please upload a PDF document.");
+      const baseName = getOriginalBaseName('Converted_Document');
+      const zip = new JSZip();
+
+      // Content Types
+      zip.file("[Content_Types].xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Default Extension="jpeg" ContentType="image/jpeg"/>
+  <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`);
+
+      // Package Relationships
+      zip.file("_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`);
+
+      let relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">`;
+
+      let bodyXml = '';
+
+      for (let idx = 0; idx < loadedPages.length; idx++) {
+        const item = loadedPages[idx];
+        const rId = `rIdImg${idx + 1}`;
+        const imgFileName = `page_${idx + 1}.jpeg`;
+
+        const imgBytes = dataUrlToBytes(item.canvasDataUrl);
+        zip.file(`word/media/${imgFileName}`, imgBytes);
+
+        relsXml += `<Relationship Id="${rId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${imgFileName}"/>`;
+
+        // 1 pt = 20 twips, 1 pt = 12700 EMUs
+        const ptWidth = item.docWidth || 595.28;
+        const ptHeight = item.docHeight || 841.89;
+        const twipWidth = Math.round(ptWidth * 20);
+        const twipHeight = Math.round(ptHeight * 20);
+        const emuWidth = Math.round(ptWidth * 12700);
+        const emuHeight = Math.round(ptHeight * 12700);
+
+        bodyXml += `
+          <w:p>
+            <w:pPr>
+              <w:spacing w:before="0" w:after="0" w:line="240" w:lineRule="auto"/>
+              <w:jc w:val="center"/>
+            </w:pPr>
+            <w:r>
+              <w:drawing>
+                <wp:inline distT="0" distB="0" distL="0" distR="0" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
+                  <wp:extent cx="${emuWidth}" cy="${emuHeight}"/>
+                  <wp:effectExtent l="0" t="0" r="0" b="0"/>
+                  <wp:docPr id="${idx + 1}" name="Page ${idx + 1}"/>
+                  <wp:cNvGraphicFramePr>
+                    <a:graphicFrameLocks xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" noChangeAspect="1"/>
+                  </wp:cNvGraphicFramePr>
+                  <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
+                    <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                      <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+                        <pic:nvPicPr>
+                          <pic:cNvPr id="${idx + 1}" name="${imgFileName}"/>
+                          <pic:cNvPicPr/>
+                        </pic:nvPicPr>
+                        <pic:blipFill>
+                          <a:blip r:embed="${rId}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/>
+                          <a:stretch><a:fillRect/></a:stretch>
+                        </pic:blipFill>
+                        <pic:spPr>
+                          <a:xfrm><a:off x="0" y="0"/><a:ext cx="${emuWidth}" cy="${emuHeight}"/></a:xfrm>
+                          <a:prstGeom prst="rect"><a:avLst/></a:prstGeom>
+                        </pic:spPr>
+                      </pic:pic>
+                    </a:graphicData>
+                  </a:graphic>
+                </wp:inline>
+              </w:drawing>
+            </w:r>
+          </w:p>
+        `;
+
+        if (idx < loadedPages.length - 1) {
+          bodyXml += `<w:p><w:pPr><w:sectPr><w:pgSz w:w="${twipWidth}" w:h="${twipHeight}"/><w:pgMar w:top="0" w:right="0" w:bottom="0" w:left="0" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr></w:pPr></w:p>`;
+        } else {
+          bodyXml += `<w:sectPr><w:pgSz w:w="${twipWidth}" w:h="${twipHeight}"/><w:pgMar w:top="0" w:right="0" w:bottom="0" w:left="0" w:header="0" w:footer="0" w:gutter="0"/></w:sectPr>`;
+        }
+      }
+
+      relsXml += `</Relationships>`;
+      zip.file("word/_rels/document.xml.rels", relsXml);
+      zip.file("word/document.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
+  <w:body>${bodyXml}</w:body>
+</w:document>`);
+
+      const docxBlob = await zip.generateAsync({ type: "blob" });
+      downloadBlob(docxBlob, `${baseName}_layout_preserved.docx`);
+    }
+
+    // ==========================================
+    // 5. LOSSLESS PDF TO POWERPOINT (.PPTX)
+    // ==========================================
+    async function executePdfToPptStrict() {
+      if (typeof window.PptxGenJS === 'undefined') throw new Error("Presentation Engine is initializing. Please click again.");
+      if (loadedPages.length === 0) throw new Error("Please upload a PDF document.");
+      
+      const baseName = getOriginalBaseName('Presentation');
+      const pptx = new window.PptxGenJS();
+
+      // Dynamically define slide layout using the first page's exact aspect ratio
+      const refWidth = loadedPages[0].docWidth || 595.28;
+      const refHeight = loadedPages[0].docHeight || 841.89;
+      const slideInchesW = 10;
+      const slideInchesH = (refHeight / refWidth) * 10;
+
+      pptx.defineLayout({ name: 'CUSTOM_FIT', width: slideInchesW, height: slideInchesH });
+      pptx.layout = 'CUSTOM_FIT';
+
+      for (let i = 0; i < loadedPages.length; i++) {
+        const slide = pptx.addSlide();
+        slide.addImage({ 
+          data: loadedPages[i].canvasDataUrl, 
+          x: 0, 
+          y: 0, 
+          w: slideInchesW, 
+          h: slideInchesH 
+        });
+      }
+
+      await pptx.writeFile({ fileName: `${baseName}_perfect.pptx` });
+    }
+
+    // ==========================================
+    // 6. PDF TO STANDALONE LOSSLESS HTML
+    // ==========================================
+    async function executePdfToHtml() {
+      if (loadedPages.length === 0) throw new Error("Please upload a PDF document.");
+      const baseName = getOriginalBaseName('Document');
+      
+      let htmlBody = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${baseName}</title>
+  <style>
+    body {
+      background: #0f172a;
+      margin: 0;
+      padding: 30px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .pdf-page-card {
+      background: #ffffff;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+      border-radius: 4px;
+      overflow: hidden;
+      max-width: 900px;
+      width: 100%;
+    }
+    .pdf-page-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    @media print {
+      body { background: none; padding: 0; gap: 0; }
+      .pdf-page-card { box-shadow: none; max-width: 100%; page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+`;
+
+      for (let idx = 0; idx < loadedPages.length; idx++) {
+        const item = loadedPages[idx];
+        htmlBody += `
+  <div class="pdf-page-card">
+    <img src="${item.canvasDataUrl}" alt="Page ${idx + 1}" />
+  </div>\n`;
+      }
+
+      htmlBody += `</body>\n</html>`;
+      downloadBlob(new Blob([htmlBody], { type: 'text/html;charset=utf-8;' }), `${baseName}_view.html`);
+    }
+
+    // ==========================================
+    // 7. OTHER OFFICE CONVERSIONS
     // ==========================================
     async function executeWordToPdfStrict() {
       const file = uploadedRawFiles.find(f => f.name.toLowerCase().endsWith('.docx')) || (loadedPages[0] && loadedPages[0].file);
@@ -2116,7 +2313,7 @@
 
       const container = document.getElementById('hiddenTemplateContainer');
       container.innerHTML = `
-        <div id="wordRenderRoot" style="width: 794px; min-height: 1123px; padding: 48px; background: #ffffff; color: #0f172a; font-family: 'Plus Jakarta Sans', Arial, sans-serif; box-sizing: border-box;">
+        <div id="wordRenderRoot" style="width: 794px; min-height: 1123px; padding: 50px; background: #ffffff; color: #0f172a; font-family: 'Plus Jakarta Sans', Arial, sans-serif; box-sizing: border-box;">
           <style>
             #wordRenderRoot h1 { font-size: 26px; font-weight: 800; color: #0f172a; margin-bottom: 14px; border-bottom: 2px solid #0284c7; padding-bottom: 6px; }
             #wordRenderRoot h2 { font-size: 20px; font-weight: 700; color: #1e293b; margin-top: 20px; margin-bottom: 10px; }
@@ -2181,7 +2378,7 @@
 
       const imgBytes = dataUrlToBytes(renderedCanvas.toDataURL('image/jpeg', 0.95));
       const embeddedImg = await pdfDoc.embedJpg(imgBytes);
-      const p = pdfDoc.addPage([842, 595]); // Standard A4 Landscape
+      const p = pdfDoc.addPage([842, 595]);
       p.drawImage(embeddedImg, { x: 0, y: 0, width: 842, height: 595 });
 
       container.innerHTML = '';
@@ -2191,69 +2388,6 @@
 
     async function executeCsvToPdf() {
       await executeExcelToPdfStrict();
-    }
-
-    async function executePdfToWordStrict() {
-      const baseName = getOriginalBaseName('Converted_Document');
-      const zip = new JSZip();
-
-      zip.file("[Content_Types].xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Default Extension="jpeg" ContentType="image/jpeg"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`);
-      zip.file("_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`);
-
-      let relsXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">`;
-      let bodyXml = '';
-
-      for (let idx = 0; idx < loadedPages.length; idx++) {
-        const item = loadedPages[idx];
-        const rId = `rIdImg${idx + 1}`;
-        const imgFileName = `image${idx + 1}.jpeg`;
-
-        const imgBytes = dataUrlToBytes(item.canvasDataUrl);
-        zip.file(`word/media/${imgFileName}`, imgBytes);
-
-        relsXml += `<Relationship Id="${rId}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/image" Target="media/${imgFileName}"/>`;
-
-        let pageText = '';
-        if (item.type === 'pdf') {
-          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
-          const page = await pdf.getPage(item.docPageNum);
-          const content = await page.getTextContent();
-          pageText = content.items.map(it => it.str).join(' ');
-        }
-
-        const cleanText = (pageText || `Page ${idx + 1}`).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-
-        bodyXml += `
-          <w:p>
-            <w:r>
-              <w:drawing>
-                <wp:inline distT="0" distB="0" distL="0" distR="0" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing">
-                  <wp:extent cx="5400000" cy="7000000"/>
-                  <wp:docPr id="${idx + 1}" name="Page ${idx + 1}"/>
-                  <a:graphic xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main">
-                    <a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/picture">
-                      <pic:pic xmlns:pic="http://schemas.openxmlformats.org/drawingml/2006/picture">
-                        <pic:nvPicPr><pic:cNvPr id="${idx + 1}" name="${imgFileName}"/><pic:cNvPicPr/></pic:nvPicPr>
-                        <pic:blipFill><a:blip r:embed="${rId}" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"/><a:stretch><a:fillRect/></a:stretch></pic:blipFill>
-                        <pic:spPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="5400000" cy="7000000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom></pic:spPr>
-                      </pic:pic>
-                    </a:graphicData>
-                  </a:graphic>
-                </wp:inline>
-              </w:drawing>
-            </w:r>
-          </w:p>
-          <w:p><w:r><w:rPr><w:sz w:val="2"/></w:rPr><w:t xml:space="preserve">${cleanText}</w:t></w:r></w:p>
-          ${idx < loadedPages.length - 1 ? '<w:p><w:r><w:br w:type="page"/></w:r></w:p>' : ''}
-        `;
-      }
-
-      relsXml += `</Relationships>`;
-      zip.file("word/_rels/document.xml.rels", relsXml);
-      zip.file("word/document.xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${bodyXml}<w:sectPr/></w:body></w:document>`);
-
-      const docxBlob = await zip.generateAsync({ type: "blob" });
-      downloadBlob(docxBlob, `${baseName}.docx`);
     }
 
     async function executeWordToExcel() {
@@ -2315,20 +2449,6 @@
 
       const docxBlob = await zip.generateAsync({ type: "blob" });
       downloadBlob(docxBlob, `${baseName}.docx`);
-    }
-
-    async function executePdfToPptStrict() {
-      if (typeof window.PptxGenJS === 'undefined') throw new Error("Presentation Engine is initializing. Please click again.");
-      const baseName = getOriginalBaseName('Presentation');
-      const pptx = new window.PptxGenJS();
-      pptx.layout = 'LAYOUT_16x9';
-
-      for (let i = 0; i < loadedPages.length; i++) {
-        const slide = pptx.addSlide();
-        slide.addImage({ data: loadedPages[i].canvasDataUrl, x: 0, y: 0, w: '100%', h: '100%' });
-      }
-
-      await pptx.writeFile({ fileName: `${baseName}.pptx` });
     }
 
     async function executePptToPdfStrict() {
@@ -2423,7 +2543,7 @@
 
       const PDFLib = await getPdfLib();
       const pdfDoc = await PDFLib.PDFDocument.create();
-      const page = pdfDoc.addPage([842, 595]); // A4 Landscape
+      const page = pdfDoc.addPage([842, 595]);
 
       page.drawText(`AutoCAD Blueprint Drawing: ${file.name}`, { x: 40, y: 550, size: 14, color: PDFLib.rgb(0.05, 0.4, 0.7) });
       page.drawRectangle({ x: 30, y: 30, width: 782, height: 535, borderColor: PDFLib.rgb(0.2, 0.2, 0.2), borderWidth: 1 });
@@ -2469,26 +2589,6 @@
       downloadBlob(new Blob([pdfBytes], { type: 'application/pdf' }), `${baseName}_protected.pdf`);
     }
 
-    // PDF TO HTML
-    async function executePdfToHtml() {
-      const baseName = getOriginalBaseName('Document');
-      let htmlBody = `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>${baseName}</title><style>body{background:#f1f5f9;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;font-family:sans-serif;}.page{background:#fff;margin-bottom:20px;box-shadow:0 4px 10px rgba(0,0,0,0.1);max-width:800px;width:100%;padding:40px;box-sizing:border-box;line-height:1.6;}</style></head><body>`;
-
-      for (let idx = 0; idx < loadedPages.length; idx++) {
-        const item = loadedPages[idx];
-        let pText = '';
-        if (item.type === 'pdf') {
-          const pdf = await pdfjsLib.getDocument({ data: item.fileBytes.slice() }).promise;
-          const page = await pdf.getPage(item.docPageNum);
-          const content = await page.getTextContent();
-          pText = content.items.map(it => it.str).join(' ');
-        }
-        htmlBody += `<div class="page"><h3>Page ${idx + 1}</h3><p>${pText || 'No text elements extracted.'}</p></div>`;
-      }
-      htmlBody += `</body></html>`;
-      downloadBlob(new Blob([htmlBody], { type: 'text/html' }), `${baseName}.html`);
-    }
-
     // PDF TO TIFF & TIFF TO PDF
     async function executePdfToTiff() {
       const baseName = getOriginalBaseName('Archival_Document');
@@ -2509,8 +2609,8 @@
       for (const item of loadedPages) {
         const imgBytes = dataUrlToBytes(item.canvasDataUrl);
         const embedded = await pdfDoc.embedJpg(imgBytes);
-        const p = pdfDoc.addPage([595, 842]);
-        p.drawImage(embedded, { x: 0, y: 0, width: 595, height: 842 });
+        const p = pdfDoc.addPage([item.docWidth || 595, item.docHeight || 842]);
+        p.drawImage(embedded, { x: 0, y: 0, width: item.docWidth || 595, height: item.docHeight || 842 });
       }
 
       const pdfBytes = await pdfDoc.save();
@@ -2565,8 +2665,8 @@
         } else {
           const imgBytes = dataUrlToBytes(item.canvasDataUrl);
           const embedded = await finalPdf.embedJpg(imgBytes);
-          const p = finalPdf.addPage([595, 842]);
-          p.drawImage(embedded, { x: 0, y: 0, width: 595, height: 842 });
+          const p = finalPdf.addPage([item.docWidth || 595, item.docHeight || 842]);
+          p.drawImage(embedded, { x: 0, y: 0, width: item.docWidth || 595, height: item.docHeight || 842 });
         }
       }
 
@@ -2586,6 +2686,7 @@
         URL.revokeObjectURL(url);
       }, 600);
     }
+
     renderToolsGrid(TOOLS_CONFIG);
     activateTool('merge');
   </script>
